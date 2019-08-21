@@ -10,19 +10,15 @@ const SectionNav = ({ headings, title, mainRef, contentRef, ...rest }) => {
   const { width, height } = useWindowSize();
   const [offsets, setOffsets] = useState([]);
 
-  console.log('offsets', offsets);
-
   useEffect(() => {
     if (!contentRef) return;
 
     const headings = contentRef.current.querySelectorAll('h1, h2');
     setOffsets(
+      // eslint-disable-next-line unicorn/prefer-spread
       Array.from(headings)
         .map(heading => {
           const anchor = heading.querySelector('a');
-          console.log('Heading', heading);
-          console.log('anchor', anchor);
-
           if (!anchor) {
             return null;
           }

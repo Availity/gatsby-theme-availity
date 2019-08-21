@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Form, Button, Input } from 'reactstrap';
+import { Nav, Form, Input } from 'reactstrap';
 
 const Search = () => {
   return (

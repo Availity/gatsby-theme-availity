@@ -1,0 +1,40 @@
+
+name: NPM Release
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install yarnpkg
+        run: npm i -g yarn
+
+      - name: Install deps and build package
+        run: yarn install
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Authenticate
+        run: |
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+            git config --global user.email ${{ secrets.GITHUB_EMAIL }}
+            git config --global user.name ${{ secrets.GITHUB_USER }}
+      - name: Publish
+        run: npm run release:ci

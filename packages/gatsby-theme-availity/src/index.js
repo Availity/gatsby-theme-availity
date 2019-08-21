@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import RehypeReact from 'rehype-react';
-import { Container } from 'reactstrap';
 import {
   SiteMetadata,
   Navigation,

@@ -18,6 +18,7 @@ const PageContent = ({ children, headings, mainRef, title, ...props }) => {
         // let errors pass
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
