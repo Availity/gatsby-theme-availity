@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "release:ci": "lerna publish --yes"
   },
   "peerDependencies": {
     "gatsby": "^2.6.0"
