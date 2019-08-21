@@ -1,0 +1,4 @@
+---
+extends: availity/browser
+rules:
+  react/prop-types: 0
