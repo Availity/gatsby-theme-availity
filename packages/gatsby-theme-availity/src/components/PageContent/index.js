@@ -23,7 +23,11 @@ const PageContent = ({ children, headings, mainRef, title, ...props }) => {
 
   return (
     <div className="d-flex align-items-start">
-      <div className="flex-grow-1" style={{ width: 0 }} ref={contentRef}>
+      <div
+        className="flex-grow-1"
+        style={{ width: 0, maxWidth: 1200 }}
+        ref={contentRef}
+      >
         {children}
       </div>
       <SectionNav
@@ -31,7 +35,7 @@ const PageContent = ({ children, headings, mainRef, title, ...props }) => {
         mainRef={mainRef}
         title={title}
         contentRef={contentRef}
-        className="flex-fill ml-5 pl-5"
+        className="ml-5 pl-5"
       />
     </div>
   );

@@ -1,11 +1,42 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` });
-    createNodeField({
+
+const configPaths = [
+  'docs/gatsby-config.js', // new gatsby config
+  'docs/_config.yml', // old hexo config
+];
+
+exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
+  // const { createNodeField } = actions;
+  // if (node.internal.type === `MarkdownRemark`) {
+  //   const slug = createFilePath({ node, getNode, basePath: `pages` });
+  //   createNodeField({
+  //     node,
+  //     name: `slug`,
+  //     value: slug,
+  //   });
+  // }
+
+  if (configPaths.includes(node.relativePath)) {
+    const value = await loadNodeContent(node);
+    actions.createNodeField({
+      name: 'raw',
       node,
-      name: `slug`,
+      value,
+    });
+  }
+
+  console.log('going to create mdx fields', node.internal.type);
+
+  if (['MarkdownRemark', 'Mdx'].includes(node.internal.type)) {
+    console.log('going to create mdx slug');
+    const slug = createFilePath({
+      node,
+      getNode,
+    });
+
+    actions.createNodeField({
+      name: 'slug',
+      node,
       value: slug,
     });
   }
@@ -54,30 +85,37 @@ function getSidebarContents(sidebarCategories, edges) {
   }));
 }
 
+const pageFragment = `
+  internal {
+    type
+  }
+  frontmatter {
+    title
+  }
+  fields {
+    slug
+  }
+`;
+
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions;
   const { data } = await graphql(`
-    {
-      allFile(filter: { extension: { in: ["md"] } }) {
-        edges {
-          node {
-            id
-            relativePath
-            childMarkdownRemark {
-              internal {
-                type
-              }
-              frontmatter {
-                title
-              }
-              fields {
-                slug
-              }
-            }
+  {
+    allFile(filter: {extension: {in: ["md", "mdx"]}}) {
+      edges {
+        node {
+          id
+          relativePath
+          childMarkdownRemark {
+            ${pageFragment}
+          }
+          childMdx {
+            ${pageFragment}
           }
         }
       }
     }
+  }
   `);
 
   const { contentDir = 'docs/source', githubRepo, sidebarCategories } = options;
