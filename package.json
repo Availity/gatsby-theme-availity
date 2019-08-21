@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "eslint .",
     "start": "yarn workspace site develop",
-    "bootstrap": "lerna bootstrap --use-workspaces"
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "release:ci": "lerna publish --yes"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
