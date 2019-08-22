@@ -9,11 +9,11 @@
     "clean": "gatsby clean"
   },
   "peerDependencies": {
-    "gatsby": "^2.6.0",
+    "gatsby": "^2.13.76",
     "reactstrap": "^8.0.1"
   },
   "devDependencies": {
-    "gatsby": "^2.13.32",
+    "gatsby": "^2.13.76",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
@@ -36,10 +36,17 @@
     "gatsby-source-filesystem": "^2.1.6",
     "gatsby-transformer-remark": "^2.6.9",
     "github-slugger": "^1.2.1",
+    "html-react-parser": "^0.9.1",
+    "mdx-utils": "^0.2.0",
     "node-sass": "^4.12.0",
+    "prism-react-renderer": "^0.1.7",
     "prismjs": "^1.17.1",
+    "react-element-to-jsx-string": "^14.0.3",
+    "react-frame-component": "^4.1.1",
     "react-helmet": "^5.2.1",
+    "react-live": "^2.2.0",
     "react-markdown": "^4.1.0",
+    "react-measure": "^2.3.0",
     "react-use": "^10.7.0",
     "rehype-react": "^4.0.1",
     "remark": "^11.0.1",

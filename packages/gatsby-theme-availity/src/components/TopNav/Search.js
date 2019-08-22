@@ -17,7 +17,7 @@ const Overlay = ({ visible }) => (
       transitionProperty: 'opacity, visibility',
       transitionDuration: '150ms',
       dtransitionTimingFunction: 'ease-in-out',
-      zIndex: 1,
+      zIndex: 5,
     }}
   />
 );
@@ -76,7 +76,7 @@ const Search = () => {
           type="text"
           placeholder="Search"
           className="mr-sm-2"
-          style={{ zIndex: 1 }}
+          style={{ zIndex: 5 }}
         />
         <Overlay />
       </Form>

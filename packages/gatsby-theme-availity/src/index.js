@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import RehypeReact from 'rehype-react';
 import { MDXProvider } from '@mdx-js/react';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import { preToCodeBlock } from 'mdx-utils';
 import {
   SiteMetadata,
   Navigation,
@@ -14,10 +15,19 @@ import {
 import './style.scss';
 
 import 'availity-uikit';
-// import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 const components = {
-  pre: CodeBlock,
+  pre: preProps => {
+    const props = preToCodeBlock(preProps);
+    // if there's a codeString and some props, we passed the test
+    if (props) {
+      console.log('Code block');
+      return <CodeBlock {...props} />;
+    }
+    // it's possible to have a pre without a code in it
+    return <pre {...preProps} />;
+  },
+  // pre: props => props.children
 };
 
 const renderAst = new RehypeReact({
@@ -75,11 +85,7 @@ const Template = ({
             mainRef={mainRef}
           >
             {file.childMdx ? (
-              <MDXProvider
-                components={{
-                  pre: CodeBlock,
-                }}
-              >
+              <MDXProvider components={components}>
                 <MDXRenderer>{file.childMdx.body}</MDXRenderer>
               </MDXProvider>
             ) : (

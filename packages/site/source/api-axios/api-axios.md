@@ -3,13 +3,11 @@ title: Axios
 summary: A package wrapping @av/api-core with axios and native ES6 Promise.
 ---
 
-> A package wrapping [@av/api-core](../api-core/README.md) with axios and native ES6 Promise.
-
 [![Version](https://img.shields.io/npm/v/@availity/api-axios.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/api-axios)
 
 ## Install
 
-```
+```bash
 npm install @availity/api-axios @availity/api-core @availity/localstorage-core --save
 ```
 
