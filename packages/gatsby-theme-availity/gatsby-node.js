@@ -25,10 +25,7 @@ exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
     });
   }
 
-  console.log('going to create mdx fields', node.internal.type);
-
   if (['MarkdownRemark', 'Mdx'].includes(node.internal.type)) {
-    console.log('going to create mdx slug');
     const slug = createFilePath({
       node,
       getNode,
