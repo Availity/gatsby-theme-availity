@@ -53,7 +53,7 @@ const Search = () => {
 
     window.addEventListener('keydown', onKeyDown, true);
 
-    return () => window.removeEventListener('keydown', this.onKeyDown, true);
+    return () => window.removeEventListener('keydown', onKeyDown, true);
   }, []);
 
   const onChange = event => setValue(event.target.value);
