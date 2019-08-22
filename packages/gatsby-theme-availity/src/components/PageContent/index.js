@@ -25,7 +25,7 @@ const PageContent = ({ children, headings, mainRef, title, ...props }) => {
     <div className="d-flex align-items-start">
       <div
         className="flex-grow-1"
-        style={{ width: 0, maxWidth: 1200 }}
+        style={{ width: 0, maxWidth: '100ch' }}
         ref={contentRef}
       >
         {children}

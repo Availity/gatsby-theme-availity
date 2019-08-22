@@ -39,6 +39,10 @@ const SiteMetadata = ({ pathname }) => {
       <meta property="og:image:height" content="512" />
 
       <meta name="twitter:card" content="summary" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+      />
       {/* <meta name="twitter:site" content={twitter} /> */}
     </Helmet>
   );

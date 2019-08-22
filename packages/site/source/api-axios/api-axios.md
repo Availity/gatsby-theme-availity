@@ -15,7 +15,7 @@ npm install @availity/api-axios @availity/api-core @availity/localstorage-core -
 
 Polyfill `Promise` if needed:
 
-```js
+```bash
 npm install es6-promise --save
 ```
 

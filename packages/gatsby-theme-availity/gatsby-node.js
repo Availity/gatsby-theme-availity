@@ -91,6 +91,7 @@ const pageFragment = `
   }
   frontmatter {
     title
+    summary
   }
   fields {
     slug

@@ -108,6 +108,7 @@ export const pageQuery = graphql`
       childMarkdownRemark {
         frontmatter {
           title
+          summary
         }
         headings(depth: h2) {
           value
@@ -117,6 +118,7 @@ export const pageQuery = graphql`
       childMdx {
         frontmatter {
           title
+          summary
         }
         headings(depth: h2) {
           value

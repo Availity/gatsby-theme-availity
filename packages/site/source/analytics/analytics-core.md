@@ -3,9 +3,9 @@ title: Analytics Core
 summary: Analytics core logic and auto-tracking.
 ---
 
-> A package providing a base Analytics class to track events and page views
-
 [![Version](https://img.shields.io/npm/v/@availity/analytics-core.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/analytics-core)
+
+A package providing a base Analytics class to track events and page views
 
 ## Install
 
