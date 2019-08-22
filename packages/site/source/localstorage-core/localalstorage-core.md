@@ -3,8 +3,6 @@ title: LocalStorage
 summary: Wraps localStorage with utility functions.
 ---
 
-> Wraps localStorage with utility functions
-
 [![Version](https://img.shields.io/npm/v/@availity/localstorage-core.svg?style=for-the-badge)](https://www.npmjs.com/package/@availity/localstorage-core)
 
 ## Install

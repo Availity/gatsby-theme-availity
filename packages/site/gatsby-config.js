@@ -5,7 +5,6 @@ module.exports = {
       resolve: 'gatsby-theme-availity',
       options: {
         root: __dirname,
-        contentDir: 'source/',
         subtitle: 'Availity SDK',
         description:
           'Documentation for Availity Javascript SDK, Rest API and GraphQL',

@@ -1,19 +1,28 @@
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import RehypeReact from 'rehype-react';
+import { MDXProvider } from '@mdx-js/react';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import {
   SiteMetadata,
   Navigation,
   SideNavigation,
   PageContent,
   PageHeader,
+  CodeBlock,
 } from './components';
-import './style.css';
+import './style.scss';
 
 import 'availity-uikit';
+// import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+
+const components = {
+  pre: CodeBlock,
+};
 
 const renderAst = new RehypeReact({
   createElement: React.createElement,
+  components,
 }).Compiler;
 
 const Template = ({
@@ -65,7 +74,17 @@ const Template = ({
             hash={hash}
             mainRef={mainRef}
           >
-            {renderAst(data.file.childMarkdownRemark.htmlAst)}
+            {file.childMdx ? (
+              <MDXProvider
+                components={{
+                  pre: CodeBlock,
+                }}
+              >
+                <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+              </MDXProvider>
+            ) : (
+              renderAst(file.childMarkdownRemark.htmlAst)
+            )}
           </PageContent>
         </div>
       </div>
@@ -89,11 +108,22 @@ export const pageQuery = graphql`
       childMarkdownRemark {
         frontmatter {
           title
+          summary
         }
         headings(depth: h2) {
           value
         }
         htmlAst
+      }
+      childMdx {
+        frontmatter {
+          title
+          summary
+        }
+        headings(depth: h2) {
+          value
+        }
+        body
       }
     }
   }
