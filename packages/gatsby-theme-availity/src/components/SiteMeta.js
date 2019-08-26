@@ -24,6 +24,10 @@ const SiteMetadata = ({ pathname }) => {
     <Helmet defer={false} defaultTitle={title} titleTemplate={`%s | ${title}`}>
       <html lang="en" />
       <link rel="canonical" href={`${siteUrl}${pathname}`} />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+      />
       <meta name="docsearch:version" content="2.0" />
       <meta
         name="viewport"

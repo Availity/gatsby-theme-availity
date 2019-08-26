@@ -8,7 +8,7 @@ import {
   NavbarToggler,
   Collapse,
 } from 'reactstrap';
-import Search from './Search';
+import Search from './Search/Search';
 import Logo from './Logo';
 
 const Navigation = () => {
