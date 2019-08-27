@@ -5,6 +5,8 @@
 
 This repo contains a [Gatsby](https://gatsbyjs.org) theme for creating sites using a shared theme. This allows documentation sites to be deployed for each repo while still keeping the same theme/layout/feel of a single page web app doc site would look like.
 
+Inspired by [Apollo's Gatsby Theme](https://github.com/apollographql/gatsby-theme-apollo)
+
 ## Packages
 
 - [`gatsby-theme-availity`](./packages/gatsby-theme-avaiity)
