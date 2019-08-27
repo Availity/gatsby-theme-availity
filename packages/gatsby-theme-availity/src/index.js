@@ -3,6 +3,8 @@ import { graphql } from 'gatsby';
 import RehypeReact from 'rehype-react';
 import { MDXProvider } from '@mdx-js/react';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import 'availity-uikit';
+
 import {
   SiteMetadata,
   Navigation,
@@ -13,18 +15,18 @@ import {
 } from './components';
 import './style.scss';
 
-import 'availity-uikit';
-// import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
-
 const components = {
-  pre: CodeBlock,
+  code: CodeBlock,
+  pre: props => props.children,
 };
 
+// Will take in a snippet of code in AST Form and render it as text
 const renderAst = new RehypeReact({
   createElement: React.createElement,
   components,
 }).Compiler;
 
+// The Template to load on each page
 const Template = ({
   children,
   location,
@@ -32,6 +34,7 @@ const Template = ({
   data,
   ...rest
 }) => {
+  // Keep a ref of the current content window for jumping to certain anchors in section nav
   const mainRef = useRef(null);
 
   const { file } = data;
@@ -46,7 +49,6 @@ const Template = ({
   return (
     <div className="h-100 d-flex flex-column">
       <SiteMetadata pathname={pathname} />
-      {/* <SkipNavLink/> */}
       <Navigation />
       <div className="d-flex h-100">
         <SideNavigation
@@ -75,11 +77,7 @@ const Template = ({
             mainRef={mainRef}
           >
             {file.childMdx ? (
-              <MDXProvider
-                components={{
-                  pre: CodeBlock,
-                }}
-              >
+              <MDXProvider components={components}>
                 <MDXRenderer>{file.childMdx.body}</MDXRenderer>
               </MDXProvider>
             ) : (
@@ -88,8 +86,6 @@ const Template = ({
           </PageContent>
         </div>
       </div>
-      {/* <SkipNavContent/> */}
-      {children}
     </div>
   );
 };

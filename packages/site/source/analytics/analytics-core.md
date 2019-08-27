@@ -9,7 +9,9 @@ A package providing a base Analytics class to track events and page views
 
 ## Install
 
-`npm install @availity/analytics-core`
+```bash
+npm install @availity/analytics-core
+```
 
 ## Configuration
 
@@ -35,11 +37,15 @@ new AvAnalytics(plugins, promise, pageTracking, autoTrack, options);
 
 Example using the `recursive` option ( Will add all 3 attributes when the `anchor` tag is clicked. If the container is clicked nothing will happen ):
 
-```html
-<div class="container" data-analytics-app-name="app">
-  <a href="#" data-analytics-action="click" data-analytics-event-name="linking"
-    >Click me!</a
+```html live
+<div className="container" data-analytics-app-name="app">
+  <button
+    className="btn btn-primary"
+    data-analytics-action="click"
+    data-analytics-event-name="linking"
   >
+    Click me!
+  </button>
 </div>
 ```
 
