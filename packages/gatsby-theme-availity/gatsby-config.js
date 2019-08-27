@@ -12,13 +12,6 @@ module.exports = ({
         ignoreFileExtensions: [],
       },
     },
-    'gatsby-remark-prismjs-title',
-    {
-      resolve: 'gatsby-remark-prismjs',
-      options: {
-        showLineNumbers: true,
-      },
-    },
     {
       resolve: 'gatsby-remark-check-links',
       options: checkLinksOptions,
@@ -47,7 +40,7 @@ module.exports = ({
       },
       'gatsby-plugin-sass',
       {
-        extensions: ['.mdx'],
+        extensions: ['.mdx', '.md'],
         resolve: 'gatsby-plugin-mdx',
         options: {
           gatsbyRemarkPlugins,

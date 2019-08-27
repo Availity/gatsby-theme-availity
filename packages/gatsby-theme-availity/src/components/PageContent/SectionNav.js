@@ -18,6 +18,8 @@ const SectionNav = ({
   const { width, height } = useWindowSize();
   const [offsets, setOffsets] = useState([]);
 
+  // When the width or the height of screen, or content updates, we need to adjust the offsets for where to
+  // place the anchor when we click a section link
   useEffect(() => {
     if (!contentRef) return;
 
@@ -51,6 +53,7 @@ const SectionNav = ({
     }
   }
 
+  // Slugger :baseball:
   const slugger = new Slugger();
 
   return (

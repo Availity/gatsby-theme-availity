@@ -5,6 +5,7 @@ const style = {
   borderRadius: '5px',
 };
 
+// Helper Component to render Logo
 export default function Logo() {
   return (
     <img

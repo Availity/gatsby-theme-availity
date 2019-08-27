@@ -3,6 +3,6 @@ title: Introduction
 summary: Javascript SDK for Availity
 ---
 
-```jsx
-<button>Hi</button>
+```jsx live=true
+<Button color="primary">Hi</Button>
 ```

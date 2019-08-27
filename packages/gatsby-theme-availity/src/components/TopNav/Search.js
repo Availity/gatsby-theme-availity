@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Nav, Form, Input } from 'reactstrap';
 
+// Overlay for the opacity overtop the search/results
 const Overlay = ({ visible }) => (
   <div
     style={{
@@ -22,6 +23,7 @@ const Overlay = ({ visible }) => (
   />
 );
 
+// Search For Algolia
 const Search = () => {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState('');
@@ -38,6 +40,7 @@ const Search = () => {
     }
   };
 
+  // On mount add event listeners for focusing and updating the input
   useEffect(() => {
     if (typeof docsearch !== 'undefined') {
       docsearch({
@@ -65,7 +68,7 @@ const Search = () => {
   const resultsShown = focused && value.trim();
 
   return (
-    <Nav className="ml-auto" navbar>
+    <Nav className="ml-4" navbar style={{ width: 300 }}>
       <Form inline>
         <Overlay visible={resultsShown} />
         <Input
@@ -75,7 +78,6 @@ const Search = () => {
           id="input"
           type="text"
           placeholder="Search"
-          className="mr-sm-2"
           style={{ zIndex: 5 }}
         />
         <Overlay />

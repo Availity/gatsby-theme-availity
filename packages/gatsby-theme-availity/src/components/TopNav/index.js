@@ -19,9 +19,11 @@ const Navigation = () => {
         <Logo />
         Availity Docs
       </NavbarBrand>
+      <Search />
+
       <NavbarToggler onClick={() => toggleNavbar(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="mr-auto">
+        <Nav className="ml-auto">
           <NavItem>
             <NavLink>Getting Started</NavLink>
           </NavItem>
@@ -35,7 +37,6 @@ const Navigation = () => {
             <NavLink>SDK</NavLink>
           </NavItem>
         </Nav>
-        <Search />
       </Collapse>
     </Navbar>
   );

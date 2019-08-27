@@ -6,16 +6,7 @@ const configPaths = [
 ];
 
 exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
-  // const { createNodeField } = actions;
-  // if (node.internal.type === `MarkdownRemark`) {
-  //   const slug = createFilePath({ node, getNode, basePath: `pages` });
-  //   createNodeField({
-  //     node,
-  //     name: `slug`,
-  //     value: slug,
-  //   });
-  // }
-
+  // If one of the nodes is part of the config paths that we specified we want it in the node list
   if (configPaths.includes(node.relativePath)) {
     const value = await loadNodeContent(node);
     actions.createNodeField({
@@ -25,6 +16,7 @@ exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
     });
   }
 
+  // Create the slug for the filepath to the content if its one of the supported types
   if (['MarkdownRemark', 'Mdx'].includes(node.internal.type)) {
     const slug = createFilePath({
       node,
@@ -39,10 +31,12 @@ exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
   }
 };
 
+// Helper function to get the page content from the given edge.
 function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
+// Will return a formatted last of all the categories for the left side nav
 function getSidebarContents(sidebarCategories, edges) {
   return Object.keys(sidebarCategories).map(key => ({
     title: key === 'null' ? null : key,

@@ -9,10 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.13.76",
-    "gatsby-theme-availity": "^0.2.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "reactstrap": "^8.0.1"
+    "gatsby": "^2.13.83",
+    "gatsby-theme-availity": "^0.2.1"
   }
 }

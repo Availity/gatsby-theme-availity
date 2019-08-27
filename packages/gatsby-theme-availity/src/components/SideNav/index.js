@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
+// Iterates over the array of side nav categories and renders the side nav
 export default ({ currentPath, contents, ...rest }) => (
   <div {...rest}>
     <Nav vertical navbar className="h-100 text-dark">

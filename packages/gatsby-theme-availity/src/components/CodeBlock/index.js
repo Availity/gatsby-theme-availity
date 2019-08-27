@@ -1,14 +1,23 @@
-import React, { useRef } from 'react';
-import { Card, CardHeader, CardBody, Button } from 'reactstrap';
-import useCopyToClipboard from 'react-use/lib/useCopyToClipboard';
+import React from 'react';
+import classnames from 'classnames';
+import { Card, CardHeader, CardBody } from 'reactstrap';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import CopyClipboard from './CopyClipboard';
 import LiveCode from './LiveCode';
 
-export default ({ className, children }) => {
-  console.log('Children', children, 'className', className);
+export default ({
+  className,
+  children,
+  live: codeLive,
+  'data-meta': dataMeta,
+}) => {
+  // for mdx it, `live` will be inside "data-meta", if md then `live` is a prop
+  const live = codeLive || (dataMeta && dataMeta.includes('live'));
 
-  const code = useRef();
-  const [copied, copyToClipboard] = useCopyToClipboard();
+  // MDX will be an array, md will already have the child
+  const code = Array.isArray(children) ? children[0] : children;
 
+  // Get the Langague from the className
   const language = className
     ? className
         .replace(/language-/, '')
@@ -16,40 +25,70 @@ export default ({ className, children }) => {
         .trim()
     : '';
 
-  function handleCopy() {
-    copyToClipboard(code.current.textContent);
-  }
-
+  // If the language is text or nothing we can just render it inline
   if (language === '' || language === 'text') {
-    return <pre>{children}</pre>;
+    return (
+      <span
+        style={{
+          padding: '0.1em 0.3em',
+          borderRadius: '0.3em',
+          color: '#db4c69',
+          display: 'inline-block',
+          background: '#f9f2f4',
+        }}
+      >
+        {code}
+      </span>
+    );
   }
 
-  if (language === 'jsx') {
-    return <LiveCode>{children}</LiveCode>;
+  // If live, we will return the live code block
+  if (live) {
+    return <LiveCode>{code}</LiveCode>;
   }
 
+  // Otherwise render the default layout for code block
+  // Note that the only tenary here is for bash. If the language is bash we want the
+  // copy clipboard button to be aligned center.
   return (
     <Card className="mb-3 mt-3">
       {language !== 'bash' && (
         <CardHeader className="bg-white">
-          <Button
+          <CopyClipboard
             color="light"
             size="sm"
-            onClick={handleCopy}
+            value={code}
             className="float-right"
-          >
-            {copied.value ? 'Copied!' : 'Copy'}
-          </Button>
+          />
         </CardHeader>
       )}
       <CardBody className="p-0">
-        <pre className={className} ref={code}>
-          {children}
+        <pre
+          className={classnames(className, {
+            'd-flex': language === 'bash',
+          })}
+        >
+          <Highlight
+            {...defaultProps}
+            theme={{
+              plain: {},
+              styles: [],
+            }}
+            code={code}
+            language={language}
+          >
+            {({ tokens, getLineProps, getTokenProps }) =>
+              tokens.map((line, i) => (
+                <div {...getLineProps({ line, key: i })}>
+                  {line.map((token, key) => (
+                    <span {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))
+            }
+          </Highlight>
           {language === 'bash' && (
-            <Button
-              color="light"
-              size="sm"
-              onClick={handleCopy}
+            <CopyClipboard
               className="float-right"
               style={{
                 position: 'absolute',
@@ -57,9 +96,8 @@ export default ({ className, children }) => {
                 right: '1.25rem',
                 zIndex: 1,
               }}
-            >
-              {copied.value ? 'Copied!' : 'Copy'}
-            </Button>
+              value={code}
+            />
           )}
         </pre>
       </CardBody>
