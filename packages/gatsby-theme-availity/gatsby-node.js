@@ -1,20 +1,42 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` });
-    createNodeField({
+
+const configPaths = [
+  'docs/gatsby-config.js', // new gatsby config
+  'docs/_config.yml', // old hexo config
+];
+
+exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
+  // If one of the nodes is part of the config paths that we specified we want it in the node list
+  if (configPaths.includes(node.relativePath)) {
+    const value = await loadNodeContent(node);
+    actions.createNodeField({
+      name: 'raw',
       node,
-      name: `slug`,
+      value,
+    });
+  }
+
+  // Create the slug for the filepath to the content if its one of the supported types
+  if (['MarkdownRemark', 'Mdx'].includes(node.internal.type)) {
+    const slug = createFilePath({
+      node,
+      getNode,
+    });
+
+    actions.createNodeField({
+      name: 'slug',
+      node,
       value: slug,
     });
   }
 };
 
+// Helper function to get the page content from the given edge.
 function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
+// Will return a formatted last of all the categories for the left side nav
 function getSidebarContents(sidebarCategories, edges) {
   return Object.keys(sidebarCategories).map(key => ({
     title: key === 'null' ? null : key,
@@ -54,30 +76,38 @@ function getSidebarContents(sidebarCategories, edges) {
   }));
 }
 
+const pageFragment = `
+  internal {
+    type
+  }
+  frontmatter {
+    title
+    summary
+  }
+  fields {
+    slug
+  }
+`;
+
 exports.createPages = async ({ graphql, actions }, options) => {
   const { createPage } = actions;
   const { data } = await graphql(`
-    {
-      allFile(filter: { extension: { in: ["md"] } }) {
-        edges {
-          node {
-            id
-            relativePath
-            childMarkdownRemark {
-              internal {
-                type
-              }
-              frontmatter {
-                title
-              }
-              fields {
-                slug
-              }
-            }
+  {
+    allFile(filter: {extension: {in: ["md", "mdx"]}}) {
+      edges {
+        node {
+          id
+          relativePath
+          childMarkdownRemark {
+            ${pageFragment}
+          }
+          childMdx {
+            ${pageFragment}
           }
         }
       }
     }
+  }
   `);
 
   const { contentDir = 'docs/source', githubRepo, sidebarCategories } = options;

@@ -1,22 +1,51 @@
 module.exports = ({
-  contentPath = 'source/',
+  root,
+  subtitle,
   description = 'Documentation for Availity Javascript SDK, Rest API and GraphQL',
+  checkLinksOptions,
 }) => {
+  const gatsbyRemarkPlugins = [
+    'gatsby-remark-autolink-headers',
+    {
+      resolve: 'gatsby-remark-copy-linked-files',
+      options: {
+        ignoreFileExtensions: [],
+      },
+    },
+    {
+      resolve: 'gatsby-remark-check-links',
+      options: checkLinksOptions,
+    },
+  ];
+
   const config = {
     siteMetadata: {
       title: 'Avality Docs',
+      subtitle,
       description,
     },
     plugins: [
       {
         resolve: `gatsby-source-filesystem`,
         options: {
-          name: contentPath,
-          path: contentPath,
+          path: `${root}/source`,
+          name: 'docs',
         },
       },
-      'gatsby-transformer-remark',
+      {
+        resolve: 'gatsby-transformer-remark',
+        options: {
+          plugins: gatsbyRemarkPlugins,
+        },
+      },
       'gatsby-plugin-sass',
+      {
+        extensions: ['.mdx', '.md'],
+        resolve: 'gatsby-plugin-mdx',
+        options: {
+          gatsbyRemarkPlugins,
+        },
+      },
     ],
   };
 

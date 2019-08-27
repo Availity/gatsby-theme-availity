@@ -1,15 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Nav, NavLink, NavItem } from 'reactstrap';
+import classnames from 'classnames';
 import striptags from 'striptags';
 import useScroll from 'react-use/lib/useScroll';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Slugger from 'github-slugger';
 
-const SectionNav = ({ headings, title, mainRef, contentRef, ...rest }) => {
+const SectionNav = ({
+  headings,
+  title,
+  mainRef,
+  contentRef,
+  className,
+  ...rest
+}) => {
   const { y } = useScroll(mainRef);
   const { width, height } = useWindowSize();
   const [offsets, setOffsets] = useState([]);
 
+  // When the width or the height of screen, or content updates, we need to adjust the offsets for where to
+  // place the anchor when we click a section link
   useEffect(() => {
     if (!contentRef) return;
 
@@ -43,24 +53,34 @@ const SectionNav = ({ headings, title, mainRef, contentRef, ...rest }) => {
     }
   }
 
+  // Slugger :baseball:
   const slugger = new Slugger();
 
   return (
     <Nav
-      className="d-md-none d-lg-flex"
+      className={classnames(className, 'd-md-none d-lg-flex pt-2')}
       vertical
-      style={{ width: 200, position: 'sticky', top: -18 }}
+      style={{ width: 260, position: 'sticky', top: -39 }}
       {...rest}
     >
-      <NavItem style={{ fontWeight: '500' }} className="pt-5">
+      <NavItem style={{ fontWeight: '500' }}>
         <NavLink>{title}</NavLink>
       </NavItem>
       {headings.map(({ value }) => {
         const text = striptags(value);
         const slug = slugger.slug(text);
+
         return (
           <NavItem key={slug} active={slug === activeHeading}>
-            <NavLink href={`#${slug}`}>{text}</NavLink>
+            <NavLink
+              href={`#${slug}`}
+              active={slug === activeHeading}
+              className={classnames({
+                'font-weight-bold': slug === activeHeading,
+              })}
+            >
+              {text}
+            </NavLink>
           </NavItem>
         );
       })}

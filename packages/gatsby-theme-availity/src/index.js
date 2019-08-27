@@ -1,21 +1,32 @@
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import RehypeReact from 'rehype-react';
+import { MDXProvider } from '@mdx-js/react';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+import 'availity-uikit';
+
 import {
   SiteMetadata,
   Navigation,
   SideNavigation,
   PageContent,
   PageHeader,
+  CodeBlock,
 } from './components';
-import './style.css';
+import './style.scss';
 
-import 'availity-uikit';
+const components = {
+  code: CodeBlock,
+  pre: props => props.children,
+};
 
+// Will take in a snippet of code in AST Form and render it as text
 const renderAst = new RehypeReact({
   createElement: React.createElement,
+  components,
 }).Compiler;
 
+// The Template to load on each page
 const Template = ({
   children,
   location,
@@ -23,6 +34,7 @@ const Template = ({
   data,
   ...rest
 }) => {
+  // Keep a ref of the current content window for jumping to certain anchors in section nav
   const mainRef = useRef(null);
 
   const { file } = data;
@@ -37,7 +49,6 @@ const Template = ({
   return (
     <div className="h-100 d-flex flex-column">
       <SiteMetadata pathname={pathname} />
-      {/* <SkipNavLink/> */}
       <Navigation />
       <div className="d-flex h-100">
         <SideNavigation
@@ -65,12 +76,16 @@ const Template = ({
             hash={hash}
             mainRef={mainRef}
           >
-            {renderAst(data.file.childMarkdownRemark.htmlAst)}
+            {file.childMdx ? (
+              <MDXProvider components={components}>
+                <MDXRenderer>{file.childMdx.body}</MDXRenderer>
+              </MDXProvider>
+            ) : (
+              renderAst(file.childMarkdownRemark.htmlAst)
+            )}
           </PageContent>
         </div>
       </div>
-      {/* <SkipNavContent/> */}
-      {children}
     </div>
   );
 };
@@ -89,11 +104,22 @@ export const pageQuery = graphql`
       childMarkdownRemark {
         frontmatter {
           title
+          summary
         }
         headings(depth: h2) {
           value
         }
         htmlAst
+      }
+      childMdx {
+        frontmatter {
+          title
+          summary
+        }
+        headings(depth: h2) {
+          value
+        }
+        body
       }
     }
   }

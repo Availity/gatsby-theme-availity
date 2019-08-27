@@ -38,12 +38,14 @@ const SiteMetadata = ({ pathname }) => {
       <meta property="og:type" content="website" />
       <meta property="og:locale" content="en" />
       <meta property="og:site_name" content={title} />
-      {/* <meta property="og:image" content={`${siteUrl}${gatsbyIcon}`} /> */}
       <meta property="og:image:width" content="512" />
       <meta property="og:image:height" content="512" />
 
       <meta name="twitter:card" content="summary" />
-      {/* <meta name="twitter:site" content={twitter} /> */}
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
+      />
     </Helmet>
   );
 };
