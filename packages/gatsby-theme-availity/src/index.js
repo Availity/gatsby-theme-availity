@@ -28,11 +28,9 @@ const renderAst = new RehypeReact({
 
 // The Template to load on each page
 const Template = ({
-  children,
   location,
   pageContext: { sidebarContents },
-  data,
-  ...rest
+  data
 }) => {
   // Keep a ref of the current content window for jumping to certain anchors in section nav
   const mainRef = useRef(null);
@@ -46,13 +44,15 @@ const Template = ({
     .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter(page => !page.anchor);
 
+
+
   return (
     <div className="h-100 d-flex flex-column">
       <SiteMetadata pathname={pathname} />
       <Navigation className="pl-4" />
       <div className="d-flex h-100">
         <SideNavigation
-          currentPath={rest.path}
+          currentPath={pathname}
           contents={sidebarContents}
           siteTitle={site.siteMetadata.subtitle}
           className="flex-shrink-0 ml-4 pt-4"
