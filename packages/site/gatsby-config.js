@@ -1,9 +1,12 @@
+const themeOptions = require('@availity/gatsby-theme/theme-options');
+
 module.exports = {
   pathPrefix: '/docs/sdk',
   __experimentalThemes: [
     {
       resolve: 'gatsby-theme-availity',
       options: {
+        ...themeOptions,
         root: __dirname,
         subtitle: 'Availity SDK',
         description:

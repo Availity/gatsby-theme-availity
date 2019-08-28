@@ -12,7 +12,13 @@ import {
 import Search from './Search';
 import Logo from './Logo';
 
-const Navigation = ({ className, ...props }) => {
+const Navigation = ({
+  className,
+  navItems,
+  isPathActive,
+  pathname,
+  ...props
+}) => {
   const [isOpen, toggleNavbar] = useState(true);
   return (
     <Navbar
@@ -34,18 +40,25 @@ const Navigation = ({ className, ...props }) => {
       <NavbarToggler onClick={() => toggleNavbar(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto">
-          <NavItem>
-            <NavLink>Getting Started</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>UI Kit</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>React Library</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>SDK</NavLink>
-          </NavItem>
+          {navItems.map(({ value, text, matchRegex }) => {
+            const isActive = matchRegex
+              ? new RegExp(matchRegex).test(pathname)
+              : isPathActive(value);
+            return (
+              <NavItem key={value} active={isActive}>
+                <NavLink
+                  href={value}
+                  active={isActive}
+                  className={classnames('text-dark', {
+                    // 'font-weight-bold': slug === activeHeading,
+                    'text-primary': isActive,
+                  })}
+                >
+                  {text}
+                </NavLink>
+              </NavItem>
+            );
+          })}
         </Nav>
       </Collapse>
     </Navbar>
