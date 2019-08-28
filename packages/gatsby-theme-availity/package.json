@@ -1,8 +1,22 @@
 {
-  "name": "gatsby-theme-availity",
+  "name": "@availity/gatsby-theme",
   "version": "0.2.2",
   "license": "MIT",
   "main": "index.js",
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/availity/gatsby-theme-availity.git"
+	},
+	"keywords": [
+		"react",
+		"availity",
+		"gatsby"
+	],
+	"author": "Robert McGuinness",
+	"bugs": {
+		"url": "https://github.com/availity/gatsby-theme-availity/issues"
+	},
+	"homepage": "https://github.com/availity/gatsby-theme-availity#readme",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
