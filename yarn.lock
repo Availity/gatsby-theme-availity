@@ -6451,6 +6451,38 @@ gatsby-telemetry@^1.1.19:
     stack-utils "1.0.2"
     uuid "3.3.3"
 
+gatsby-theme-availity@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-availity/-/gatsby-theme-availity-0.3.0.tgz#d12d57152f1670c843fb5173c6bd82021bc7f61a"
+  integrity sha512-YXoPYdouYPKP2F+2NDP+o/NHlU4T0evgLb6/2nd9BE9Fx8IsdwxCUSH75cFFq8dithIhwxRRXTWRHfrmjLgaVg==
+  dependencies:
+    "@mdx-js/mdx" "^1.3.1"
+    "@mdx-js/react" "^1.3.1"
+    availity-uikit "^3.2.0"
+    classnames "^2.2.6"
+    gatsby "^2.13.83"
+    gatsby-plugin-mdx "^1.0.24"
+    gatsby-plugin-react-helmet "^3.1.2"
+    gatsby-plugin-sass "^2.1.8"
+    gatsby-remark-autolink-headers "^2.1.4"
+    gatsby-remark-check-links "^1.3.4"
+    gatsby-remark-copy-linked-files "^2.1.7"
+    gatsby-source-filesystem "^2.1.6"
+    gatsby-transformer-remark "^2.6.9"
+    github-slugger "^1.2.1"
+    node-sass "^4.12.0"
+    prism-react-renderer "^0.1.7"
+    prismjs "^1.17.1"
+    react "^16.9.0"
+    react-dom "^16.9.0"
+    react-helmet "^5.2.1"
+    react-icons "^3.7.0"
+    react-live "^2.2.0"
+    react-use "^10.7.0"
+    reactstrap "^8.0.1"
+    rehype-react "^4.0.1"
+    striptags "^3.1.1"
+
 gatsby-transformer-remark@^2.6.9:
   version "2.6.19"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.6.19.tgz#96ec945425ca8f3859b29e6d31a9395f995c8b04"
