@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2019-08-28)
+
+
+### Bug Fixes
+
+* **gatsby-theme-availity:** fixed this keyword being used ([1ba774e](https://github.com/availity/gatsby-theme-availity/commit/1ba774e))
+
+
+### Features
+
+* init docs ([1b075ba](https://github.com/availity/gatsby-theme-availity/commit/1b075ba))
+* **gatsby-theme-availity:** adding in react-live ([7d773a1](https://github.com/availity/gatsby-theme-availity/commit/7d773a1))
+
+
+
+
+
 # [0.3.0](https://github.com/Availity/gatsby-theme-availity/compare/gatsby-theme-availity@0.2.2...gatsby-theme-availity@0.3.0) (2019-08-27)
 
 
