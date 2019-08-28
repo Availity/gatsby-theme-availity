@@ -16,6 +16,9 @@
   "bugs": {
     "url": "https://github.com/availity/gatsby-theme-availity/issues"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/availity/gatsby-theme-availity#readme",
   "scripts": {
     "build": "gatsby build",
