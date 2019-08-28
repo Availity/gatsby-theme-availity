@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import logo from './logo.jpg';
 
 const style = {
@@ -6,14 +7,15 @@ const style = {
 };
 
 // Helper Component to render Logo
-export default function Logo() {
+export default function Logo({ className, ...props }) {
   return (
     <img
+      {...props}
       src={logo}
       alt="Logo"
       width="30"
       height="30"
-      className="d-inline-block align-top"
+      className={classnames('d-inline-block align-top', className)}
       style={style}
     />
   );

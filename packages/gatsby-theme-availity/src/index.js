@@ -37,7 +37,7 @@ const Template = ({
   // Keep a ref of the current content window for jumping to certain anchors in section nav
   const mainRef = useRef(null);
 
-  const { file } = data;
+  const { file, site } = data;
   const { frontmatter, headings } = file.childMarkdownRemark || file.childMdx;
 
   const { hash, pathname } = location;
@@ -49,12 +49,13 @@ const Template = ({
   return (
     <div className="h-100 d-flex flex-column">
       <SiteMetadata pathname={pathname} />
-      <Navigation />
+      <Navigation className="pl-4" />
       <div className="d-flex h-100">
         <SideNavigation
           currentPath={rest.path}
           contents={sidebarContents}
-          className="flex-shrink-0 ml-5 pt-5"
+          siteTitle={site.siteMetadata.subtitle}
+          className="flex-shrink-0 ml-4 pt-4"
           style={{
             overflowY: 'auto',
             width: 200,
@@ -97,6 +98,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        subtitle
         description
       }
     }
