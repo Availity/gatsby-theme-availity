@@ -10,7 +10,7 @@ module.exports = {
           'Documentation for Availity Javascript SDK, Rest API and GraphQL',
         githubRepo: 'availity/sdk-js',
         sidebarCategories: {
-          'Getting Started': ['index'],
+          null: ['index'],
           'API Resources': [
             'api-axios/api-axios',
             'api-core/api-core',

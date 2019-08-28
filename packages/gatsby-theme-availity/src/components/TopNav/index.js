@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classnames from 'classnames';
 import {
   Navbar,
   NavbarBrand,
@@ -11,12 +12,21 @@ import {
 import Search from './Search';
 import Logo from './Logo';
 
-const Navigation = () => {
+const Navigation = ({ className, ...props }) => {
   const [isOpen, toggleNavbar] = useState(true);
   return (
-    <Navbar light expand="md" className="bg-light flex-md-nowrap">
-      <NavbarBrand href="//availity.github.io/" className="mr-auto ">
-        <Logo />
+    <Navbar
+      light
+      expand="md"
+      className={classnames('bg-light flex-md-nowrap', className)}
+      {...props}
+    >
+      <NavbarBrand
+        href="//availity.github.io/"
+        className="mr-auto"
+        style={{ width: 200 }}
+      >
+        <Logo className="mr-3" />
         Availity Docs
       </NavbarBrand>
       <Search />

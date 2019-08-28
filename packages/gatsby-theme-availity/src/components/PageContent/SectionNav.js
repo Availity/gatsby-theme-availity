@@ -76,7 +76,8 @@ const SectionNav = ({
               href={`#${slug}`}
               active={slug === activeHeading}
               className={classnames({
-                'font-weight-bold': slug === activeHeading,
+                // 'font-weight-bold': slug === activeHeading,
+                'text-secondary': slug !== activeHeading,
               })}
             >
               {text}
