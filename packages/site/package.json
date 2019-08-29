@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "site",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -9,7 +9,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.13.83",
-    "@availity/gatsby-theme": "^0.4.2"
+    "@availity/gatsby-theme": "^0.4.3",
+    "gatsby": "^2.13.83"
   }
 }
