@@ -49,10 +49,7 @@ const Navigation = ({
                 <NavLink
                   href={value}
                   active={isActive}
-                  className={classnames('text-dark', {
-                    // 'font-weight-bold': slug === activeHeading,
-                    'text-primary': isActive,
-                  })}
+                  className={isActive ? 'text-primary' : 'text-dark'}
                 >
                   {text}
                 </NavLink>
