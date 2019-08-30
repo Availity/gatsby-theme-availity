@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.4...@availity/gatsby-theme@1.0.0) (2019-08-30)
+
+
+### Code Refactoring
+
+* **gatsby-theme:** made react and react-dom peer deps ([da94367](https://github.com/availity/gatsby-theme-availity/commit/da94367))
+
+
+### BREAKING CHANGES
+
+* **gatsby-theme:** react and react-dom are now peer dependencies
+
+
+
+
+
 ## [0.4.4](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.3...@availity/gatsby-theme@0.4.4) (2019-08-29)
 
 **Note:** Version bump only for package @availity/gatsby-theme
