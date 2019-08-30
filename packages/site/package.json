@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@availity/gatsby-theme": "^0.4.4",
-    "gatsby": "^2.13.83"
+    "gatsby": "^2.13.83",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
