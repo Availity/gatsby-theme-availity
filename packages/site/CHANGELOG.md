@@ -7,88 +7,48 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package site
 
-
-
-
-
 ## [2.0.1](https://github.com/Availity/gatsby-theme-availity/compare/site@2.0.0...site@2.0.1) (2019-08-30)
 
 **Note:** Version bump only for package site
 
-
-
-
-
 # [2.0.0](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.3...site@2.0.0) (2019-08-30)
-
 
 ### Code Refactoring
 
-* **gatsby-theme:** made react and react-dom peer deps ([da94367](https://github.com/Availity/gatsby-theme-availity/commit/da94367))
-
+- **gatsby-theme:** made react and react-dom peer deps ([da94367](https://github.com/Availity/gatsby-theme-availity/commit/da94367))
 
 ### BREAKING CHANGES
 
-* **gatsby-theme:** react and react-dom are now peer dependencies
-
-
-
-
+- **gatsby-theme:** react and react-dom are now peer dependencies
 
 ## [1.2.3](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.2...site@1.2.3) (2019-08-29)
 
 **Note:** Version bump only for package site
 
-
-
-
-
 ## [1.2.2](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.1...site@1.2.2) (2019-08-29)
 
 **Note:** Version bump only for package site
-
-
-
-
 
 ## [1.2.1](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.0...site@1.2.1) (2019-08-28)
 
 **Note:** Version bump only for package site
 
-
-
-
-
 # [1.2.0](https://github.com/Availity/gatsby-theme-availity/compare/site@1.1.2...site@1.2.0) (2019-08-27)
-
 
 ### Features
 
-* **gatsby-theme-availity:** adding in react-live ([7d773a1](https://github.com/Availity/gatsby-theme-availity/commit/7d773a1))
-
-
-
-
+- **gatsby-theme-availity:** adding in react-live ([7d773a1](https://github.com/Availity/gatsby-theme-availity/commit/7d773a1))
 
 ## [1.1.2](https://github.com/Availity/gatsby-theme-availity/compare/site@1.1.1...site@1.1.2) (2019-08-22)
 
 **Note:** Version bump only for package site
 
-
-
-
-
 ## [1.1.1](https://github.com/Availity/gatsby-theme-availity/compare/site@1.1.0...site@1.1.1) (2019-08-22)
 
 **Note:** Version bump only for package site
 
-
-
-
-
 # 1.1.0 (2019-08-21)
-
 
 ### Features
 
-* init docs ([1b075ba](https://github.com/Availity/gatsby-theme-availity/commit/1b075ba))
+- init docs ([1b075ba](https://github.com/Availity/gatsby-theme-availity/commit/1b075ba))

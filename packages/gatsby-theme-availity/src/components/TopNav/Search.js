@@ -44,8 +44,8 @@ const Search = () => {
   useEffect(() => {
     if (typeof docsearch !== 'undefined') {
       docsearch({
-        apiKey: '768e823959d35bbd51e4b2439be13fb7',
-        indexName: 'apollodata',
+        apiKey: 'eec0154a008662c32d440b7de7982cd2',
+        indexName: 'availity',
         inputSelector: '#input',
         // debug: true, // keeps the results list open
         autocompleteOptions: {
