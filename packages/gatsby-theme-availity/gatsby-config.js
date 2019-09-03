@@ -31,6 +31,7 @@ module.exports = ({
         ignoreFileExtensions: [],
       },
     },
+    'gatsby-remark-rewrite-relative-links',
     {
       resolve: 'gatsby-remark-check-links',
       options: checkLinksOptions,
