@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { graphql } from 'gatsby';
 import RehypeReact from 'rehype-react';
+import { Table } from 'reactstrap';
 import { MDXProvider } from '@mdx-js/react';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 import 'availity-uikit';
@@ -18,6 +19,7 @@ import './style.scss';
 const components = {
   code: CodeBlock,
   pre: props => props.children,
+  table: Table,
 };
 
 // Will take in a snippet of code in AST Form and render it as text
