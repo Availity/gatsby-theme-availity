@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@1.0.2...@availity/gatsby-theme@1.1.0) (2019-09-03)
+
+
+### Bug Fixes
+
+* **gatsby-theme:** merge PF-262 ([6f6cfee](https://github.com/availity/gatsby-theme-availity/commit/6f6cfee))
+* **gatsby-theme-availity:** merge PF-262 ([9c9f3d8](https://github.com/availity/gatsby-theme-availity/commit/9c9f3d8))
+
+
+### Features
+
+* **gatsby-theme-availity:** added algolia docsearch PF-262 ([9daf83b](https://github.com/availity/gatsby-theme-availity/commit/9daf83b))
+* **gatsby-theme-availity:** added algolia searchbox  PF-262 ([a61f17d](https://github.com/availity/gatsby-theme-availity/commit/a61f17d))
+
+
+
+
+
 ## [1.0.2](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@1.0.1...@availity/gatsby-theme@1.0.2) (2019-08-30)
 
 **Note:** Version bump only for package @availity/gatsby-theme
