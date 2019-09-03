@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/Availity/gatsby-theme-availity/compare/site@2.0.1...site@2.0.2) (2019-08-30)
+
+**Note:** Version bump only for package site
+
+## [2.0.1](https://github.com/Availity/gatsby-theme-availity/compare/site@2.0.0...site@2.0.1) (2019-08-30)
+
+**Note:** Version bump only for package site
+
+# [2.0.0](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.3...site@2.0.0) (2019-08-30)
+
+### Code Refactoring
+
+- **gatsby-theme:** made react and react-dom peer deps ([da94367](https://github.com/Availity/gatsby-theme-availity/commit/da94367))
+
+### BREAKING CHANGES
+
+- **gatsby-theme:** react and react-dom are now peer dependencies
+
+## [1.2.3](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.2...site@1.2.3) (2019-08-29)
+
+**Note:** Version bump only for package site
+
+## [1.2.2](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.1...site@1.2.2) (2019-08-29)
+
+**Note:** Version bump only for package site
+
+## [1.2.1](https://github.com/Availity/gatsby-theme-availity/compare/site@1.2.0...site@1.2.1) (2019-08-28)
+
+**Note:** Version bump only for package site
+
 # [1.2.0](https://github.com/Availity/gatsby-theme-availity/compare/site@1.1.2...site@1.2.0) (2019-08-27)
 
 ### Features

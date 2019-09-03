@@ -8,5 +8,6 @@
         "publish": {
           "conventionalCommits": true
         }
-    }
+    },
+    "hoist":["react"]
 }

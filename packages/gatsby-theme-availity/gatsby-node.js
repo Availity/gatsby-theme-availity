@@ -5,6 +5,15 @@ const configPaths = [
   'docs/_config.yml', // old hexo config
 ];
 
+// generates the top nav links
+function generateNavItems(baseUrl, config) {
+  return Object.entries(config).map(([value, { text, matchRegex }]) => ({
+    text,
+    value: value.startsWith('/') ? baseUrl + value : value,
+    matchRegex,
+  }));
+}
+
 exports.onCreateNode = async ({ node, getNode, actions, loadNodeContent }) => {
   // If one of the nodes is part of the config paths that we specified we want it in the node list
   if (configPaths.includes(node.relativePath)) {
@@ -110,7 +119,13 @@ exports.createPages = async ({ graphql, actions }, options) => {
   }
   `);
 
-  const { contentDir = 'docs/source', githubRepo, sidebarCategories } = options;
+  const {
+    contentDir = 'docs/source',
+    githubRepo,
+    sidebarCategories,
+    navConfig,
+    baseUrl,
+  } = options;
 
   const { edges } = data.allFile;
 
@@ -131,6 +146,8 @@ exports.createPages = async ({ graphql, actions }, options) => {
         title,
         sidebarContents,
         githubUrl: `https://github.com/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`,
+        baseUrl,
+        navItems: generateNavItems(baseUrl, navConfig),
       },
     });
   });

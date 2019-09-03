@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import classnames from 'classnames';
 import {
   Navbar,
   NavbarBrand,
@@ -11,12 +12,27 @@ import {
 import Search from './Search/Search';
 import Logo from './Logo';
 
-const Navigation = () => {
+const Navigation = ({
+  className,
+  navItems,
+  isPathActive,
+  pathname,
+  ...props
+}) => {
   const [isOpen, toggleNavbar] = useState(true);
   return (
-    <Navbar light expand="md" className="bg-light flex-md-nowrap">
-      <NavbarBrand href="//availity.github.io/" className="mr-auto ">
-        <Logo />
+    <Navbar
+      light
+      expand="md"
+      className={classnames('bg-light flex-md-nowrap', className)}
+      {...props}
+    >
+      <NavbarBrand
+        href="//availity.github.io/"
+        className="mr-auto"
+        style={{ width: 200 }}
+      >
+        <Logo className="mr-3" />
         Availity Docs
       </NavbarBrand>
       <Search />
@@ -24,18 +40,22 @@ const Navigation = () => {
       <NavbarToggler onClick={() => toggleNavbar(!isOpen)} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto">
-          <NavItem>
-            <NavLink>Getting Started</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>UI Kit</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>React Library</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink>SDK</NavLink>
-          </NavItem>
+          {navItems.map(({ value, text, matchRegex }) => {
+            const isActive = matchRegex
+              ? new RegExp(matchRegex).test(pathname)
+              : isPathActive(value);
+            return (
+              <NavItem key={value} active={isActive}>
+                <NavLink
+                  href={value}
+                  active={isActive}
+                  className={isActive ? 'text-primary' : 'text-dark'}
+                >
+                  {text}
+                </NavLink>
+              </NavItem>
+            );
+          })}
         </Nav>
       </Collapse>
     </Navbar>

@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@1.0.1...@availity/gatsby-theme@1.0.2) (2019-08-30)
+
+**Note:** Version bump only for package @availity/gatsby-theme
+
+## [1.0.1](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@1.0.0...@availity/gatsby-theme@1.0.1) (2019-08-30)
+
+**Note:** Version bump only for package @availity/gatsby-theme
+
+# [1.0.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.4...@availity/gatsby-theme@1.0.0) (2019-08-30)
+
+### Code Refactoring
+
+- **gatsby-theme:** made react and react-dom peer deps ([da94367](https://github.com/availity/gatsby-theme-availity/commit/da94367))
+
+### BREAKING CHANGES
+
+- **gatsby-theme:** react and react-dom are now peer dependencies
+
+## [0.4.4](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.3...@availity/gatsby-theme@0.4.4) (2019-08-29)
+
+**Note:** Version bump only for package @availity/gatsby-theme
+
+## [0.4.3](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.2...@availity/gatsby-theme@0.4.3) (2019-08-29)
+
+**Note:** Version bump only for package @availity/gatsby-theme
+
+## [0.4.2](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.1...@availity/gatsby-theme@0.4.2) (2019-08-28)
+
+**Note:** Version bump only for package @availity/gatsby-theme
+
+## [0.4.1](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@0.4.0...@availity/gatsby-theme@0.4.1) (2019-08-28)
+
+**Note:** Version bump only for package @availity/gatsby-theme
+
+# 0.4.0 (2019-08-28)
+
+### Bug Fixes
+
+- **gatsby-theme-availity:** fixed this keyword being used ([1ba774e](https://github.com/availity/gatsby-theme-availity/commit/1ba774e))
+
+### Features
+
+- init docs ([1b075ba](https://github.com/availity/gatsby-theme-availity/commit/1b075ba))
+- **gatsby-theme-availity:** adding in react-live ([7d773a1](https://github.com/availity/gatsby-theme-availity/commit/7d773a1))
+
 # [0.3.0](https://github.com/Availity/gatsby-theme-availity/compare/gatsby-theme-availity@0.2.2...gatsby-theme-availity@0.3.0) (2019-08-27)
 
 ### Features
