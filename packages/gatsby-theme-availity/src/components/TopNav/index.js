@@ -9,7 +9,7 @@ import {
   NavbarToggler,
   Collapse,
 } from 'reactstrap';
-import Search from './Search/Search';
+import Search from './Search';
 import Logo from './Logo';
 
 const Navigation = ({

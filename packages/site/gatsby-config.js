@@ -4,7 +4,7 @@ module.exports = {
   pathPrefix: '/docs/sdk',
   __experimentalThemes: [
     {
-      resolve: 'gatsby-theme-availity',
+      resolve: '@availity/gatsby-theme',
       options: {
         ...themeOptions,
         root: __dirname,
