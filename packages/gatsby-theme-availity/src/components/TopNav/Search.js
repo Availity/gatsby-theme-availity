@@ -68,7 +68,10 @@ const Search = () => {
   const resultsShown = focused && value.trim();
 
   return (
-    <Nav className="ml-5" navbar style={{ width: 300 }}>
+    <Nav
+      className="ml-5 d-xs-none d-sm-none d-md-none d-lg-none d-xl-block"
+      navbar
+    >
       <Form inline>
         <Overlay visible={resultsShown} />
         <Input
@@ -77,8 +80,8 @@ const Search = () => {
           onChange={onChange}
           id="input"
           type="text"
-          placeholder="Search"
-          style={{ zIndex: 5 }}
+          placeholder="Search Availity Docs"
+          style={{ zIndex: 5, width: 400 }}
         />
         <Overlay />
       </Form>
