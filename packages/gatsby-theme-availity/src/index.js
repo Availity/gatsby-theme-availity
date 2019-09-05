@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, withPrefix } from 'gatsby';
 import RehypeReact from 'rehype-react';
 import { Table } from 'reactstrap';
 import { MDXProvider } from '@mdx-js/react';
@@ -50,6 +50,13 @@ const Template = ({
     return !location.pathname.indexOf(value);
   }
 
+  const pageIndex = pages.findIndex(page => {
+    const prefixedPath = withPrefix(page.path);
+    return (
+      prefixedPath === pathname || prefixedPath.replace(/\/$/, '') === pathname
+    );
+  });
+
   return (
     <div className="h-100 d-flex flex-column">
       <SiteMetadata pathname={pathname} />
@@ -84,6 +91,7 @@ const Template = ({
             headings={headings}
             pages={pages}
             hash={hash}
+            pageIndex={pageIndex}
             mainRef={mainRef}
           >
             {file.childMdx ? (
