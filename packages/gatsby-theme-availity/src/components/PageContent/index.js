@@ -1,7 +1,16 @@
 import React, { useRef, useEffect } from 'react';
+import PageNav from './PageNav';
 import SectionNav from './SectionNav';
 
-const PageContent = ({ children, headings, mainRef, title, ...props }) => {
+const PageContent = ({
+  children,
+  headings,
+  mainRef,
+  title,
+  pageIndex,
+  pages,
+  ...props
+}) => {
   const contentRef = useRef();
 
   useEffect(() => {
@@ -29,6 +38,10 @@ const PageContent = ({ children, headings, mainRef, title, ...props }) => {
         ref={contentRef}
       >
         {children}
+        <PageNav
+          prevPage={pages[pageIndex - 1]}
+          nextPage={pages[pageIndex + 1]}
+        />
       </div>
       <SectionNav
         headings={headings}
