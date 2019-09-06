@@ -50,7 +50,7 @@ function async getUser() {
 - `avDisclaimersApi`
 - `avCodesApi`
 
-Details about each api can be found [here](../api-core/src/resources/README.md)
+Details about each api can be found [here](../api-core/api-core)
 
 ```js
 // complete example
@@ -80,7 +80,7 @@ import AvApi, {
 
 ## Create API Definitions
 
-Create new API definitions by extending `AvApi`. Extending `AvApi` provides services the behaviors described in [@api-core/README#features](../api-core/README.md#features)
+Create new API definitions by extending `AvApi`. Extending `AvApi` provides services the behaviors described in [api-core](../api-core/api-core#features)
 
 ```js
 import AvApi from '@availity/api-axios';
@@ -96,7 +96,7 @@ export default new AvExampleResource();
 
 ## Create Proxy API Definitions
 
-Create new API definitions by extending `AvApiProxy`. Extending `AvApiProxy` provides services the behaviors described in [@api-core/README#features](../api-core/README.md#features) as well as building the url to match your tenant's proxy REST conventions.
+Create new API definitions by extending `AvApiProxy`. Extending `AvApiProxy` provides services the behaviors described in [api-core](../api-core/api-core#features) as well as building the url to match your tenant's proxy REST conventions.
 
 ```js
 import { AvApiProxy } from '@availity/api-axios';

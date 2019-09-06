@@ -1,20 +1,17 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import { graphql, withPrefix } from 'gatsby';
 import RehypeReact from 'rehype-react';
 import { Table } from 'reactstrap';
 import { MDXProvider } from '@mdx-js/react';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import 'availity-uikit';
-
+import { TopNavigation, Layout } from '@availity/gatsby-theme-core';
 import {
-  SiteMetadata,
-  Navigation,
   SideNavigation,
   PageContent,
   PageHeader,
   CodeBlock,
 } from './components';
-import './style.scss';
 
 const components = {
   code: CodeBlock,
@@ -58,9 +55,8 @@ const Template = ({
   });
 
   return (
-    <div className="h-100 d-flex flex-column">
-      <SiteMetadata pathname={pathname} />
-      <Navigation
+    <Layout>
+      <TopNavigation
         className="pl-4"
         navItems={navItems}
         pathname={pathname}
@@ -104,8 +100,14 @@ const Template = ({
           </PageContent>
         </div>
       </div>
-    </div>
+    </Layout>
   );
+};
+
+Template.propTypes = {
+  location: PropTypes.object,
+  pageContext: PropTypes.object,
+  data: PropTypes.object,
 };
 
 export default Template;

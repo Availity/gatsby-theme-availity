@@ -5,11 +5,12 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "build:deploy": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@availity/gatsby-theme": "^1.2.0",
+    "@availity/gatsby-theme-docs": "^1.2.0",
     "gatsby": "^2.13.83",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"

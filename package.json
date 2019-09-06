@@ -7,7 +7,10 @@
   "scripts": {
     "lint": "eslint .",
     "start": "yarn workspace site develop",
+    "build": "yarn workspace site build",
+    "build:deploy": "yarn workspace site build:deploy",
     "bootstrap": "lerna bootstrap --use-workspaces",
+    "postinstall": "npm run bootstrap",
     "release:ci": "lerna publish --yes"
   },
   "devDependencies": {

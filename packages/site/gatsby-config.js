@@ -1,10 +1,10 @@
-const themeOptions = require('@availity/gatsby-theme/theme-options');
+const themeOptions = require('@availity/gatsby-theme-docs/theme-options');
 
 module.exports = {
   pathPrefix: '/docs/sdk',
   __experimentalThemes: [
     {
-      resolve: '@availity/gatsby-theme',
+      resolve: '@availity/gatsby-theme-docs',
       options: {
         ...themeOptions,
         root: __dirname,
