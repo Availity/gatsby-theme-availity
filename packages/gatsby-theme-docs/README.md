@@ -74,7 +74,7 @@ The `sidebarCategories` option is an object keyed by category titles. Each entry
 
 The `navConfig` option is an object keyed by the title of the nav items to be rendered at the top right of the screen in the navigation.
 
-````js
+```js
 {
     '/availity-workflow': {
         text: 'Getting Started',
