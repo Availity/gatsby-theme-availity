@@ -1,13 +1,12 @@
 {
     "packages": ["packages/*"],
-    "npmClient": "yarn",
     "useWorkspaces": true,
+    "npmClient": "yarn",
     "message": "chore: publish release [skip ci]",
     "version": "independent",
     "command": {
         "publish": {
           "conventionalCommits": true
         }
-    },
-    "hoist":["react"]
+    }
 }

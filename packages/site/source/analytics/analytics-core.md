@@ -138,13 +138,3 @@ import { Input } from 'reactstrap';
 //...
 <Input data-analytics-variation="b" data-analytics-organization-id={orgId} />;
 ```
-
-## Authors
-
-**Kasey Powers**
-
-- [kaseyepowers@gmail.com](kaseyepowers@gmail.com)
-
-## License
-
-[MIT](../../LICENSE)

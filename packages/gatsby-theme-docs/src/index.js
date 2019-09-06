@@ -1,20 +1,17 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 import { graphql, withPrefix } from 'gatsby';
 import RehypeReact from 'rehype-react';
 import { Table } from 'reactstrap';
 import { MDXProvider } from '@mdx-js/react';
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
-import 'availity-uikit';
-
+import { TopNavigation, Layout } from '@availity/gatsby-theme-core';
 import {
-  SiteMetadata,
-  Navigation,
   SideNavigation,
   PageContent,
   PageHeader,
   CodeBlock,
 } from './components';
-import './style.scss';
 
 const components = {
   code: CodeBlock,
@@ -31,7 +28,7 @@ const renderAst = new RehypeReact({
 // The Template to load on each page
 const Template = ({
   location,
-  pageContext: { sidebarContents, navItems },
+  pageContext: { sidebarContents, navItems, githubUrl },
   data,
 }) => {
   // Keep a ref of the current content window for jumping to certain anchors in section nav
@@ -58,9 +55,8 @@ const Template = ({
   });
 
   return (
-    <div className="h-100 d-flex flex-column">
-      <SiteMetadata pathname={pathname} />
-      <Navigation
+    <Layout>
+      <TopNavigation
         className="pl-4"
         navItems={navItems}
         pathname={pathname}
@@ -89,6 +85,7 @@ const Template = ({
             className="p-4 flex-fill"
             title={frontmatter.title}
             headings={headings}
+            githubUrl={githubUrl}
             pages={pages}
             hash={hash}
             pageIndex={pageIndex}
@@ -104,8 +101,14 @@ const Template = ({
           </PageContent>
         </div>
       </div>
-    </div>
+    </Layout>
   );
+};
+
+Template.propTypes = {
+  location: PropTypes.object,
+  pageContext: PropTypes.object,
+  data: PropTypes.object,
 };
 
 export default Template;

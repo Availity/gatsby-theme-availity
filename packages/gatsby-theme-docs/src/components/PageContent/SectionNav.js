@@ -5,6 +5,7 @@ import striptags from 'striptags';
 import useScroll from 'react-use/lib/useScroll';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Slugger from 'github-slugger';
+import { FaGithub } from 'react-icons/fa';
 
 const SectionNav = ({
   headings,
@@ -12,6 +13,7 @@ const SectionNav = ({
   mainRef,
   contentRef,
   className,
+  githubUrl,
   ...rest
 }) => {
   const { y } = useScroll(mainRef);
@@ -88,6 +90,14 @@ const SectionNav = ({
           </NavItem>
         );
       })}
+      <NavItem className="mt-5">
+        <NavLink
+          href={githubUrl}
+          className="text-dark d-flex align-items-center"
+        >
+          <FaGithub size={18} className="mr-2" /> Edit on Github
+        </NavLink>
+      </NavItem>
     </Nav>
   );
 };

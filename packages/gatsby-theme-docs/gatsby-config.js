@@ -1,22 +1,3 @@
-const defaultNavConfig = {
-  '/availity-workflow': {
-    text: 'Getting Started',
-    matchRegex: '^/availity-workflow',
-  },
-  '/availity-uikit': {
-    text: 'UI Kit',
-    matchRegex: '^/availity-uikit',
-  },
-  '/availity-react': {
-    text: 'Components',
-    matchRegex: '^/availity-react',
-  },
-  '/sdk-js': {
-    text: 'Resources',
-    matchRegex: '^/sdk-js',
-  },
-};
-
 module.exports = ({
   root,
   subtitle,
@@ -45,6 +26,12 @@ module.exports = ({
       description,
     },
     plugins: [
+      {
+        resolve: '@availity/gatsby-theme-core',
+        options: {
+          root,
+        },
+      },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
