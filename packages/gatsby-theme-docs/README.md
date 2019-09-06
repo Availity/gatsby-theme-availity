@@ -85,6 +85,7 @@ The `navConfig` option is an object keyed by the title of the nav items to be re
         matchRegex: '^/availity-uikit',
   },
 }
+```
 
 ## Creating pages
 
