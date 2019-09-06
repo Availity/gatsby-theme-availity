@@ -58,7 +58,10 @@ const SectionNav = ({
 
   return (
     <Nav
-      className={classnames(className, 'd-md-none d-lg-flex pt-2')}
+      className={classnames(
+        className,
+        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2'
+      )}
       vertical
       style={{ width: 260, position: 'sticky', top: -39 }}
       {...rest}
