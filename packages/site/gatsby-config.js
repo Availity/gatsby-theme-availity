@@ -11,7 +11,8 @@ module.exports = {
         subtitle: 'Availity SDK',
         description:
           'Documentation for Availity Javascript SDK, Rest API and GraphQL',
-        githubRepo: 'availity/sdk-js',
+        githubRepo: 'availity/gatsby-theme-availity',
+        contentDir: 'packages/site/source',
         sidebarCategories: {
           null: ['index'],
           'API Resources': [
