@@ -12,14 +12,13 @@ import {
 import Search from './Search';
 import Logo from './Logo';
 
-const Navigation = ({
-  className,
-  navItems,
-  isPathActive,
-  pathname,
-  ...props
-}) => {
+const Navigation = ({ className, navItems, pathname, ...props }) => {
   const [isOpen, toggleNavbar] = useState(true);
+
+  function isPathActive(value) {
+    return !pathname.indexOf(value);
+  }
+
   return (
     <Navbar
       light

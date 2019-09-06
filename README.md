@@ -9,14 +9,15 @@ Inspired by [Apollo's Gatsby Theme](https://github.com/apollographql/gatsby-them
 
 ## Packages
 
-- [`gatsby-theme-availity`](./packages/gatsby-theme-avaiity)
+- [`gatsby-theme-core`](./packages/gatsby-theme-core)
+- [`gatsby-theme-docs`](./packages/gatsby-theme-docs)
 
 ## Basic usage
 
-First, install `gatsby` and the theme that you want to use. This example will be using the base theme, `gatsby-theme-apollo`.
+First, install `gatsby` and the theme that you want to use. This example will be using the docs theme, `@availity/gatsby-theme-docs`.
 
 ```bash
-npm install gatsby gatsby-theme-availity
+npm install gatsby @availity/gatsby-theme-docs
 ```
 
-## [Usage](./packages/gatsby-theme-availity)
+## [Usage](./packages/gatsby-theme-docs)

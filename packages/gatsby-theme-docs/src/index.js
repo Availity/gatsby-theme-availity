@@ -43,10 +43,6 @@ const Template = ({
     .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter(page => !page.anchor);
 
-  function isPathActive(value) {
-    return !location.pathname.indexOf(value);
-  }
-
   const pageIndex = pages.findIndex(page => {
     const prefixedPath = withPrefix(page.path);
     return (
@@ -56,12 +52,7 @@ const Template = ({
 
   return (
     <Layout>
-      <TopNavigation
-        className="pl-4"
-        navItems={navItems}
-        pathname={pathname}
-        isPathActive={isPathActive}
-      />
+      <TopNavigation className="pl-4" navItems={navItems} pathname={pathname} />
       <div className="d-flex h-100">
         <SideNavigation
           currentPath={pathname}
