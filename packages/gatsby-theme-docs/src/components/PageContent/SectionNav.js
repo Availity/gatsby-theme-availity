@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { Nav, NavLink, NavItem } from 'reactstrap';
 import classnames from 'classnames';
 import striptags from 'striptags';
-import useScroll from 'react-use/lib/useScroll';
-import useWindowSize from 'react-use/lib/useWindowSize';
+import { useScroll, useWindowSize } from 'react-use';
 import Slugger from 'github-slugger';
 import { FaGithub } from 'react-icons/fa';
 
@@ -25,10 +25,11 @@ const SectionNav = ({
   useEffect(() => {
     if (!contentRef) return;
 
-    const headings = contentRef.current.querySelectorAll('h1, h2');
-    setOffsets(
+    const contentHeadings = contentRef.current.querySelectorAll('h2,h3');
+
+      setOffsets(
       // eslint-disable-next-line unicorn/prefer-spread
-      Array.from(headings)
+      Array.from(contentHeadings)
         .map(heading => {
           const anchor = heading.querySelector('a');
           if (!anchor) {
@@ -65,13 +66,13 @@ const SectionNav = ({
         'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2'
       )}
       vertical
-      style={{ width: 260, position: 'sticky', top: -39 }}
+      style={{ width:320, position: 'sticky', top: -39 }}
       {...rest}
     >
       <NavItem style={{ fontWeight: '500' }}>
         <NavLink>{title}</NavLink>
       </NavItem>
-      {headings.map(({ value }) => {
+      {headings.map(({ value, depth }) => {
         const text = striptags(value);
         const slug = slugger.slug(text);
 
@@ -83,7 +84,11 @@ const SectionNav = ({
               className={classnames({
                 // 'font-weight-bold': slug === activeHeading,
                 'text-secondary': slug !== activeHeading,
+                'ml-4 pt-1 pb-1': depth === 3,
               })}
+              style={{
+                fontSize: depth === 3 && 15
+              }}
             >
               {text}
             </NavLink>
@@ -101,5 +106,14 @@ const SectionNav = ({
     </Nav>
   );
 };
+
+SectionNav.propTypes = {
+  headings: PropTypes.array,
+  contentRef: PropTypes.object,
+  mainRef: PropTypes.object,
+  title: PropTypes.string,
+  className: PropTypes.string,
+  githubUrl: PropTypes.string
+}
 
 export default SectionNav;

@@ -1,0 +1,17 @@
+---
+title: Form
+summary: testing forms with async select
+---
+
+import { Container } from 'reactstrap';
+import { Form } from '@availity/form';
+import { AvOrganizationSelect } from '@availity/select/resources';
+
+<Container>
+  <Form
+    initialValues={{ organization: '' }}
+    onSubmit={() => console.log('hello')}
+  >
+    <AvOrganizationSelect name="organization" label="Organization" />
+  </Form>
+</Container>

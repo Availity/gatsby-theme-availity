@@ -12,7 +12,13 @@ import {
 import Search from './Search';
 import Logo from './Logo';
 
-const Navigation = ({ className, navItems, pathname, ...props }) => {
+const Navigation = ({
+  className,
+  brandAttrs: { className: bClassName, ...restBrandAttrs },
+  navItems,
+  pathname,
+  ...props
+}) => {
   const [isOpen, toggleNavbar] = useState(true);
 
   function isPathActive(value) {
@@ -27,9 +33,10 @@ const Navigation = ({ className, navItems, pathname, ...props }) => {
       {...props}
     >
       <NavbarBrand
+        {...restBrandAttrs}
         href="//availity.github.io/"
-        className="mr-auto"
-        style={{ width: 200 }}
+        className={classnames('mr-auto', bClassName)}
+        style={{ width: 300 }}
       >
         <Logo className="mr-3" />
         Availity Docs
