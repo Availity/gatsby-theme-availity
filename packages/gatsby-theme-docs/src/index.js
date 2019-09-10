@@ -52,16 +52,21 @@ const Template = ({
 
   return (
     <Layout>
-      <TopNavigation className="pl-4" navItems={navItems} pathname={pathname} />
+      <TopNavigation
+        brandAttrs={{ className: 'pl-4' }}
+        className="pl-0"
+        navItems={navItems}
+        pathname={pathname}
+      />
       <div className="d-flex h-100">
         <SideNavigation
           currentPath={pathname}
           contents={sidebarContents}
           siteTitle={site.siteMetadata.subtitle}
-          className="flex-shrink-0 ml-4 pt-4"
+          className="flex-shrink-0 pl-4 pt-4 border-right"
           style={{
             overflowY: 'auto',
-            width: 200,
+            width: 300,
           }}
         />
         <div
@@ -119,8 +124,9 @@ export const pageQuery = graphql`
           title
           summary
         }
-        headings(depth: h2) {
+        headings {
           value
+          depth
         }
         htmlAst
       }
@@ -129,8 +135,9 @@ export const pageQuery = graphql`
           title
           summary
         }
-        headings(depth: h2) {
+        headings {
           value
+          depth
         }
         body
       }

@@ -9,6 +9,7 @@
     "start": "yarn workspace site develop",
     "build": "yarn workspace site build",
     "build:deploy": "yarn workspace site build:deploy",
+    "deploy:docs": "npm run build:deploy && gh-pages -d packages/site/public",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "release:ci": "lerna publish --yes"
   },
@@ -20,6 +21,7 @@
     "husky": "^3.0.2",
     "lerna": "^3.16.4",
     "lint-staged": "^9.2.1",
+    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2"
   },
   "prettier": {
