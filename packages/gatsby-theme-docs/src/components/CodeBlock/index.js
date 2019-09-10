@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Card, CardHeader, CardBody } from 'reactstrap';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import CopyClipboard from './CopyClipboard';
 import LiveCode from './LiveCode';
 
-export default ({
+const CodeBlock = ({
   className,
   children,
   live: codeLive,
@@ -104,3 +105,12 @@ export default ({
     </Card>
   );
 };
+
+CodeBlock.propTypes = {
+  className: PropTypes.string,
+  live: PropTypes.bool,
+  'data-meta': PropTypes.object,
+  children: PropTypes.node,
+};
+
+export default CodeBlock;
