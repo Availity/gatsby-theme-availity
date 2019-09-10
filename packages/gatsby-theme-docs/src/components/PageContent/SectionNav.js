@@ -27,7 +27,7 @@ const SectionNav = ({
 
     const contentHeadings = contentRef.current.querySelectorAll('h2,h3');
 
-      setOffsets(
+    setOffsets(
       // eslint-disable-next-line unicorn/prefer-spread
       Array.from(contentHeadings)
         .map(heading => {
@@ -66,35 +66,37 @@ const SectionNav = ({
         'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2'
       )}
       vertical
-      style={{ width:320, position: 'sticky', top: -39 }}
+      style={{ width: 320, position: 'sticky', top: -39 }}
       {...rest}
     >
       <NavItem style={{ fontWeight: '500' }}>
         <NavLink>{title}</NavLink>
       </NavItem>
-      {headings.map(({ value, depth }) => {
-        const text = striptags(value);
-        const slug = slugger.slug(text);
+      {headings
+        .filter(({ depth }) => depth === 2 || depth === 3)
+        .map(({ value, depth }) => {
+          const text = striptags(value);
+          const slug = slugger.slug(text);
 
-        return (
-          <NavItem key={slug} active={slug === activeHeading}>
-            <NavLink
-              href={`#${slug}`}
-              active={slug === activeHeading}
-              className={classnames({
-                // 'font-weight-bold': slug === activeHeading,
-                'text-secondary': slug !== activeHeading,
-                'ml-4 pt-1 pb-1': depth === 3,
-              })}
-              style={{
-                fontSize: depth === 3 && 15
-              }}
-            >
-              {text}
-            </NavLink>
-          </NavItem>
-        );
-      })}
+          return (
+            <NavItem key={slug} active={slug === activeHeading}>
+              <NavLink
+                href={`#${slug}`}
+                active={slug === activeHeading}
+                className={classnames({
+                  // 'font-weight-bold': slug === activeHeading,
+                  'text-secondary': slug !== activeHeading,
+                  'ml-4 pt-1 pb-1': depth === 3,
+                })}
+                style={{
+                  fontSize: depth === 3 && 15,
+                }}
+              >
+                {text}
+              </NavLink>
+            </NavItem>
+          );
+        })}
       <NavItem className="mt-5">
         <NavLink
           href={githubUrl}
@@ -113,7 +115,7 @@ SectionNav.propTypes = {
   mainRef: PropTypes.object,
   title: PropTypes.string,
   className: PropTypes.string,
-  githubUrl: PropTypes.string
-}
+  githubUrl: PropTypes.string,
+};
 
 export default SectionNav;
