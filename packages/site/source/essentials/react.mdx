@@ -1,0 +1,129 @@
+---
+title: Rendering Components with MDX
+summary: This section will showcase how to include react components and ES6 Modules in your markdown
+---
+
+This gatsby theme supports writing `mdx` files in your docs. Complete documentation for `mdx` can be found [here](https://mdxjs.com/).
+
+<br />
+This means you can import and render any components you wish just like the below:
+<hr />
+
+import { Button, Container } from 'reactstrap';
+
+<Container>
+  <Button color="primary">Click Me</Button>
+</Container>
+
+```jsx
+import { Button } from 'reactstrap';
+
+<Button color="primary">Click Me</Button>;
+```
+
+## ES6 Components
+
+When importing ES6 components like `@availity/app-icon` you may have to include a custom plugin in order to precompile the code.
+
+### Install the Plugin
+
+```bash
+npm install gatsby-plugin-compile-es6-packages
+```
+
+### Update Gatsby Config
+
+```js
+module.exports = {
+  // ... usual configs
+  plugins: [
+    {
+      // For compiling es6 components
+      resolve: `gatsby-plugin-compile-es6-packages`,
+      options: {
+        modules: ['@availity/app-icon'],
+      },
+    },
+  ],
+};
+```
+
+### Usage
+
+import AppIcon from '@availity/app-icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AppIcon title="Payer Space" color="blue" branded size="xl">
+    PS
+  </AppIcon>
+  <AppIcon title="Payer Space" color="red" size="xl">
+    PS
+  </AppIcon>
+  <AppIcon title="Payer Space" color="orange">
+    PS
+  </AppIcon>
+</div>
+
+```jsx
+import AppIcon from '@availity/app-icon';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <AppIcon title="Payer Space" color="blue" branded size="xl">
+    PS
+  </AppIcon>
+  <AppIcon title="Payer Space" color="red" size="xl">
+    PS
+  </AppIcon>
+  <AppIcon title="Payer Space" color="orange">
+    PS
+  </AppIcon>
+</div>;
+```
+
+## Components Requiring the DOM
+
+In some cases, a component may require access to the global `window` object, or some other native DOM related object. In these scenarios the mdx components will fail to render because the way gatsby builds the site is via SSR (Server Side Rendering).
+
+<br />
+
+You can read up more on [this article](https://www.gatsbyjs.org/docs/debugging-html-builds/) about how gatsby recommends fixing this issue or continue below to see how we do it.
+
+### Install loadable
+
+```bash
+npm install @loadable/component
+```
+
+### Create Relative Component
+
+```js
+import loadable from '@loadable/component';
+
+export default loadable(() => import('@availity/page-header'));
+```
+
+### Import Component In MDX
+
+```jsx
+import PageHeader from './PageHeader';
+
+<PageHeader appName="Payer Space" appAbbr="PS" iconColor="blue" />;
+```
+
+### Usage
+
+import PageHeader from './PageHeader';
+
+<div className="w-100 d-flex flex-column justify-content-around align-items-start p-3">
+  <PageHeader appName="Payer Space" appAbbr="PS" iconColor="blue" />
+</div>
+
+<hr />
+
+## Sources
+
+Note you can also hit the "Edit On Github" Button to view the source code for how we rendered this page if you need assistance replicating this.
+
+- [Gatsby Plugin For ES6 Packages](https://www.gatsbyjs.org/packages/gatsby-plugin-compile-es6-packages/)
+- [MDX](https://mdxjs.com/)
+- [Loadable Components](https://www.npmjs.com/package/@loadable/component)

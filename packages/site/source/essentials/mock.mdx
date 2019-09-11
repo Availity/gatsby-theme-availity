@@ -1,0 +1,148 @@
+---
+title: Mocking Requests with XHR Mock
+---
+
+If you are rendering a component that hits an api you want to mock the response for, this article is for you. At Availity,
+we have multiple [resources](https://availity.github.io/sdk-js/api/definitions/) that require a user to be authenticated in order to access. However, if you want to showcase how
+a component works its not straight forward with Gatsby.
+
+## Install Dependencies
+
+```bash
+npm install xhr-mock
+```
+
+## Adding a Gatsby Browser Config
+
+The [Gatsby Browser](https://www.gatsbyjs.org/docs/browser-apis/) config allows a list of apis to be exported that perform certain tasks during the browser's lifecylce.
+
+<br />
+
+We specifically care about the [`onClientEntry`](https://www.gatsbyjs.org/docs/browser-apis/#onClientEntry) because it allows us to hook into the DOM once the gatsby browser runtime has started.
+
+`gatsby-browser.js`
+
+```js
+exports.onClientEntry = () => {
+  // We are going to do stuff in here
+};
+```
+
+## Adding in Mocks
+
+This article is not meant to teach how to use [`xhr-mock`](https://www.npmjs.com/package/xhr-mock) but rather how to use it for mocking requests. This example will be in the case we are wanting to render the [`@availity/favorites`](https://availity.github.io/availity-react/components/favorites/) package. It will provide an example of mocking as well as [requiring the DOM](/essentials/react/#components-requiring-the-dom).
+
+<br />
+
+### `favorites.js`
+
+```js
+// Export a function that takes in the mock object and sets up a mock
+export default mock => {
+  // For getting the current user's id
+  mock.get(/\/api\/sdk\/platform\/v1\/users\/me/, (req, res) =>
+    res.status(200).body(
+      window.JSON.stringify({
+        id: '1234',
+      })
+    )
+  );
+
+  // Get a list of favorites
+  mock.get(/\/api\/utils\/v1\/settings/, (req, res) =>
+    res.status(200).body(
+      window.JSON.stringify({
+        settings: [
+          {
+            favorites: [
+              {
+                id: '1234',
+                pos: 0,
+              },
+            ],
+          },
+        ],
+      })
+    )
+  );
+
+  // Update the favorites depending on what we sent in
+  mock.put(/\/api\/utils\/v1\/settings/, (req, res) => {
+    const favoritesUpdate = JSON.parse(req._body);
+    return res.status(200).body(
+      window.JSON.stringify({
+        ...favoritesUpdate,
+      })
+    );
+  });
+};
+```
+
+### `gatsby-browser.js`
+
+```js
+const mock, { proxy } = require('xhr-mock');
+const favorites = require('./favorites');
+
+
+exports.onClientEntry = () => {
+    mock.setup(); // init
+
+    favorites(mock); // add favorites to mock
+
+    mock.use(proxy); // use the proxy from xhr-mock
+};
+```
+
+## Usage
+
+Since this is an ES6 Package we also have to make sure we have the ES6 Plugin. Follow [this tutorial](/essentials/react/#es6-components) if you need help adding the package to be compiled.
+
+<br />
+
+The pre-req is adding a custom component File that use `@loadable/component` to allow `Favorites` to use the DOM.
+
+### `Favorites.js`
+
+```jsx
+import loadable from '@loadable/component';
+
+export default loadable.lib(() => import('@availity/favorites'));
+```
+
+### `favorites.mdx`
+
+```jsx
+import Favorites from './Favorites';
+import '@availity/favorites/style.scss';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Favorites>
+    {({ default: FavoritesProvider, FavoriteHeart }) => (
+      <FavoritesProvider>
+        <span className="d-flex"><FavoriteHeart className="pr-2" id="123456" />Click The Heart</span>
+      </FavoritesProvider>
+    )}
+  </Favorites>
+</div>
+```
+
+import Favorites from './Favorites';
+import '@availity/favorites/style.scss';
+
+<div className="w-100 d-flex flex-row justify-content-around align-items-center">
+  <Favorites>
+    {({ default: FavoritesProvider, FavoriteHeart }) => (
+      <FavoritesProvider>
+        <span className="d-flex"><FavoriteHeart className="pr-2" id="123456" />Click The Heart</span>
+      </FavoritesProvider>
+    )}
+  </Favorites>
+</div>
+
+
+## Sources
+Note you can also hit the "Edit On Github" Button to view the source code for how we rendered this page if you need assistance replicating this.
+- [XHR Mock](https://www.npmjs.com/package/xhr-mock)
+- [Gatsby Browser](https://www.gatsbyjs.org/docs/browser-apis)
+- [Favorites Component](https://availity.github.io/availity-react/components/favorites/)

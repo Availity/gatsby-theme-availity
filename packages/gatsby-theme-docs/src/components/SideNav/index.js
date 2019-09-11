@@ -21,16 +21,18 @@ const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
     <div {...rest}>
       <Nav vertical navbar className="h-100 text-dark">
         <CollapseProvider siteName={siteTitle}>
-        {contents.map(({ title: collapseTitle, pages, path: categoryPath }) => (
-          <NavigationItem
-            key={collapseTitle}
-            collapseTitle={collapseTitle}
-            isCategorySelected={isCategorySelected(categoryPath, pages)}
-            siteTitle={siteTitle}
-            pages={pages}
-            isPageSelected={isPageSelected}
-          />
-        ))}
+          {contents.map(
+            ({ title: collapseTitle, pages, path: categoryPath }) => (
+              <NavigationItem
+                key={collapseTitle}
+                collapseTitle={collapseTitle}
+                isCategorySelected={isCategorySelected(categoryPath, pages)}
+                siteTitle={siteTitle}
+                pages={pages}
+                isPageSelected={isPageSelected}
+              />
+            )
+          )}
         </CollapseProvider>
       </Nav>
     </div>
@@ -40,7 +42,7 @@ const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
 SideNav.propTypes = {
   currentPath: PropTypes.string,
   contents: PropTypes.array,
-  siteTitle: PropTypes.string
-}
+  siteTitle: PropTypes.string,
+};
 
 export default SideNav;
