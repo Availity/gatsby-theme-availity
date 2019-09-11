@@ -24,8 +24,8 @@
 
 "@availity/app-icon@^1.3.0":
   version "1.3.0"
-  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/app-icon/-/app-icon-1.3.0.tgz#3c26b2c4d7e4fb5923e3e82ac8f70478510a8169"
-  integrity sha1-PCayxNfk+1kj4+gqyPcEeFEKgWk=
+  resolved "https://registry.yarnpkg.com/@availity/app-icon/-/app-icon-1.3.0.tgz#3c26b2c4d7e4fb5923e3e82ac8f70478510a8169"
+  integrity sha512-LLuAYo9DQ65JSt4h8qj8oYzHAYbChYwBvmWzEIpp6QFc29fxaDGknwng9kPsy/bC+gKb0hje2mK8Xeu/53ZVug==
 
 "@availity/breadcrumbs@^3.1.0":
   version "3.1.0"
