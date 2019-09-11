@@ -9,6 +9,7 @@ import CollapseAll from './CollapseAll';
 
 const NavigationItem = ({
   collapseTitle,
+  className,
   isCategorySelected,
   siteTitle,
   pages,
@@ -20,20 +21,21 @@ const NavigationItem = ({
 
   if (collapseTitle !== null) {
     collapseIsOpenProp.isOpen = collapseOpen;
+    collapseIsOpenProp.mountOnEnter = true;
   }
 
   return (
     <>
       <span
         key={collapseTitle}
-        className={classnames({
-          'border-bottom':collapseTitle !== null
+        className={classnames(className, {
+          'border-bottom': collapseTitle !== null,
         })}
       >
         <NavLink
           onClick={toggle}
           className={classnames(
-            'mt-1 mb-1 d-flex align-items-center justify-content-between',
+            'mt-1 mb-1 d-flex align-items-center justify-content-between pl-4',
             {
               'text-uppercase': collapseTitle !== null,
               lead: collapseTitle === null,
@@ -66,14 +68,18 @@ const NavigationItem = ({
           navbar
         >
           {pages.map(({ path, title }) => (
-            <NavItem key={title} active={isPageSelected({ path })}>
+            <NavItem
+              key={title}
+              active={isPageSelected({ path })}
+              className="position-relative d-flex align-items-center"
+            >
               <NavLink
                 tag={Link}
                 to={path}
                 active={isPageSelected({ path })}
-                className={classnames({
-                  // 'font-weight-bold': path === currentPath,
-                  'text-secondary': !isPageSelected({ path }),
+                className={classnames('pl-4 pt-1 pb-1 w-100', {
+                  'sidenav-link-active': isPageSelected({ path }),
+                  'text-secondary sidenav-link': !isPageSelected({ path }),
                 })}
               >
                 {title}
@@ -82,11 +88,12 @@ const NavigationItem = ({
           ))}
         </Nav>
       </span>{' '}
-      {collapseTitle === null && <CollapseAll />}
+      {collapseTitle === null && <CollapseAll className="pl-4" />}
     </>
   );
 };
 NavigationItem.propTypes = {
+  className: PropTypes.string,
   collapseTitle: PropTypes.string,
   siteTitle: PropTypes.string,
   isCategorySelected: PropTypes.bool,

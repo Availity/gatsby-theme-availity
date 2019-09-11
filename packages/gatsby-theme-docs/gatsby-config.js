@@ -47,7 +47,6 @@ module.exports = ({
       },
       'gatsby-plugin-sass',
       {
-        extensions: ['.mdx', '.md'],
         resolve: 'gatsby-plugin-mdx',
         options: {
           gatsbyRemarkPlugins,

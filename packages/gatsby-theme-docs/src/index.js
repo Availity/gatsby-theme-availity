@@ -12,6 +12,7 @@ import {
   PageHeader,
   CodeBlock,
 } from './components';
+import './styles.scss';
 
 const components = {
   code: CodeBlock,
@@ -63,7 +64,7 @@ const Template = ({
           currentPath={pathname}
           contents={sidebarContents}
           siteTitle={site.siteMetadata.subtitle}
-          className="flex-shrink-0 pl-4 pt-4 border-right"
+          className="flex-shrink-0 pt-4 border-right"
           style={{
             overflowY: 'auto',
             width: 300,

@@ -5,7 +5,7 @@ import { withPrefix } from 'gatsby';
 
 export const CollapseContext = createContext();
 
-export const CollapseProvider = ({ siteName, ...props}) => {
+export const CollapseProvider = ({ siteName, ...props }) => {
   const [localStorageForCollapse, setLocalStorageForCollapse] = useLocalStorage(
     `sidenav-dropdown-${siteName}`,
     {}
@@ -19,8 +19,8 @@ export const CollapseProvider = ({ siteName, ...props}) => {
 };
 
 CollapseProvider.propTypes = {
-  siteName: PropTypes.string
-}
+  siteName: PropTypes.string,
+};
 
 export const useCollapse = (title, initialValue) => {
   const [localStorageForCollapse, setLocalStorageForCollapse] = useContext(
@@ -30,12 +30,16 @@ export const useCollapse = (title, initialValue) => {
   const collapseTitle = withPrefix(title);
 
   useEffect(() => {
-    if (localStorageForCollapse[collapseTitle] === undefined|| (initialValue && !localStorageForCollapse[collapseTitle])) {
+    if (
+      localStorageForCollapse[collapseTitle] === undefined ||
+      (initialValue && !localStorageForCollapse[collapseTitle])
+    ) {
       setLocalStorageForCollapse(prevState => ({
         ...prevState,
         [collapseTitle]: initialValue,
       }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const isOpen = localStorageForCollapse[collapseTitle];

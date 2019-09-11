@@ -1,0 +1,70 @@
+/*  Side Nav for Docs */
+.sidenav-link-active:before {
+  background: #2162b5;
+  border-radius: 100%;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  content: '';
+  left: calc(1.5rem - 1rem);
+  top: 12px;
+  height: 8px;
+  position: absolute;
+  -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 8px;
+}
+
+.sidenav-link-active:after {
+  background: #2162b5;
+  border-radius: 4px;
+  opacity: 1;
+  -webkit-transform: translateX(-92px);
+  -ms-transform: translateX(-92px);
+  transform: translateX(-92px);
+  width: 100px;
+  content: '';
+  left: calc(1.5rem - 1rem);
+  top: 12px;
+  height: 8px;
+  position: absolute;
+  -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidenav-link:before {
+  background: #2162b5;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  border-radius: 100%;
+  content: '';
+  left: calc(1.5rem - 1rem);
+  top: 12px;
+  height: 0px;
+  position: absolute;
+  -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0px;
+}
+
+.sidenav-link:hover:before {
+  width: 8px;
+  height: 8px;
+}
+
+.sidenav-link:after {
+  background: #2162b5;
+  border-radius: 4px;
+  opacity: 0;
+  -webkit-transform: translateX(-92px);
+  -ms-transform: translateX(-92px);
+  transform: translateX(-92px);
+  width: 0;
+  content: '';
+  left: calc(1.5rem - 1rem);
+  top: 12px;
+  height: 0px;
+  position: absolute;
+  -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}

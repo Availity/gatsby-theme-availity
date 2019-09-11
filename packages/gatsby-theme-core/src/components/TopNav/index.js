@@ -14,9 +14,9 @@ import Logo from './Logo';
 
 const Navigation = ({
   className,
-  brandAttrs: { className: bClassName, ...restBrandAttrs },
-  navItems,
-  pathname,
+  brandAttrs: { className: bClassName, ...restBrandAttrs } = {},
+  navItems = [],
+  pathname = '',
   ...props
 }) => {
   const [isOpen, toggleNavbar] = useState(true);

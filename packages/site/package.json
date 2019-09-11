@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gatsby build",
     "build:deploy": "gatsby build --prefix-paths",
+    "preDevelop": "rm -rf .cache",
     "develop": "gatsby develop",
     "clean": "gatsby clean"
   },
