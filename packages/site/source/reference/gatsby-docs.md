@@ -57,7 +57,7 @@ module.exports = {
 
 The `sidebarCategories` option is an object keyed by category titles. Each entry in the object is an array of page paths. The path should resemble the location of a Markdown/MDX file in the git repository, relative to `contentDir`, and without the `.md` extension. Sidebar navigation items that are not a member of a category live under the `null` key.
 
-```js
+```js hideCopy=true
 {
   null: [
     'index',
@@ -76,7 +76,7 @@ The `sidebarCategories` option is an object keyed by category titles. Each entry
 
 The `navConfig` option is an object keyed by the title of the nav items to be rendered at the top right of the screen in the navigation.
 
-```js
+```js hideCopy=true
 {
     '/availity-workflow': {
         text: 'Getting Started',

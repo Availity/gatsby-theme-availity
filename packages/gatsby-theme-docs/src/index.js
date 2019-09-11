@@ -1,4 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/heading-has-content */
 import React, { useRef } from 'react';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { graphql, withPrefix } from 'gatsby';
 import RehypeReact from 'rehype-react';
@@ -18,6 +21,12 @@ const components = {
   code: CodeBlock,
   pre: props => props.children,
   table: Table,
+  h2: ({ className, ...props }) => (
+    <h2 className={classnames(className, 'mt-5')} {...props} />
+  ),
+  h3: ({ className, ...props }) => (
+    <h3 className={classnames(className, 'mt-4')} {...props} />
+  ),
 };
 
 // Will take in a snippet of code in AST Form and render it as text

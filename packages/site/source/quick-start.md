@@ -30,7 +30,7 @@ npx install-peerdeps @availity/gatsby-theme-docs
 
 Your `package.json` should mirror the below when you are finished.
 
-```json
+```json header=package.json
 {
   "private": true,
   "name": "site",
@@ -54,7 +54,7 @@ Your `package.json` should mirror the below when you are finished.
 
 ### Configure Gatsby Config (`gatsby-config.js`)
 
-```js
+```js header=gatsby-config.js
 // default theme options
 const themeOptions = require('@availity/gatsby-theme-docs/theme-options');
 
@@ -79,7 +79,7 @@ module.exports = {
 
 ### Add markdown to `index.md`
 
-```test
+```test header=index.md
 ---
 title: Introduction
 summary: This is my first Gatsby Docs Site
@@ -90,7 +90,7 @@ This is only a test
 
 ### Add markdown to `getting-started.mdx`
 
-```mdx
+```mdx header=getting-started.mdx
 ---
 title: Getting Started
 summary: Look I can write React in here

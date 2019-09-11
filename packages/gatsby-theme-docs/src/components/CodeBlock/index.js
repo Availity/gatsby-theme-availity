@@ -6,14 +6,43 @@ import Highlight, { defaultProps } from 'prism-react-renderer';
 import CopyClipboard from './CopyClipboard';
 import LiveCode from './LiveCode';
 
+const getConfig = dataMeta => {
+  const config = {};
+  const parts = dataMeta.split(' ');
+
+  parts.forEach(part => {
+    const vals = part.split('=');
+
+    if (vals.length === 2) {
+      let value = vals[1];
+      if (value === 'true' || value === 'false') {
+        value = value === 'true';
+      }
+
+      if (value[0] === '{') {
+        value = JSON.parse(value);
+      }
+
+      config[vals[0]] = value;
+    }
+  });
+
+  return config;
+};
+
 const CodeBlock = ({
   className,
   children,
-  live: codeLive,
-  'data-meta': dataMeta,
+  live: _live,
+  hideCopy: _hideCopy,
+  header: _header,
+  'data-meta': dataMeta = '',
+  ...rest
 }) => {
+  const { live = _live, hideCopy = _hideCopy, header = _header } = getConfig(
+    dataMeta
+  );
   // for mdx it, `live` will be inside "data-meta", if md then `live` is a prop
-  const live = codeLive || (dataMeta && dataMeta.includes('live'));
 
   // MDX will be an array, md will already have the child
   const code = Array.isArray(children) ? children[0] : children;
@@ -52,15 +81,15 @@ const CodeBlock = ({
   // Note that the only tenary here is for bash. If the language is bash we want the
   // copy clipboard button to be aligned center.
   return (
-    <Card className="mb-3 mt-3">
-      {language !== 'bash' && (
-        <CardHeader className="bg-white">
-          <CopyClipboard
-            color="light"
-            size="sm"
-            value={code}
-            className="float-right"
-          />
+    <Card className={classnames('mb-3', header ? 'mt-4' : 'mt-3')}>
+      {language !== 'bash' && !hideCopy && (
+        <CardHeader
+          className={`bg-white d-flex align-items-center justify-content-${
+            header ? 'between' : 'end'
+          }`}
+        >
+          {header && <span>{header}</span>}
+          <CopyClipboard color="light" size="sm" value={code} />
         </CardHeader>
       )}
       <CardBody className="p-0">
@@ -88,7 +117,7 @@ const CodeBlock = ({
               ))
             }
           </Highlight>
-          {language === 'bash' && (
+          {language === 'bash' && !hideCopy && (
             <CopyClipboard
               className="float-right"
               style={{
@@ -109,7 +138,9 @@ const CodeBlock = ({
 CodeBlock.propTypes = {
   className: PropTypes.string,
   live: PropTypes.bool,
-  'data-meta': PropTypes.object,
+  hideCopy: PropTypes.bool,
+  header: PropTypes.string,
+  'data-meta': PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.node,
 };
 
