@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/Availity/gatsby-theme-availity/compare/site@2.1.9...site@2.2.0) (2019-09-11)
+
+
+### Features
+
+* **site:** added docs for docs ([ffddb15](https://github.com/Availity/gatsby-theme-availity/commit/ffddb15))
+
+
+
+
+
 ## [2.1.9](https://github.com/Availity/gatsby-theme-availity/compare/site@2.1.8...site@2.1.9) (2019-09-10)
 
 **Note:** Version bump only for package site
