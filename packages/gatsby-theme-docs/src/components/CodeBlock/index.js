@@ -36,12 +36,13 @@ const CodeBlock = ({
   live: _live,
   hideCopy: _hideCopy,
   header: _header,
-  'data-meta': dataMeta = '',
-  ...rest
+  'data-meta': dataMeta = ''
 }) => {
-  const { live = _live, hideCopy = _hideCopy, header = _header } = getConfig(
-    dataMeta
-  );
+  const {
+    live = _live === 'true',
+    hideCopy = _hideCopy === 'true',
+    header = _header,
+  } = getConfig(dataMeta);
   // for mdx it, `live` will be inside "data-meta", if md then `live` is a prop
 
   // MDX will be an array, md will already have the child
@@ -74,7 +75,7 @@ const CodeBlock = ({
 
   // If live, we will return the live code block
   if (live) {
-    return <LiveCode>{code}</LiveCode>;
+    return <LiveCode hideCopy={hideCopy}>{code}</LiveCode>;
   }
 
   // Otherwise render the default layout for code block
@@ -137,8 +138,8 @@ const CodeBlock = ({
 
 CodeBlock.propTypes = {
   className: PropTypes.string,
-  live: PropTypes.bool,
-  hideCopy: PropTypes.bool,
+  live: PropTypes.string,
+  hideCopy: PropTypes.string,
   header: PropTypes.string,
   'data-meta': PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.node,
