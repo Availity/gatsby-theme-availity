@@ -34,7 +34,7 @@ const PageContent = ({
   return (
     <div className="d-flex align-items-start">
       <div
-        className="flex-grow-1"
+        className="flex-grow-1 content-wrapper"
         style={{ width: 0, maxWidth: '100ch' }}
         ref={contentRef}
       >
