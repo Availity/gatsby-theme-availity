@@ -121,7 +121,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
   const {
     contentDir = 'docs/source',
-    githubRepo,
+    gitRepo,
     sidebarCategories,
     navConfig,
     baseUrl,
@@ -131,7 +131,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
   const sidebarContents = getSidebarContents(sidebarCategories, edges);
 
-  const [owner, repo] = githubRepo.split('/');
+  const [baseSite, owner, repo] = gitRepo.split('/');
   const template = require.resolve('./src/index.js');
 
   edges.forEach(edge => {
@@ -145,7 +145,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
         id,
         title,
         sidebarContents,
-        githubUrl: `https://github.com/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`,
+        gitUrl: `https://${baseSite}/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`,
         baseUrl,
         navItems: generateNavItems(baseUrl, navConfig),
       },

@@ -13,7 +13,7 @@ const SectionNav = ({
   mainRef,
   contentRef,
   className,
-  githubUrl,
+  gitUrl,
   ...rest
 }) => {
   const { y } = useScroll(mainRef);
@@ -98,10 +98,7 @@ const SectionNav = ({
           );
         })}
       <NavItem className="mt-5">
-        <NavLink
-          href={githubUrl}
-          className="text-dark d-flex align-items-center"
-        >
+        <NavLink href={gitUrl} className="text-dark d-flex align-items-center">
           <FaGithub size={18} className="mr-2" /> Edit on Github
         </NavLink>
       </NavItem>
@@ -115,7 +112,7 @@ SectionNav.propTypes = {
   mainRef: PropTypes.object,
   title: PropTypes.string,
   className: PropTypes.string,
-  githubUrl: PropTypes.string,
+  gitUrl: PropTypes.string,
 };
 
 export default SectionNav;

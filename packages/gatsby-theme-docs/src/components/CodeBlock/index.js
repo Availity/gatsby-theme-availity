@@ -36,7 +36,7 @@ const CodeBlock = ({
   live: _live,
   hideCopy: _hideCopy,
   header: _header,
-  'data-meta': dataMeta = ''
+  'data-meta': dataMeta = '',
 }) => {
   const {
     live = _live === 'true',
@@ -48,7 +48,7 @@ const CodeBlock = ({
   // MDX will be an array, md will already have the child
   const code = Array.isArray(children) ? children[0] : children;
 
-  // Get the Langague from the className
+  // Get the Language from the className
   const language = className
     ? className
         .replace(/language-/, '')
