@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@1.3.3...@availity/gatsby-theme-docs@1.4.0) (2019-09-17)
+
+
+### Features
+
+* **gatsby-theme-docs:** added dynamic scopes support ([2a6ce78](https://github.com/availity/gatsby-theme-availity/commit/2a6ce78))
+
+
+
+
+
 ## [1.3.3](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@1.3.2...@availity/gatsby-theme-docs@1.3.3) (2019-09-12)
 
 **Note:** Version bump only for package @availity/gatsby-theme-docs
