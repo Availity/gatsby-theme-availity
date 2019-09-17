@@ -17,30 +17,30 @@ import {
 } from './components';
 import './styles.scss';
 
-const components = {
-  code: CodeBlock,
-  pre: props => props.children,
-  table: Table,
-  h2: ({ className, ...props }) => (
-    <h2 className={classnames(className, 'mt-5')} {...props} />
-  ),
-  h3: ({ className, ...props }) => (
-    <h3 className={classnames(className, 'mt-4')} {...props} />
-  ),
-};
-
-// Will take in a snippet of code in AST Form and render it as text
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components,
-}).Compiler;
-
 // The Template to load on each page
 const Template = ({
   location,
   pageContext: { sidebarContents, navItems, githubUrl },
   data,
 }) => {
+  const components = {
+    code: CodeBlock,
+    pre: props => props.children,
+    table: Table,
+    h2: ({ className, ...props }) => (
+      <h2 className={classnames(className, 'mt-5')} {...props} />
+    ),
+    h3: ({ className, ...props }) => (
+      <h3 className={classnames(className, 'mt-4')} {...props} />
+    ),
+  };
+
+  // Will take in a snippet of code in AST Form and render it as text
+  const renderAst = new RehypeReact({
+    createElement: React.createElement,
+    components,
+  }).Compiler;
+
   // Keep a ref of the current content window for jumping to certain anchors in section nav
   const mainRef = useRef(null);
 
