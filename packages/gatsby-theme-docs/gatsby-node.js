@@ -45,42 +45,53 @@ function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
+function mapLinkToItem(linkPathOrObject, edges) {
+  let linkPath = linkPathOrObject;
+
+  if (typeof linkPathOrObject === 'object') {
+    linkPath = linkPathOrObject.resolve;
+  }
+
+  const match = linkPath.match(/^\[([\w\s\d]+)\]\((https?:\/\/[\w.]+)\)$/);
+  if (match) {
+    return {
+      anchor: true,
+      title: match[1],
+      path: match[2],
+    };
+  }
+
+  const edge = edges.find(edge => {
+    const { relativePath } = edge.node;
+    return (
+      relativePath
+        .slice(0, relativePath.lastIndexOf('.'))
+        .replace(/^docs\/source\//, '') === linkPath
+    );
+  });
+
+  if (!edge) {
+    return null;
+  }
+
+  const { frontmatter, fields } = getPageFromEdge(edge);
+  return {
+    title: frontmatter.title,
+    path: fields.slug,
+    pages:
+      typeof linkPathOrObject === 'object' &&
+      linkPathOrObject.pages.map(subLinkPath =>
+        mapLinkToItem(subLinkPath, edges)
+      ),
+  };
+}
+
 // Will return a formatted last of all the categories for the left side nav
 function getSidebarContents(sidebarCategories, edges) {
   return Object.keys(sidebarCategories).map(key => ({
     title: key === 'null' ? null : key,
     pages: sidebarCategories[key]
-      .map(linkPath => {
-        const match = linkPath.match(
-          /^\[([\w\s\d]+)\]\((https?:\/\/[\w.]+)\)$/
-        );
-        if (match) {
-          return {
-            anchor: true,
-            title: match[1],
-            path: match[2],
-          };
-        }
-
-        const edge = edges.find(edge => {
-          const { relativePath } = edge.node;
-          return (
-            relativePath
-              .slice(0, relativePath.lastIndexOf('.'))
-              .replace(/^docs\/source\//, '') === linkPath
-          );
-        });
-
-        if (!edge) {
-          return null;
-        }
-
-        const { frontmatter, fields } = getPageFromEdge(edge);
-        return {
-          title: frontmatter.title,
-          path: fields.slug,
-        };
-      })
+      .map(linkPathOrObject => mapLinkToItem(linkPathOrObject, edges))
       .filter(Boolean),
   }));
 }

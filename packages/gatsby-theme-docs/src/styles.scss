@@ -1,4 +1,6 @@
 /*  Side Nav for Docs */
+
+/* Side Nav Active :before */
 .sidenav-link-active:before {
   background: #2162b5;
   border-radius: 100%;
@@ -6,7 +8,7 @@
   transform: scale(1);
   content: '';
   left: calc(1.5rem - 1rem);
-  top: 12px;
+  top: 15px;
   height: 8px;
   position: absolute;
   -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -14,6 +16,15 @@
   width: 8px;
 }
 
+.sidenav-link-active.sidenav-link-secondary:before {
+  left: 1.7rem !important;
+}
+
+.sidenav-link-active.sidenav-header-link:before {
+  top: 15px !important;
+}
+
+/* Side Nav Active :after */
 .sidenav-link-active:after {
   background: #2162b5;
   border-radius: 4px;
@@ -24,13 +35,22 @@
   width: 100px;
   content: '';
   left: calc(1.5rem - 1rem);
-  top: 12px;
+  top: 15px;
   height: 8px;
   position: absolute;
   -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.sidenav-link-active.sidenav-link-secondary:after {
+  left: 1.7rem !important;
+}
+
+.sidenav-link-active.sidenav-header-link:after {
+  top: 15px !important;
+}
+
+/* Side Nav :before */
 .sidenav-link:before {
   background: #2162b5;
   -webkit-transform: scale(1);
@@ -39,7 +59,7 @@
   border-radius: 100%;
   content: '';
   left: calc(1.5rem - 1rem);
-  top: 12px;
+  top: 15px;
   height: 0px;
   position: absolute;
   -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -47,11 +67,14 @@
   width: 0px;
 }
 
-.sidenav-link:hover:before {
-  width: 8px;
-  height: 8px;
+.sidenav-link.sidenav-link-secondary:before {
+  left: 1.7rem !important;
+}
+.sidenav-link.sidenav-header-link:before {
+  top: 15px !important;
 }
 
+/* Side Nav :after */
 .sidenav-link:after {
   background: #2162b5;
   border-radius: 4px;
@@ -62,9 +85,27 @@
   width: 0;
   content: '';
   left: calc(1.5rem - 1rem);
-  top: 12px;
+  top: 15px;
   height: 0px;
   position: absolute;
   -webkit-transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidenav-link.sidenav-link-secondary:after {
+  left: 1.7rem !important;
+}
+
+.sidenav-link.sidenav-header-link:after {
+  top: 15px !important;
+}
+
+/* General Sidenav Link */
+.sidenav-link:hover:before {
+  width: 8px;
+  height: 8px;
+}
+
+.sidenav-link:hover,.sidenav-link-active:hover {
+  background-color: rgba(34, 97, 181, 0.05);
 }

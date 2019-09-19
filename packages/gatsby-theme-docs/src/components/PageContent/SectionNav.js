@@ -86,7 +86,7 @@ const SectionNav = ({
                 className={classnames({
                   // 'font-weight-bold': slug === activeHeading,
                   'text-secondary': slug !== activeHeading,
-                  'ml-4 pt-1 pb-1': depth === 3,
+                  'ml-4 py-2': depth === 3,
                 })}
                 style={{
                   fontSize: depth === 3 && 15,

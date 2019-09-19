@@ -20,7 +20,10 @@ module.exports = {
         sidebarCategories: {
           null: ['index', 'quick-start'],
           'Doc Essentials': [
-            'essentials/react',
+            {
+              resolve: 'essentials/react',
+              pages: ['essentials/test'],
+            },
             'essentials/mock',
             'essentials/relative-links',
             'essentials/code-blocks',

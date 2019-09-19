@@ -7,15 +7,23 @@ import { CollapseProvider } from './CollapseContext';
 
 // Iterates over the array of side nav categories and renders the side nav
 const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
-  const isPageSelected = ({ path }) => {
+  const isPageSelected = ({ path, pages: subPages }) => {
     const [prefixedPath, pathname] = [withPrefix(path), currentPath].map(
       string => string.replace(/\/$/, '')
     );
-    return prefixedPath === pathname;
+
+    const isSelected = prefixedPath === pathname;
+
+    if (!isSelected && subPages) {
+      return subPages.some(isPageSelected);
+    }
+
+    return isSelected;
   };
 
-  const isCategorySelected = (path, pages) =>
-    path ? isPageSelected(path) : pages.some(isPageSelected);
+  const isCategorySelected = (path, pages) => {
+    return path ? isPageSelected(path) : pages.some(isPageSelected);
+  };
 
   return (
     <div {...rest}>
