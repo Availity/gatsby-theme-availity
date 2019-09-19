@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, NavLink, NavItem } from 'reactstrap';
@@ -5,7 +6,7 @@ import classnames from 'classnames';
 import striptags from 'striptags';
 import { useScroll, useWindowSize } from 'react-use';
 import Slugger from 'github-slugger';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaBitbucket, FaGitlab } from 'react-icons/fa';
 
 const SectionNav = ({
   headings,
@@ -97,9 +98,24 @@ const SectionNav = ({
             </NavItem>
           );
         })}
+
       <NavItem className="mt-5">
         <NavLink href={gitUrl} className="text-dark d-flex align-items-center">
-          <FaGithub size={18} className="mr-2" /> Edit on Github
+          {gitUrl.includes('github') ? (
+            <>
+              <FaGithub size={18} className="mr-2" /> Edit on Github
+            </>
+          ) : gitUrl.includes('git.availity') ? (
+            <>
+              <FaBitbucket size={18} className="mr-2" /> Edit on Bitbucket
+            </>
+          ) : gitUrl.includes('code.availity') ? (
+            <>
+              <FaGitlab size={18} className="mr-2" /> Edit on GitLab
+            </>
+          ) : (
+            ''
+          )}
         </NavLink>
       </NavItem>
     </Nav>

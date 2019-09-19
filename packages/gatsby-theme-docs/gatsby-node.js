@@ -138,6 +138,16 @@ exports.createPages = async ({ graphql, actions }, options) => {
     const { id, title, relativePath } = edge.node;
     const { fields } = getPageFromEdge(edge);
 
+    let url;
+
+    if (baseSite.includes('github')) {
+      url = `https://${baseSite}/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`;
+    } else if (baseSite.includes('code.availity')) {
+      url = `https://${baseSite}/${owner}/${repo}/blob/master/${relativePath}`;
+    } else if (baseSite.includes('git.availity')) {
+      url = `https://${baseSite}/${owner}/${repo}/repos/browse/${relativePath}`;
+    }
+
     createPage({
       path: fields.slug,
       component: template,
@@ -145,7 +155,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
         id,
         title,
         sidebarContents,
-        gitUrl: `https://${baseSite}/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`,
+        gitUrl: url,
         baseUrl,
         navItems: generateNavItems(baseUrl, navConfig),
       },
