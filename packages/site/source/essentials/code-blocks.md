@@ -98,8 +98,9 @@ Note that we ignore compiling the `import` statement so that at minimum the read
 
 ## Configurations
 
-| Attribute name | Type    | Description                                                              |
-| -------------- | ------- | ------------------------------------------------------------------------ |
-| live           | boolean | Whether or not to run the snippet in live preview mode.                  |
-| hideCopy       | boolean | If true, will hide the `copy` button.                                    |
-| header         | string  | Header text to go alongside the code block. Only works with code blocks. |
+| Attribute name | Type    | Description                                                                                                         |
+| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
+| live           | boolean | Whether or not to run the snippet in live preview mode.                                                             |
+| hideCopy       | boolean | If true, will hide the `copy` button.                                                                               |
+| header         | string  | Header text to go alongside the code block. Only works with code blocks.                                            |
+| viewCode       | boolean | Only available when `live=true`. This stores the initial value for if the code should be displayed. default `false` |

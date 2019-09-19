@@ -35,12 +35,14 @@ const CodeBlock = ({
   children,
   live: _live,
   hideCopy: _hideCopy,
+  viewCode: _viewCode,
   header: _header,
-  'data-meta': dataMeta = ''
+  'data-meta': dataMeta = '',
 }) => {
   const {
     live = _live === 'true',
     hideCopy = _hideCopy === 'true',
+    viewCode = _viewCode === 'true',
     header = _header,
   } = getConfig(dataMeta);
   // for mdx it, `live` will be inside "data-meta", if md then `live` is a prop
@@ -75,7 +77,11 @@ const CodeBlock = ({
 
   // If live, we will return the live code block
   if (live) {
-    return <LiveCode hideCopy={hideCopy}>{code}</LiveCode>;
+    return (
+      <LiveCode hideCopy={hideCopy} header={header} viewCode={viewCode}>
+        {code}
+      </LiveCode>
+    );
   }
 
   // Otherwise render the default layout for code block
@@ -83,14 +89,14 @@ const CodeBlock = ({
   // copy clipboard button to be aligned center.
   return (
     <Card className={classnames('mb-3', header ? 'mt-4' : 'mt-3')}>
-      {language !== 'bash' && !hideCopy && (
+      {language !== 'bash' && (header || !hideCopy) && (
         <CardHeader
           className={`bg-white d-flex align-items-center justify-content-${
             header ? 'between' : 'end'
           }`}
         >
           {header && <span>{header}</span>}
-          <CopyClipboard color="light" size="sm" value={code} />
+          {!hideCopy && <CopyClipboard color="light" size="sm" value={code} />}
         </CardHeader>
       )}
       <CardBody className="p-0">
@@ -140,6 +146,7 @@ CodeBlock.propTypes = {
   className: PropTypes.string,
   live: PropTypes.string,
   hideCopy: PropTypes.string,
+  viewCode: PropTypes.string,
   header: PropTypes.string,
   'data-meta': PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.node,

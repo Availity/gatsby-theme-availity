@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-import useCopyToClipboard from 'react-use/lib/useCopyToClipboard';
+import { FaCopy, FaCheck } from 'react-icons/fa';
+import { useCopyToClipboard } from 'react-use';
 
 // Component for copying code value onto the clipboard
 const CopyClipboard = ({ value, ...props }) => {
-  const [{ value: copied }, copyToClipboard] = useCopyToClipboard();
+  const [, copyToClipboard] = useCopyToClipboard();
+  const [copied, setCopied] = useState(false);
+  const btnRef = useRef();
 
-  function handleCopy() {
+  const copyToCb = () => {
     copyToClipboard(value);
-  }
+    setCopied(true);
+  };
+
+  useEffect(() => {
+    const fn = setTimeout(() => {
+      setCopied(false);
+      btnRef.current.blur();
+    }, 2000);
+
+    return () => clearTimeout(fn);
+  }, [copied]);
 
   return (
-    <Button color="light" size="sm" onClick={handleCopy} {...props}>
-      {copied ? 'Copied!' : 'Copy'}
+    <Button
+      color="light"
+      innerRef={btnRef}
+      size="sm"
+      onClick={copyToCb}
+      {...props}
+    >
+      {copied ? (
+        <FaCheck title="Copied" color="success" />
+      ) : (
+        <FaCopy title="Copy To Clipboard" />
+      )}
     </Button>
   );
 };
