@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { Nav, Collapse, NavItem, NavLink } from 'reactstrap';
+// eslint-disable-next-line import/no-cycle
 import NavigationItem from './NavItem';
 
 const NavItemAlt = ({
@@ -45,8 +46,8 @@ const NavItemAlt = ({
             className={classnames('py-2 w-100', {
               'pl-4': !isSecondaryCategory,
               'pl-5': isSecondaryCategory,
-              'sidenav-link-active': isPageSelected({ path }),
-              'text-secondary sidenav-link': !isPageSelected({ path }),
+              'sidenav-link-active hover': isPageSelected({ path }),
+              'text-secondary sidenav-link hover': !isPageSelected({ path }),
               'sidenav-link-secondary': isSecondaryCategory,
             })}
           >

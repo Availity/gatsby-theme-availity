@@ -47,7 +47,7 @@ const NavigationItem = ({
     <>
       <span
         key={collapseTitle}
-        className={classnames(className, {
+        className={classnames(className, 'position-relative', {
           'border-bottom': !isRootLink && !isSecondaryCategory,
         })}
         style={{
@@ -59,20 +59,24 @@ const NavigationItem = ({
         }}
       >
         <NavLink
-          onClick={() => !isRootLink && toggleCollapse()}
+          onClick={() =>
+            !isRootLink &&
+            (!isSecondaryCategory || !isPageSelected({ path })) &&
+            toggleCollapse()
+          }
           className={classnames(
             'pt-2 pb-2 d-flex align-items-center justify-content-between pl-4 position-relative',
             {
               'text-uppercase': !isRootLink && !isSecondaryCategory,
               lead: isRootLink,
               'text-primary': isRootLink || isCategorySelected,
-              'sidenav-link-active':
+              'sidenav-link-active hover':
                 isCategorySelected &&
                 !isRootLink &&
                 isSecondaryCategory &&
                 isPageSelected({ path }),
               'sidenav-header-link': !isRootLink,
-              'sidenav-link': !isPageSelected({ path }) && !isRootLink,
+              'sidenav-link hover': !isPageSelected({ path }) && !isRootLink,
             }
           )}
           style={{
@@ -80,19 +84,20 @@ const NavigationItem = ({
             letterSpacing: isSecondaryCategory || isRootLink ? 0 : 1,
           }}
         >
-          {isRootLink ? (
-            siteTitle
-          ) : (
-            <>
-              {collapseTitle}
-              {collapseOpen ? (
-                <FaCaretUp className="mr-3" />
-              ) : (
-                <FaCaretDown className="mr-3" />
-              )}
-            </>
-          )}{' '}
+          {isRootLink ? siteTitle : collapseTitle}
         </NavLink>
+        {!isRootLink && (
+          <NavLink
+            onClick={() => !isRootLink && toggle()}
+            className="position-absolute py-2 px-3 sidenav-collapse"
+            style={{
+              right: 0,
+              top: 0,
+            }}
+          >
+            {collapseOpen ? <FaCaretUp /> : <FaCaretDown />}
+          </NavLink>
+        )}
         <NavItemAlt
           isRootLink={isRootLink}
           isSecondaryCategory={isSecondaryCategory}
