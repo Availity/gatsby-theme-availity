@@ -20,15 +20,21 @@ module.exports = {
         sidebarCategories: {
           null: ['index', 'quick-start'],
           'Doc Essentials': [
-            {
-              resolve: 'essentials/react',
-              pages: ['essentials/test'],
-            },
+            'essentials/react',
             'essentials/mock',
             'essentials/relative-links',
             'essentials/code-blocks',
           ],
-          'API Reference': ['reference/gatsby-core', 'reference/gatsby-docs'],
+          'API Reference': [
+            {
+              resolve: 'reference/gatsby-core/index',
+              pages: [
+                'reference/gatsby-core/components',
+                'reference/gatsby-core/reference',
+              ],
+            },
+            'reference/gatsby-docs',
+          ],
         },
       },
     },

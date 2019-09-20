@@ -72,6 +72,19 @@ The `sidebarCategories` option is an object keyed by category titles. Each entry
 }
 ```
 
+If you want to have secondary categories like [Gatsby Them Core](/reference/gatsby-core/) then you can make your category an object like the below.
+
+```js hideCopy=true
+{
+  'API Reference': [{
+    resolve: 'reference/gatsby-core/index', // The secondary page introd
+    pages: [ // the list of pages underneath
+      'reference/gatsby-core/components','reference/gatsby-core/reference'
+    ]
+  }, 'reference/gatsby-docs'],
+}
+```
+
 ### `navConfig`
 
 The `navConfig` option is an object keyed by the title of the nav items to be rendered at the top right of the screen in the navigation.

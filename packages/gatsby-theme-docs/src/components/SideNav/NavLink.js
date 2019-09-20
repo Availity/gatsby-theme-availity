@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
-import { Nav, Collapse, NavItem, NavLink } from 'reactstrap';
+import { Nav, Collapse, NavItem, NavLink as RsNavLink } from 'reactstrap';
 // eslint-disable-next-line import/no-cycle
 import NavigationItem from './NavItem';
 
-const NavItemAlt = ({
+const NavLink = ({
   isRootLink,
   collapseProps,
   isSecondaryCategory,
@@ -39,7 +39,7 @@ const NavItemAlt = ({
           active={isPageSelected({ path })}
           className="position-relative d-flex align-items-center"
         >
-          <NavLink
+          <RsNavLink
             tag={Link}
             to={path}
             active={isPageSelected({ path })}
@@ -52,14 +52,14 @@ const NavItemAlt = ({
             })}
           >
             {title}
-          </NavLink>
+          </RsNavLink>
         </NavItem>
       )
     )}
   </Nav>
 );
 
-NavItemAlt.propTypes = {
+NavLink.propTypes = {
   isRootLink: PropTypes.bool,
   collapseProps: PropTypes.object,
   isPageSelected: PropTypes.func,
@@ -67,4 +67,4 @@ NavItemAlt.propTypes = {
   isSecondaryCategory: PropTypes.bool,
 };
 
-export default NavItemAlt;
+export default NavLink;

@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { navigate } from 'gatsby';
-import { NavLink } from 'reactstrap';
+import { NavLink as RsNavLink } from 'reactstrap';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { useCollapse } from './CollapseContext';
 import CollapseAll from './CollapseAll';
-import NavItemAlt from './NavItemAlt';
+// eslint-disable-next-line import/no-cycle
+import NavLink from './NavLink';
 
 const NavigationItem = ({
   collapseTitle,
@@ -58,7 +59,7 @@ const NavigationItem = ({
             'rgba(34, 97, 181, 0.03)',
         }}
       >
-        <NavLink
+        <RsNavLink
           onClick={() =>
             !isRootLink &&
             (!isSecondaryCategory || !isPageSelected({ path })) &&
@@ -70,6 +71,7 @@ const NavigationItem = ({
               'text-uppercase': !isRootLink && !isSecondaryCategory,
               lead: isRootLink,
               'text-primary': isRootLink || isCategorySelected,
+              'text-secondary': isSecondaryCategory && !isCategorySelected,
               'sidenav-link-active hover':
                 isCategorySelected &&
                 !isRootLink &&
@@ -85,9 +87,9 @@ const NavigationItem = ({
           }}
         >
           {isRootLink ? siteTitle : collapseTitle}
-        </NavLink>
+        </RsNavLink>
         {!isRootLink && (
-          <NavLink
+          <RsNavLink
             onClick={() => !isRootLink && toggle()}
             className="position-absolute py-2 px-3 sidenav-collapse"
             style={{
@@ -96,9 +98,9 @@ const NavigationItem = ({
             }}
           >
             {collapseOpen ? <FaCaretUp /> : <FaCaretDown />}
-          </NavLink>
+          </RsNavLink>
         )}
-        <NavItemAlt
+        <NavLink
           isRootLink={isRootLink}
           isSecondaryCategory={isSecondaryCategory}
           collapseProps={collapseIsOpenProp}
