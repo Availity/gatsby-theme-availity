@@ -1,5 +1,5 @@
 ---
-title: Gatsby Them Core Components
+title: Gatsby Theme Core Components
 ---
 
 There are a few exported components that are used for building themes.

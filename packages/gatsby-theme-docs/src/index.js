@@ -20,7 +20,7 @@ import './styles.scss';
 // The Template to load on each page
 const Template = ({
   location,
-  pageContext: { sidebarContents, navItems, githubUrl },
+  pageContext: { sidebarContents, pageOrder, navItems, githubUrl },
   data,
 }) => {
   const components = {
@@ -50,7 +50,19 @@ const Template = ({
   const { hash, pathname } = location;
 
   const pages = sidebarContents
-    .reduce((acc, { pages }) => acc.concat(pages), [])
+    .reduce(
+      (acc, { pages }) =>
+        acc.concat(
+          pages.reduce(
+            (_acc, { pages: _pages, ...__page }) =>
+              _acc.concat(
+                _pages ? [{ ...__page, pages: _pages }, ..._pages] : [__page]
+              ),
+            []
+          )
+        ),
+      []
+    )
     .filter(page => !page.anchor);
 
   const pageIndex = pages.findIndex(page => {

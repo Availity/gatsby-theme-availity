@@ -5,7 +5,7 @@ import { NavLink } from 'reactstrap';
 import { Link } from 'gatsby';
 
 const PageNav = ({ nextPage, prevPage }) => (
-  <div className="d-flex justify-content-between mt-5 mb-5 pl-0 pr-0">
+  <div className="d-flex justify-content-between my-5 pt-3 pl-0 pr-0 border-top">
     {prevPage && (
       <NavLink
         tag={Link}
