@@ -25,13 +25,17 @@ const Template = ({
 }) => {
   const components = {
     code: CodeBlock,
+    inlineCode: CodeBlock,
     pre: props => props.children,
     table: Table,
     h2: ({ className, ...props }) => (
-      <h2 className={classnames(className, 'mt-5')} {...props} />
+      <h2 className={classnames(className, 'mt-5 h4')} {...props} />
     ),
     h3: ({ className, ...props }) => (
-      <h3 className={classnames(className, 'mt-4')} {...props} />
+      <h3 className={classnames(className, 'mt-4 h5')} {...props} />
+    ),
+    h4: ({ className, ...props }) => (
+      <h3 className={classnames(className, 'mt-4 h6')} {...props} />
     ),
   };
 

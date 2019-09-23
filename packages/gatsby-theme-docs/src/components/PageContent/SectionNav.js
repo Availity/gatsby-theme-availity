@@ -77,18 +77,27 @@ const SectionNav = ({
           const slug = slugger.slug(text);
 
           return (
-            <NavItem key={slug} active={slug === activeHeading}>
+            <NavItem
+              key={slug}
+              active={slug === activeHeading}
+              tag={depth === 3 ? 'code' : 'li'}
+              className={classnames({
+                'ml-4 p-1 mb-1': depth === 3,
+              })}
+              style={{
+                fontSize: depth === 3 && 12,
+                background: depth === 3 && '#f8f8f8',
+                width: depth === 3 && 'fit-content',
+              }}
+            >
               <NavLink
                 href={`#${slug}`}
                 active={slug === activeHeading}
                 className={classnames({
                   // 'font-weight-bold': slug === activeHeading,
                   'text-secondary': slug !== activeHeading,
-                  'ml-4 py-2': depth === 3,
+                  'p-0': depth === 3,
                 })}
-                style={{
-                  fontSize: depth === 3 && 15,
-                }}
               >
                 {text}
               </NavLink>

@@ -45,6 +45,8 @@ const CodeBlock = ({
     viewCode = _viewCode === 'true',
     header = _header,
   } = getConfig(dataMeta);
+  console.log('Code Children', children);
+
   // for mdx it, `live` will be inside "data-meta", if md then `live` is a prop
 
   // MDX will be an array, md will already have the child
@@ -61,17 +63,14 @@ const CodeBlock = ({
   // If the language is text or nothing we can just render it inline
   if (language === '' || language === 'text') {
     return (
-      <span
+      <code
+        className="p-1 text-dark rounded"
         style={{
-          padding: '0.1em 0.3em',
-          borderRadius: '0.3em',
-          color: '#db4c69',
-          display: 'inline-block',
-          background: '#f9f2f4',
+          backgroundColor: 'rgba(27,31,35,.05)',
         }}
       >
         {code}
-      </span>
+      </code>
     );
   }
 
