@@ -1,6 +1,6 @@
 {
   "name": "@availity/gatsby-theme-docs",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "license": "MIT",
   "main": "index.js",
   "repository": {
@@ -40,7 +40,7 @@
   "dependencies": {
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
-    "@availity/gatsby-theme-core": "^1.2.7",
+    "@availity/gatsby-theme-core": "^1.2.8",
     "@availity/localstorage-core": "^2.6.1",
     "@availity/page-header": "^8.0.0-alpha.7",
     "@availity/spaces": "^3.1.0",
