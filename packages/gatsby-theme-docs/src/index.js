@@ -50,7 +50,19 @@ const Template = ({
   const { hash, pathname } = location;
 
   const pages = sidebarContents
-    .reduce((acc, { pages }) => acc.concat(pages), [])
+    .reduce(
+      (acc, { pages }) =>
+        acc.concat(
+          pages.reduce(
+            (_acc, { pages: _pages, ...__page }) =>
+              _acc.concat(
+                _pages ? [{ ...__page, pages: _pages }, ..._pages] : [__page]
+              ),
+            []
+          )
+        ),
+      []
+    )
     .filter(page => !page.anchor);
 
   const pageIndex = pages.findIndex(page => {
@@ -80,18 +92,23 @@ const Template = ({
           }}
         />
         <div
-          className="d-flex flex-column h-100 w-100 p-5 "
+          className="d-flex flex-column h-100 w-100 px-5 pb-5 pt-4"
           style={{
             overflowY: 'auto',
           }}
           ref={mainRef}
         >
-          <PageHeader {...frontmatter} />
+          <PageHeader
+            {...frontmatter}
+            siteTitle={site.siteMetadata.subtitle}
+            currentPage={pages[pageIndex]}
+            githubUrl={githubUrl}
+            pages={pages}
+          />
           <PageContent
             className="p-4 flex-fill"
             title={frontmatter.title}
             headings={headings}
-            githubUrl={githubUrl}
             pages={pages}
             hash={hash}
             pageIndex={pageIndex}

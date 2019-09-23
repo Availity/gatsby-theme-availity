@@ -1,16 +1,10 @@
 ---
-title: 'Gatsby Theme Core'
+title: Gatsby Theme Core Components
 ---
 
-The Core for our themes is a plugin that contains some resuable components for sites. At its core, the plugin provides all the metadata needed for the page as well as including some cdn's required for the search bar to work.
-
-```bash
-npm install @availity/gatsby-theme-core
-```
+There are a few exported components that are used for building themes.
 
 ## Components
-
-There are a few exported components that are used for building themes.
 
 ### TopNavigation
 

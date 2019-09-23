@@ -5,7 +5,6 @@ import classnames from 'classnames';
 import striptags from 'striptags';
 import { useScroll, useWindowSize } from 'react-use';
 import Slugger from 'github-slugger';
-import { FaGithub } from 'react-icons/fa';
 
 const SectionNav = ({
   headings,
@@ -13,7 +12,6 @@ const SectionNav = ({
   mainRef,
   contentRef,
   className,
-  githubUrl,
   ...rest
 }) => {
   const { y } = useScroll(mainRef);
@@ -63,10 +61,10 @@ const SectionNav = ({
     <Nav
       className={classnames(
         className,
-        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2'
+        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2 w-100'
       )}
       vertical
-      style={{ width: 320, position: 'sticky', top: -39 }}
+      style={{ maxWidth: 400, position: 'sticky', top: 0 }}
       {...rest}
     >
       <NavItem style={{ fontWeight: '500' }}>
@@ -86,7 +84,7 @@ const SectionNav = ({
                 className={classnames({
                   // 'font-weight-bold': slug === activeHeading,
                   'text-secondary': slug !== activeHeading,
-                  'ml-4 pt-1 pb-1': depth === 3,
+                  'ml-4 py-2': depth === 3,
                 })}
                 style={{
                   fontSize: depth === 3 && 15,
@@ -97,14 +95,6 @@ const SectionNav = ({
             </NavItem>
           );
         })}
-      <NavItem className="mt-5">
-        <NavLink
-          href={githubUrl}
-          className="text-dark d-flex align-items-center"
-        >
-          <FaGithub size={18} className="mr-2" /> Edit on Github
-        </NavLink>
-      </NavItem>
     </Nav>
   );
 };
@@ -115,7 +105,6 @@ SectionNav.propTypes = {
   mainRef: PropTypes.object,
   title: PropTypes.string,
   className: PropTypes.string,
-  githubUrl: PropTypes.string,
 };
 
 export default SectionNav;

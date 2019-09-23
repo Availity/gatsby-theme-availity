@@ -25,7 +25,16 @@ module.exports = {
             'essentials/relative-links',
             'essentials/code-blocks',
           ],
-          'API Reference': ['reference/gatsby-core', 'reference/gatsby-docs'],
+          'API Reference': [
+            {
+              resolve: 'reference/gatsby-core/index',
+              pages: [
+                'reference/gatsby-core/components',
+                'reference/gatsby-core/reference',
+              ],
+            },
+            'reference/gatsby-docs',
+          ],
         },
       },
     },

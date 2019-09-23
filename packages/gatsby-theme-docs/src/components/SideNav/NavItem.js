@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Link } from 'gatsby';
-import { Nav, NavItem, NavLink, Collapse } from 'reactstrap';
+import { navigate } from 'gatsby';
+import { NavLink as RsNavLink } from 'reactstrap';
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
 import { useCollapse } from './CollapseContext';
 import CollapseAll from './CollapseAll';
+// eslint-disable-next-line import/no-cycle
+import NavLink from './NavLink';
 
 const NavigationItem = ({
   collapseTitle,
@@ -13,82 +15,100 @@ const NavigationItem = ({
   isCategorySelected,
   siteTitle,
   pages,
+  path,
   isPageSelected,
 }) => {
   const [collapseOpen, toggle] = useCollapse(collapseTitle, isCategorySelected);
 
   const collapseIsOpenProp = {};
 
-  if (collapseTitle !== null) {
+  const isSecondaryCategory = !!path;
+  const isRootLink = collapseTitle === null;
+
+  if (!isRootLink) {
     collapseIsOpenProp.isOpen = collapseOpen;
     collapseIsOpenProp.mountOnEnter = true;
   }
+
+  const toggleCollapse = () => {
+    if (!isSecondaryCategory) {
+      return toggle();
+    }
+
+    if (!collapseOpen) {
+      navigate(path);
+    } else if (collapseOpen && !isPageSelected({ path })) {
+      return navigate(path);
+    }
+
+    return toggle();
+  };
 
   return (
     <>
       <span
         key={collapseTitle}
-        className={classnames(className, {
-          'border-bottom': collapseTitle !== null,
+        className={classnames(className, 'position-relative', {
+          'border-bottom': !isRootLink && !isSecondaryCategory,
         })}
+        style={{
+          backgroundColor:
+            isCategorySelected &&
+            !isSecondaryCategory &&
+            !isRootLink &&
+            'rgba(34, 97, 181, 0.03)',
+        }}
       >
-        <NavLink
-          onClick={toggle}
+        <RsNavLink
+          onClick={() =>
+            !isRootLink &&
+            (!isSecondaryCategory || !isPageSelected({ path })) &&
+            toggleCollapse()
+          }
           className={classnames(
-            'mt-1 mb-1 d-flex align-items-center justify-content-between pl-4',
+            'pt-2 pb-2 d-flex align-items-center justify-content-between pl-4 position-relative',
             {
-              'text-uppercase': collapseTitle !== null,
-              lead: collapseTitle === null,
-              'text-primary': collapseTitle === null || isCategorySelected,
+              'text-uppercase': !isRootLink && !isSecondaryCategory,
+              lead: isRootLink,
+              'text-primary': isRootLink || isCategorySelected,
+              'text-secondary': isSecondaryCategory && !isCategorySelected,
+              'sidenav-link-active hover':
+                isCategorySelected &&
+                !isRootLink &&
+                isSecondaryCategory &&
+                isPageSelected({ path }),
+              'sidenav-header-link': !isRootLink,
+              'sidenav-link hover': !isPageSelected({ path }) && !isRootLink,
             }
           )}
           style={{
-            fontWeight: '500',
-            letterSpacing: collapseTitle === null ? 0 : 1,
+            fontWeight: (!isSecondaryCategory || isCategorySelected) && '500',
+            letterSpacing: isSecondaryCategory || isRootLink ? 0 : 1,
           }}
         >
-          {collapseTitle === null ? (
-            siteTitle
-          ) : (
-            <>
-              {collapseTitle}
-              {collapseOpen ? (
-                <FaCaretUp className="mr-3" />
-              ) : (
-                <FaCaretDown className="mr-3" />
-              )}
-            </>
-          )}{' '}
-        </NavLink>
-        <Nav
-          vertical
-          tag={collapseTitle === null ? 'ul' : Collapse}
-          {...collapseIsOpenProp}
-          className="mb-2"
-          navbar
-        >
-          {pages.map(({ path, title }) => (
-            <NavItem
-              key={title}
-              active={isPageSelected({ path })}
-              className="position-relative d-flex align-items-center"
-            >
-              <NavLink
-                tag={Link}
-                to={path}
-                active={isPageSelected({ path })}
-                className={classnames('pl-4 pt-1 pb-1 w-100', {
-                  'sidenav-link-active': isPageSelected({ path }),
-                  'text-secondary sidenav-link': !isPageSelected({ path }),
-                })}
-              >
-                {title}
-              </NavLink>
-            </NavItem>
-          ))}
-        </Nav>
+          {isRootLink ? siteTitle : collapseTitle}
+        </RsNavLink>
+        {!isRootLink && (
+          <RsNavLink
+            onClick={() => !isRootLink && toggle()}
+            className="position-absolute py-2 px-3 sidenav-collapse"
+            style={{
+              right: 0,
+              top: 0,
+            }}
+          >
+            {collapseOpen ? <FaCaretUp /> : <FaCaretDown />}
+          </RsNavLink>
+        )}
+        <NavLink
+          isRootLink={isRootLink}
+          isSecondaryCategory={isSecondaryCategory}
+          collapseProps={collapseIsOpenProp}
+          isPageSelected={isPageSelected}
+          pages={pages}
+        />
       </span>{' '}
-      {collapseTitle === null && <CollapseAll className="pl-4" />}
+      {isRootLink && <CollapseAll className="pl-4" />}
     </>
   );
 };
@@ -98,6 +118,7 @@ NavigationItem.propTypes = {
   siteTitle: PropTypes.string,
   isCategorySelected: PropTypes.bool,
   pages: PropTypes.array,
+  path: PropTypes.string,
   isPageSelected: PropTypes.func,
 };
 
