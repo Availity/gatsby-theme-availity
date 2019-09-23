@@ -1,10 +1,84 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, NavLink, NavItem } from 'reactstrap';
 import classnames from 'classnames';
 import striptags from 'striptags';
 import { useScroll, useWindowSize } from 'react-use';
 import Slugger from 'github-slugger';
+
+const SectionNavigationItem = ({
+  value,
+  isReactProp,
+  activeHeading,
+  subHeadings,
+  slugger,
+  depth,
+}) => {
+  const text = striptags(value);
+  const slug = slugger.slug(text);
+
+  return (
+    <NavItem
+      active={slug === activeHeading}
+      tag={isReactProp ? 'code' : 'li'}
+      className="d-block"
+    >
+      <NavLink
+        href={`#${slug}`}
+        active={slug === activeHeading}
+        className={classnames({
+          // 'font-weight-bold': slug === activeHeading,
+          'text-secondary': slug !== activeHeading,
+          'p-1 mb-1': isReactProp,
+          'ml-4': depth === 3,
+        })}
+        style={{
+          fontSize: isReactProp && 11,
+          background: isReactProp && '#f8f8f8',
+          width: isReactProp && 'fit-content',
+        }}
+      >
+        {text}
+      </NavLink>
+      {subHeadings && subHeadings.length > 0 && (
+        <ul className="pl-0">
+          {subHeadings.map(subHeadingProps => (
+            <SectionNavigationItem
+              key={subHeadingProps.value}
+              activeHeading={activeHeading}
+              slugger={slugger}
+              {...subHeadingProps}
+            />
+          ))}
+        </ul>
+      )}
+    </NavItem>
+  );
+};
+
+// Sort the list into a depth tree rather than single layer
+// before [{ value: "Hello", depth: 2}, { value:"World", depth: 3}]
+// after  [{ value: "Hello", depth: 2, subHeadings: [{ value: "World", depth: 3 } ] }]
+const sortHeadings = headings => {
+  const newHeadings = [];
+
+  headings.forEach(heading => {
+    if (heading.depth === 2) {
+      newHeadings.push({
+        ...heading,
+        subHeadings: [],
+      });
+    } else if (heading.depth === 3) {
+      const currentHeading = newHeadings[newHeadings.length - 1];
+      currentHeading.subHeadings.push({
+        ...heading,
+        isReactProp: currentHeading.value === 'Props',
+      });
+    }
+  });
+
+  return newHeadings;
+};
 
 const SectionNav = ({
   headings,
@@ -17,6 +91,8 @@ const SectionNav = ({
   const { y } = useScroll(mainRef);
   const { width, height } = useWindowSize();
   const [offsets, setOffsets] = useState([]);
+
+  const sectionHeadings = useMemo(() => sortHeadings(headings), [headings]);
 
   // When the width or the height of screen, or content updates, we need to adjust the offsets for where to
   // place the anchor when we click a section link
@@ -54,6 +130,8 @@ const SectionNav = ({
     }
   }
 
+  console.log('subSections', sectionHeadings);
+
   // Slugger :baseball:
   const slugger = new Slugger();
 
@@ -70,40 +148,14 @@ const SectionNav = ({
       <NavItem style={{ fontWeight: '500' }}>
         <NavLink>{title}</NavLink>
       </NavItem>
-      {headings
-        .filter(({ depth }) => depth === 2 || depth === 3)
-        .map(({ value, depth }) => {
-          const text = striptags(value);
-          const slug = slugger.slug(text);
-
-          return (
-            <NavItem
-              key={slug}
-              active={slug === activeHeading}
-              tag={depth === 3 ? 'code' : 'li'}
-              className={classnames({
-                'ml-4 p-1 mb-1': depth === 3,
-              })}
-              style={{
-                fontSize: depth === 3 && 12,
-                background: depth === 3 && '#f8f8f8',
-                width: depth === 3 && 'fit-content',
-              }}
-            >
-              <NavLink
-                href={`#${slug}`}
-                active={slug === activeHeading}
-                className={classnames({
-                  // 'font-weight-bold': slug === activeHeading,
-                  'text-secondary': slug !== activeHeading,
-                  'p-0': depth === 3,
-                })}
-              >
-                {text}
-              </NavLink>
-            </NavItem>
-          );
-        })}
+      {sectionHeadings.map(headingProps => (
+        <SectionNavigationItem
+          {...headingProps}
+          key={headingProps.value}
+          slugger={slugger}
+          activeHeading={activeHeading}
+        />
+      ))}
     </Nav>
   );
 };
