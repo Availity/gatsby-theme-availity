@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaPencilAlt } from 'react-icons/fa';
 import { Collapse, Card, CardHeader, Button } from 'reactstrap';
-import githubTheme from 'prism-react-renderer/themes/github';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
+import githubTheme from './availityTheme';
 import CopyClipboard from './CopyClipboard';
 import LiveCodeScopes from '../LiveCodeScopes';
 
@@ -57,12 +57,12 @@ const LiveCode = ({
               theme={githubTheme}
               ignoreTabKey
               className="border-top"
-              style={{
-                fontSize: 13,
-                fontFamily:
-                  "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
-                backgroundColor: '#f8f8f8',
-              }}
+              // style={{
+              //   fontSize: 13,
+              //   fontFamily:
+              //     "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+              //   backgroundColor: '#f8f8f8',
+              // }}
             />
             <LiveError />
           </div>
