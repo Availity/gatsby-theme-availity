@@ -77,7 +77,7 @@ const NavigationItem = ({
               'sidenav-link-active hover':
                 isCategorySelected && !isRootLink && isPageSelected({ path }),
               'sidenav-header-link': !isRootLink,
-              'sidenav-link hover': !isPageSelected({ path }) || !isRootLink,
+              'sidenav-link hover': !isPageSelected({ path }) && !isRootLink,
             }
           )}
           style={{
