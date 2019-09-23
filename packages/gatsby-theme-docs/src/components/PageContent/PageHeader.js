@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react';
+import loadable from '@loadable/component';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from 'reactstrap';
 import { FaGithub } from 'react-icons/fa';
-import PageHeader from '@availity/page-header';
 import { withPrefix } from 'gatsby';
+
+const PageHeader = loadable(() => import('@availity/page-header'));
 
 // Top Page header that is rendered on the current page
 const CustomPageHeader = ({
@@ -25,7 +27,7 @@ const CustomPageHeader = ({
     if (currentPage.parent) {
       crumbArr.push({
         name: currentPage.parent.title,
-        url: currentPage.parent.path,
+        url: withPrefix(currentPage.parent.path),
       });
     }
 

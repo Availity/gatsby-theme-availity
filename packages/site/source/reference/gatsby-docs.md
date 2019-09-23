@@ -1,5 +1,5 @@
 ---
-title: 'Gatsby Theme Docs'
+title: Gatsby Theme Docs
 ---
 
 This API Reference documents all the available configurations for `gatsby-config.js`.
