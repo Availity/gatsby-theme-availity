@@ -6,14 +6,17 @@ import { Link } from 'gatsby';
 const SectionOverview = ({ sections }) => (
   <div className="my-5">
     <h3 className="h4">In this Section:</h3>
-    <Nav vertical>
+    <Nav
+      vertical
+      style={{
+        listStyle: 'circle',
+      }}
+    >
       {sections.map(({ title, path }) => (
-        <NavItem className="py-1 pl-0">
-          <li>
-            <NavLink tag={Link} to={path}>
-              {title}
-            </NavLink>
-          </li>
+        <NavItem className="py-1 pl-0 ml-5" key={path}>
+          <NavLink tag={Link} to={path} className="pl-0">
+            {title}
+          </NavLink>
         </NavItem>
       ))}
     </Nav>

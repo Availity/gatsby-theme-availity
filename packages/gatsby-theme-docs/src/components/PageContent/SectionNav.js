@@ -130,8 +130,6 @@ const SectionNav = ({
     }
   }
 
-  console.log('subSections', sectionHeadings);
-
   // Slugger :baseball:
   const slugger = new Slugger();
 

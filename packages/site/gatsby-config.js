@@ -19,13 +19,13 @@ module.exports = {
         contentDir: 'packages/site/source',
         sidebarCategories: {
           null: ['index', 'quick-start'],
-          'Doc Essentials': [
+          Essentials: [
             'essentials/react',
             'essentials/mock',
             'essentials/relative-links',
             'essentials/code-blocks',
           ],
-          'API Reference': [
+          'reference/index': [
             {
               resolve: 'reference/gatsby-core/index',
               pages: [

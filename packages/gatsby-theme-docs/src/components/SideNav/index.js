@@ -22,7 +22,7 @@ const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
   };
 
   const isCategorySelected = (path, pages) => {
-    return path ? isPageSelected(path) : pages.some(isPageSelected);
+    return pages.some(isPageSelected) || (path && isPageSelected({ path }));
   };
 
   return (
@@ -30,10 +30,12 @@ const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
       <Nav vertical navbar className="h-100 text-dark">
         <CollapseProvider siteName={siteTitle}>
           {contents.map(
-            ({ title: collapseTitle, pages, path: categoryPath }) => (
+            ({ title: collapseTitle, pages, path: categoryPath, depth }) => (
               <NavigationItem
                 key={collapseTitle}
                 collapseTitle={collapseTitle}
+                path={categoryPath}
+                depth={depth}
                 isCategorySelected={isCategorySelected(categoryPath, pages)}
                 siteTitle={siteTitle}
                 pages={pages}

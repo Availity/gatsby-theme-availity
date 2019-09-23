@@ -16,13 +16,15 @@ const NavigationItem = ({
   siteTitle,
   pages,
   path,
+  depth,
   isPageSelected,
 }) => {
   const [collapseOpen, toggle] = useCollapse(collapseTitle, isCategorySelected);
 
   const collapseIsOpenProp = {};
 
-  const isSecondaryCategory = !!path;
+  const isSecondaryCategory = !!(depth !== 0 && path && pages);
+  const isPrimaryCategory = depth === 0;
   const isRootLink = collapseTitle === null;
 
   if (!isRootLink) {
@@ -31,7 +33,7 @@ const NavigationItem = ({
   }
 
   const toggleCollapse = () => {
-    if (!isSecondaryCategory) {
+    if (!isSecondaryCategory && (isPrimaryCategory && !path)) {
       return toggle();
     }
 
@@ -49,7 +51,7 @@ const NavigationItem = ({
       <span
         key={collapseTitle}
         className={classnames(className, 'position-relative', {
-          'border-bottom': !isRootLink && !isSecondaryCategory,
+          'border-bottom': !isRootLink && isPrimaryCategory,
         })}
         style={{
           backgroundColor:
@@ -68,17 +70,14 @@ const NavigationItem = ({
           className={classnames(
             'pt-2 pb-2 d-flex align-items-center justify-content-between pl-4 position-relative',
             {
-              'text-uppercase': !isRootLink && !isSecondaryCategory,
+              'text-uppercase': !isRootLink && isPrimaryCategory,
               lead: isRootLink,
               'text-primary': isRootLink || isCategorySelected,
               'text-secondary': isSecondaryCategory && !isCategorySelected,
               'sidenav-link-active hover':
-                isCategorySelected &&
-                !isRootLink &&
-                isSecondaryCategory &&
-                isPageSelected({ path }),
+                isCategorySelected && !isRootLink && isPageSelected({ path }),
               'sidenav-header-link': !isRootLink,
-              'sidenav-link hover': !isPageSelected({ path }) && !isRootLink,
+              'sidenav-link hover': !isPageSelected({ path }) || !isRootLink,
             }
           )}
           style={{
@@ -118,6 +117,7 @@ NavigationItem.propTypes = {
   siteTitle: PropTypes.string,
   isCategorySelected: PropTypes.bool,
   pages: PropTypes.array,
+  depth: PropTypes.number,
   path: PropTypes.string,
   isPageSelected: PropTypes.func,
 };

@@ -15,7 +15,7 @@ const PageContent = ({
 }) => {
   const contentRef = useRef();
 
-  const isSecondaryCategoryPage = pages[pageIndex].pages;
+  const hasSubPages = pages[pageIndex].pages;
 
   useEffect(() => {
     if (_hash) {
@@ -42,15 +42,13 @@ const PageContent = ({
         ref={contentRef}
       >
         {children}
-        {isSecondaryCategoryPage && (
-          <SectionOverview sections={pages[pageIndex].pages} />
-        )}
+        {hasSubPages && <SectionOverview sections={pages[pageIndex].pages} />}
         <PageNav
           prevPage={pages[pageIndex - 1]}
           nextPage={pages[pageIndex + 1]}
         />
       </div>
-      {!isSecondaryCategoryPage && (
+      {!hasSubPages && (
         <SectionNav
           headings={headings}
           mainRef={mainRef}

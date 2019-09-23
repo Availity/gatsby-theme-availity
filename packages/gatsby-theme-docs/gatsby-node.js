@@ -45,7 +45,7 @@ function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
-function mapLinkToItem(linkPathOrObject, edges, parent) {
+function mapLinkToItem(linkPathOrObject, edges, depth, parent) {
   let linkPath = linkPathOrObject;
 
   if (typeof linkPathOrObject === 'object') {
@@ -59,6 +59,7 @@ function mapLinkToItem(linkPathOrObject, edges, parent) {
       title: match[1],
       path: match[2],
       parent,
+      depth,
     };
   }
 
@@ -80,10 +81,11 @@ function mapLinkToItem(linkPathOrObject, edges, parent) {
     title: frontmatter.title,
     path: fields.slug,
     parent,
+    depth,
     pages:
       typeof linkPathOrObject === 'object' &&
       linkPathOrObject.pages.map(subLinkPath =>
-        mapLinkToItem(subLinkPath, edges, {
+        mapLinkToItem(subLinkPath, edges, depth + 1, {
           title: frontmatter.title,
           path: fields.slug,
         })
@@ -91,12 +93,27 @@ function mapLinkToItem(linkPathOrObject, edges, parent) {
   };
 }
 
+const mapKeyToContent = (key, edges) => {
+  const obj = {
+    title: key === 'null' ? null : key,
+    depth: 0,
+  };
+
+  const mappedItem = mapLinkToItem(key, edges, 0);
+
+  if (mappedItem !== null) {
+    return mappedItem;
+  }
+
+  return obj;
+};
+
 // Will return a formatted last of all the categories for the left side nav
 function getSidebarContents(sidebarCategories, edges) {
   return Object.keys(sidebarCategories).map(key => ({
-    title: key === 'null' ? null : key,
+    ...mapKeyToContent(key, edges),
     pages: sidebarCategories[key]
-      .map(linkPathOrObject => mapLinkToItem(linkPathOrObject, edges))
+      .map(linkPathOrObject => mapLinkToItem(linkPathOrObject, edges, 1))
       .filter(Boolean),
   }));
 }

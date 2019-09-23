@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/heading-has-content */
-import React, { useRef } from 'react';
+import React, { useRef, useMemo, useCallback } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { graphql, withPrefix } from 'gatsby';
@@ -53,21 +53,22 @@ const Template = ({
 
   const { hash, pathname } = location;
 
-  const pages = sidebarContents
-    .reduce(
-      (acc, { pages }) =>
-        acc.concat(
-          pages.reduce(
-            (_acc, { pages: _pages, ...__page }) =>
-              _acc.concat(
-                _pages ? [{ ...__page, pages: _pages }, ..._pages] : [__page]
-              ),
-            []
-          )
-        ),
-      []
-    )
-    .filter(page => !page.anchor);
+  const reduceFn = useCallback((_acc, { pages: _pages, ...__page }) => {
+    if (__page.title && __page.path) {
+      _acc = _acc.concat({ ...__page, pages: _pages });
+    }
+
+    if (_pages) {
+      _acc = _acc.concat(_pages.reduce(reduceFn, []));
+    }
+
+    return _acc;
+  }, []);
+
+  const pages = useMemo(
+    () => sidebarContents.reduce(reduceFn, []).filter(page => !page.anchor),
+    [sidebarContents, reduceFn]
+  );
 
   const pageIndex = pages.findIndex(page => {
     const prefixedPath = withPrefix(page.path);

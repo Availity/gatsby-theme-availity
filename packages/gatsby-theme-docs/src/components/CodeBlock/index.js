@@ -45,7 +45,6 @@ const CodeBlock = ({
     viewCode = _viewCode === 'true',
     header = _header,
   } = getConfig(dataMeta);
-  console.log('Code Children', children);
 
   // for mdx it, `live` will be inside "data-meta", if md then `live` is a prop
 

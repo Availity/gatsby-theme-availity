@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { FaPencilAlt } from 'react-icons/fa';
 import { Collapse, Card, CardHeader, Button } from 'reactstrap';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
-import githubTheme from './availityTheme';
+import availityTheme from './availityTheme';
 import CopyClipboard from './CopyClipboard';
 import LiveCodeScopes from '../LiveCodeScopes';
 
@@ -54,15 +54,9 @@ const LiveCode = ({
             style={{ borderBottomRightRadius: 4, borderBottomLeftRadius: 4 }}
           >
             <LiveEditor
-              theme={githubTheme}
+              theme={availityTheme}
               ignoreTabKey
               className="border-top"
-              // style={{
-              //   fontSize: 13,
-              //   fontFamily:
-              //     "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
-              //   backgroundColor: '#f8f8f8',
-              // }}
             />
             <LiveError />
           </div>
