@@ -20,7 +20,7 @@ import './styles.scss';
 // The Template to load on each page
 const Template = ({
   location,
-  pageContext: { sidebarContents, pageOrder, navItems, githubUrl },
+  pageContext: { sidebarContents, navItems, githubUrl },
   data,
 }) => {
   const components = {
@@ -92,18 +92,23 @@ const Template = ({
           }}
         />
         <div
-          className="d-flex flex-column h-100 w-100 p-5 "
+          className="d-flex flex-column h-100 w-100 px-5 pb-5 pt-4"
           style={{
             overflowY: 'auto',
           }}
           ref={mainRef}
         >
-          <PageHeader {...frontmatter} />
+          <PageHeader
+            {...frontmatter}
+            siteTitle={site.siteMetadata.subtitle}
+            currentPage={pages[pageIndex]}
+            githubUrl={githubUrl}
+            pages={pages}
+          />
           <PageContent
             className="p-4 flex-fill"
             title={frontmatter.title}
             headings={headings}
-            githubUrl={githubUrl}
             pages={pages}
             hash={hash}
             pageIndex={pageIndex}

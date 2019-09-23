@@ -11,7 +11,6 @@ const PageContent = ({
   title,
   pageIndex,
   pages,
-  githubUrl,
   hash: _hash,
 }) => {
   const contentRef = useRef();
@@ -39,7 +38,7 @@ const PageContent = ({
     <div className="d-flex align-items-start">
       <div
         className="flex-grow-1 content-wrapper"
-        style={{ width: 0, maxWidth: '100ch' }}
+        style={{ width: 0, maxWidth: '110ch' }}
         ref={contentRef}
       >
         {children}
@@ -56,7 +55,6 @@ const PageContent = ({
           headings={headings}
           mainRef={mainRef}
           title={title}
-          githubUrl={githubUrl}
           contentRef={contentRef}
           className="ml-5 pl-5"
         />
@@ -72,7 +70,6 @@ PageContent.propTypes = {
   title: PropTypes.string,
   pageIndex: PropTypes.number,
   pages: PropTypes.array,
-  githubUrl: PropTypes.string,
   hash: PropTypes.string,
 };
 

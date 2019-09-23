@@ -45,7 +45,7 @@ function getPageFromEdge({ node }) {
   return node.childMarkdownRemark || node.childMdx;
 }
 
-function mapLinkToItem(linkPathOrObject, edges) {
+function mapLinkToItem(linkPathOrObject, edges, parent) {
   let linkPath = linkPathOrObject;
 
   if (typeof linkPathOrObject === 'object') {
@@ -58,6 +58,7 @@ function mapLinkToItem(linkPathOrObject, edges) {
       anchor: true,
       title: match[1],
       path: match[2],
+      parent,
     };
   }
 
@@ -78,10 +79,14 @@ function mapLinkToItem(linkPathOrObject, edges) {
   return {
     title: frontmatter.title,
     path: fields.slug,
+    parent,
     pages:
       typeof linkPathOrObject === 'object' &&
       linkPathOrObject.pages.map(subLinkPath =>
-        mapLinkToItem(subLinkPath, edges)
+        mapLinkToItem(subLinkPath, edges, {
+          title: frontmatter.title,
+          path: fields.slug,
+        })
       ),
   };
 }

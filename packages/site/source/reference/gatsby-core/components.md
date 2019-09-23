@@ -4,6 +4,8 @@ title: Gatsby Theme Core Components
 
 There are a few exported components that are used for building themes.
 
+## Components
+
 ### TopNavigation
 
 Component running the top navigation of the page, including the search bar and the right nav items.
