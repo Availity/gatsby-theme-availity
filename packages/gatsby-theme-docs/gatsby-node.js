@@ -128,8 +128,6 @@ exports.createPages = async ({ graphql, actions }, options) => {
     gitType,
   } = options;
 
-  console.log(gitType, 'node');
-
   const { edges } = data.allFile;
 
   const sidebarContents = getSidebarContents(sidebarCategories, edges);

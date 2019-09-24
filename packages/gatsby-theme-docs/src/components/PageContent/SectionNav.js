@@ -115,7 +115,7 @@ const SectionNav = ({
               <FaGitlab size={18} className="mr-2" /> Edit on GitLab
             </>
           ) : (
-            console.log(gitType)
+            ''
           )}
         </NavLink>
       </NavItem>
