@@ -125,7 +125,10 @@ exports.createPages = async ({ graphql, actions }, options) => {
     sidebarCategories,
     navConfig,
     baseUrl,
+    gitType,
   } = options;
+
+  console.log(gitType, 'node');
 
   const { edges } = data.allFile;
 
@@ -140,11 +143,11 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
     let url;
 
-    if (baseSite.includes('github')) {
+    if (gitType === 'github') {
       url = `https://${baseSite}/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`;
-    } else if (baseSite.includes('code.availity')) {
+    } else if (gitType === 'gitlab') {
       url = `https://${baseSite}/${owner}/${repo}/blob/master/${relativePath}`;
-    } else if (baseSite.includes('git.availity')) {
+    } else if (gitType === 'bitbucket') {
       url = `https://${baseSite}/${owner}/${repo}/repos/browse/${relativePath}`;
     }
 
@@ -155,6 +158,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
         id,
         title,
         sidebarContents,
+        gitType,
         gitUrl: url,
         baseUrl,
         navItems: generateNavItems(baseUrl, navConfig),

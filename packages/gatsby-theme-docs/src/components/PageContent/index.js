@@ -10,6 +10,7 @@ const PageContent = ({
   pageIndex,
   pages,
   gitUrl,
+  gitType,
   ...props
 }) => {
   const contentRef = useRef();
@@ -49,6 +50,7 @@ const PageContent = ({
         mainRef={mainRef}
         title={title}
         gitUrl={gitUrl}
+        gitType={gitType}
         contentRef={contentRef}
         className="ml-5 pl-5"
       />

@@ -38,7 +38,7 @@ const renderAst = new RehypeReact({
 // The Template to load on each page
 const Template = ({
   location,
-  pageContext: { sidebarContents, navItems, gitUrl },
+  pageContext: { sidebarContents, navItems, gitUrl, gitType },
   data,
 }) => {
   // Keep a ref of the current content window for jumping to certain anchors in section nav
@@ -92,6 +92,7 @@ const Template = ({
             title={frontmatter.title}
             headings={headings}
             gitUrl={gitUrl}
+            gitType={gitType}
             pages={pages}
             hash={hash}
             pageIndex={pageIndex}

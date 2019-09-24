@@ -15,6 +15,7 @@ const SectionNav = ({
   contentRef,
   className,
   gitUrl,
+  gitType,
   ...rest
 }) => {
   const { y } = useScroll(mainRef);
@@ -101,20 +102,20 @@ const SectionNav = ({
 
       <NavItem className="mt-5">
         <NavLink href={gitUrl} className="text-dark d-flex align-items-center">
-          {gitUrl.includes('github') ? (
+          {gitType === 'github' ? (
             <>
               <FaGithub size={18} className="mr-2" /> Edit on Github
             </>
-          ) : gitUrl.includes('git.availity') ? (
+          ) : gitType === 'bitbucket' ? (
             <>
               <FaBitbucket size={18} className="mr-2" /> Edit on Bitbucket
             </>
-          ) : gitUrl.includes('code.availity') ? (
+          ) : gitType === 'gitlab' ? (
             <>
               <FaGitlab size={18} className="mr-2" /> Edit on GitLab
             </>
           ) : (
-            ''
+            console.log(gitType)
           )}
         </NavLink>
       </NavItem>
@@ -129,6 +130,7 @@ SectionNav.propTypes = {
   title: PropTypes.string,
   className: PropTypes.string,
   gitUrl: PropTypes.string,
+  gitType: PropTypes.string,
 };
 
 export default SectionNav;

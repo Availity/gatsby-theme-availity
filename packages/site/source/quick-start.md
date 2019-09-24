@@ -68,6 +68,7 @@ module.exports = {
         subtitle: 'My Docs Site',
         description: 'Documentation for This Repo',
         gitRepo: '<site>/<user>/<repo-name>',
+        gitType: 'github, bitbucket, or gitlab'
         sidebarCategories: {
           null: ['index', 'quick-start'],
         },
