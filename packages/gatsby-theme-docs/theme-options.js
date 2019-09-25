@@ -3,10 +3,6 @@ const navConfig = {
     text: 'Getting Started',
     matchRegex: '^/availity-workflow',
   },
-  '/availity-uikit': {
-    text: 'UI Kit',
-    matchRegex: '^/availity-uikit',
-  },
   '/availity-react': {
     text: 'Components',
     matchRegex: '^/availity-react',

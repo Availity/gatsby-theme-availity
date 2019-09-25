@@ -9,7 +9,7 @@ const configPaths = [
 function generateNavItems(baseUrl, config) {
   return Object.entries(config).map(([value, { text, matchRegex }]) => ({
     text,
-    value: value.startsWith('/') ? baseUrl + value : value,
+    value,
     matchRegex,
   }));
 }
