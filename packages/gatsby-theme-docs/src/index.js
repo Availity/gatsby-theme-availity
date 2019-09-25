@@ -20,7 +20,7 @@ import './styles.scss';
 // The Template to load on each page
 const Template = ({
   location,
-  pageContext: { sidebarContents, navItems, githubUrl },
+  pageContext: { sidebarContents, navItems, githubUrl, baseUrl },
   data,
 }) => {
   const components = {
@@ -107,6 +107,7 @@ const Template = ({
             {...frontmatter}
             siteTitle={site.siteMetadata.subtitle}
             currentPage={pages[pageIndex]}
+            baseUrl={baseUrl}
             githubUrl={githubUrl}
             pages={pages}
           />

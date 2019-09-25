@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Button } from 'reactstrap';
 import { FaGithub } from 'react-icons/fa';
 import PageHeader from '@availity/page-header';
-import { withPrefix, Link } from 'gatsby';
+import { Link } from 'gatsby';
 
 // Top Page header that is rendered on the current page
 const CustomPageHeader = ({
@@ -12,20 +12,21 @@ const CustomPageHeader = ({
   siteTitle,
   summary,
   currentPage,
+  baseUrl,
   githubUrl,
 }) => {
   const crumbs = useMemo(() => {
     const crumbArr = [
       {
         name: siteTitle,
-        url: withPrefix(),
+        url: '/',
       },
     ];
 
     if (currentPage.parent) {
       crumbArr.push({
         name: currentPage.parent.title,
-        url: withPrefix(currentPage.parent.path),
+        url: currentPage.parent.path,
       });
     }
 
@@ -37,11 +38,21 @@ const CustomPageHeader = ({
       homeUrl="/"
       appName={title}
       crumbs={crumbs}
-      linkTag={({ href, children, ...props }) => (
-        <Link {...props} to={href}>
-          {children}
-        </Link>
-      )}
+      linkTag={({ href, children, ...props }) => {
+        if (children === 'Home') {
+          return (
+            <a href={baseUrl} {...props}>
+              {children}
+            </a>
+          );
+        }
+
+        return (
+          <Link {...props} to={href}>
+            {children}
+          </Link>
+        );
+      }}
       renderRightContent={({ className }) => (
         <div
           className={classNames(
@@ -80,6 +91,7 @@ CustomPageHeader.propTypes = {
   summary: PropTypes.string,
   currentPage: PropTypes.object,
   githubUrl: PropTypes.string,
+  baseUrl: PropTypes.string,
 };
 
 export default CustomPageHeader;

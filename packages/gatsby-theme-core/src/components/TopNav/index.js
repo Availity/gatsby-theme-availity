@@ -9,8 +9,7 @@ import {
   NavbarToggler,
   Collapse,
 } from 'reactstrap';
-import { navigate, Link } from 'gatsby';
-import { isAbsoluteUrl } from '@availity/resolve-url';
+import { navigate } from 'gatsby';
 import Search from './Search';
 import Logo from './Logo';
 
@@ -52,20 +51,10 @@ const Navigation = ({
               ? new RegExp(matchRegex).test(pathname)
               : isPathActive(value);
 
-            const isAbsolute = isAbsoluteUrl(value);
-            const NavProps = {};
-
-            if (isAbsolute) {
-              NavProps.href = value;
-            } else {
-              NavProps.to = value;
-              NavProps.tag = Link;
-            }
-
             return (
               <NavItem key={value} active={isActive}>
                 <NavLink
-                  {...NavProps}
+                  href={value}
                   active={isActive}
                   className={isActive ? 'text-primary' : 'text-dark'}
                 >
