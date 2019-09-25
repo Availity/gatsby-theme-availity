@@ -27,10 +27,15 @@
   resolved "https://registry.yarnpkg.com/@availity/app-icon/-/app-icon-1.3.0.tgz#3c26b2c4d7e4fb5923e3e82ac8f70478510a8169"
   integrity sha512-LLuAYo9DQ65JSt4h8qj8oYzHAYbChYwBvmWzEIpp6QFc29fxaDGknwng9kPsy/bC+gKb0hje2mK8Xeu/53ZVug==
 
-"@availity/breadcrumbs@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@availity/breadcrumbs/-/breadcrumbs-3.1.1.tgz#acb0e844cddde43e2410da401572190fdd19885f"
-  integrity sha512-I5Y4Vg4TfW9O8ypjMUVqVtBZZLGlwAgdY5rohE7xwbIuVR5Icx8nrROnanl1jWoVjrc1EZu+F5qGDxrDY6Aofg==
+"@availity/app-icon@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@availity/app-icon/-/app-icon-1.3.1.tgz#3593d4bf3d10ed798ea8e038c5d333b26b389dc0"
+  integrity sha512-C7AdRfNrVzXyqYcwiyjEH1wwrNPUkr6rIxV12H9MGrbd4XtlGQUhYbpjdhVWcpObB9IxyYYLtbHcDKMxY2d4XQ==
+
+"@availity/breadcrumbs@^3.1.3":
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/@availity/breadcrumbs/-/breadcrumbs-3.1.3.tgz#a57814fd20351fb3d10b621545802240f8a7129d"
+  integrity sha512-jMmsBb6Dt2ve9HakfW8z4tYJGceOJ/sGJoCPFGTLF42Ww3f1bkaK2WtERcpqz57bLzw+tOrZJlzwV3Zp0e6YNQ==
   dependencies:
     prop-types "^15.5.8"
 
@@ -64,15 +69,15 @@
     lodash.sortby "^4.7.0"
     prop-types "^15.5.8"
 
-"@availity/feedback@^5.1.7":
-  version "5.1.7"
-  resolved "https://registry.yarnpkg.com/@availity/feedback/-/feedback-5.1.7.tgz#e392918033f3b4c3cc68349b9531fb0cb2d17b86"
-  integrity sha512-l0jsoKMmV7/qPHVP5hXfFBmRMFddP9RhKIy1/ge7sh7FEbKI9Aam2avLQaYABZuSegW/U3XzXQSP07gYgWyJkw==
+"@availity/feedback@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@availity/feedback/-/feedback-5.1.9.tgz#3234b401003e2e13e616f0a02fa649816bd9b987"
+  integrity sha512-vhARhPbIvGqzo3I/8NJBJsp5P7r7eejss72S8cVhPp8mzeGlxe6RfRR0Ks4jpFU6JQF6WacR4zkSKtwF6AmU2A==
   dependencies:
-    "@availity/form" "^0.4.1"
-    "@availity/hooks" "^1.6.0"
-    "@availity/icon" "^0.6.0"
-    "@availity/select" "^0.4.7"
+    "@availity/form" "^0.4.3"
+    "@availity/hooks" "^1.6.1"
+    "@availity/icon" "^0.6.1"
+    "@availity/select" "^0.4.9"
     prop-types "^15.5.8"
 
 "@availity/form@^0.3.3":
@@ -83,10 +88,10 @@
     classnames "^2.2.6"
     prop-types "^15.5.8"
 
-"@availity/form@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@availity/form/-/form-0.4.1.tgz#ef93a2b0aa9e820ff6b6a232ef5442bd89388834"
-  integrity sha512-37siucKvt9ShAyVAK2TJn2lScufU01yqOllpMNDjL3RuThMmFZrIEz999FpmaXhUKWpIAsExhRaVo2AhGMaWRw==
+"@availity/form@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@availity/form/-/form-0.4.3.tgz#24ec379ee1189560f25672d1f5f788e2ca33608d"
+  integrity sha512-23tzlWWmh1rJTB8HeIy/kU6ba85B/PZzqO/BFbOhKOSaDUJuuMtErXQbJfmuEtCNhpd00gj6DKHRZQhs9T2fgg==
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.5.8"
@@ -98,10 +103,24 @@
   dependencies:
     prop-types "^15.5.8"
 
+"@availity/hooks@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@availity/hooks/-/hooks-1.6.1.tgz#e0c9016b3bb88238435843b3bb72066099544549"
+  integrity sha512-PefubBQJpsAT0KDEmILMVQtTxUi3Nw6YMgRiMPT+LwcqC/ZUA32QjMCCZOeSatAhwdUTpKVsn0ozzSX9xyy1Fw==
+  dependencies:
+    prop-types "^15.5.8"
+
 "@availity/icon@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@availity/icon/-/icon-0.6.0.tgz#9ef307db0eb1647b4ba28e241b4e23acff99d2a8"
   integrity sha512-sF5veO0I+/arsRAUm1sOMSolPs6CzlZsOkIq01o2S8vfA1/O1GP5v5sayrBKCrrzZWQg8MPUb6JtgOxh/gvkNQ==
+  dependencies:
+    classnames "^2.2.6"
+
+"@availity/icon@^0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@availity/icon/-/icon-0.6.1.tgz#24f0ec14e40b850f5b751b4fd3ccac8636b99d86"
+  integrity sha512-XX+BEKQcToY6venZDYuFWLTnb1/4AwMGcgyu5AU28HZNBnb2p22LKxStNErZ9vSlxa6/aqTqr3lmZFyLg/lnBw==
   dependencies:
     classnames "^2.2.6"
 
@@ -115,37 +134,25 @@
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.2.tgz#b61e084da32199eacbb50081c072872d4120ea03"
   integrity sha512-AKYg/MWSRPks9fP2JfBLiLe24tdseCYeyhlpDyBPjhJfCxSI+UiAlS4BRPXlQ4yi+InXhtg8SHikbDoAuIaVtg==
 
-"@availity/page-header@^7.1.3":
-  version "7.1.8"
-  resolved "https://registry.yarnpkg.com/@availity/page-header/-/page-header-7.1.8.tgz#c37f1ec067d439996e9d2a58f74f23060fafbaa8"
-  integrity sha512-+TA8wXzKmBxC2jbRaQL2zwzOcGPJKLZYfjTrIFPHtvDEs5gvZHAqWEoUFdEjXL+z4+KYpZ2Ci/arro4/1HoTBQ==
+"@availity/page-header@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@availity/page-header/-/page-header-8.0.2.tgz#fcd0ae6c814813bc1f40b40b9995b734bb97521b"
+  integrity sha512-OmA928+0jcTjWUR/MEHetKSloeTM9HoeNVUuFo3RfBbvWdwvlG9F9d3SmaYB9dO41LIRk8JajDQbl5efTvYzVA==
   dependencies:
-    "@availity/app-icon" "^1.3.0"
-    "@availity/breadcrumbs" "^3.1.1"
-    "@availity/feedback" "^5.1.7"
-    "@availity/payer-logo" "^4.0.1"
-    "@availity/training-link" "^1.2.0"
-    prop-types "^15.5.8"
-
-"@availity/page-header@^8.0.0-alpha.7":
-  version "8.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@availity/page-header/-/page-header-8.0.0-alpha.7.tgz#bf2162d641c0cf42160386010c2ab16b69f9cbc9"
-  integrity sha512-5fwEHc5RI7nha2oJU74qf0MXEi1aWgIMJ2IocKnpCWTJc1EwZPBi+BKJDW+1w49jGQe6KbgHIczwXfZJ1OmZ1A==
-  dependencies:
-    "@availity/app-icon" "^1.3.0"
-    "@availity/breadcrumbs" "^3.1.1"
-    "@availity/feedback" "^5.1.7"
-    "@availity/payer-logo" "^4.0.1"
-    "@availity/training-link" "^1.2.0"
+    "@availity/app-icon" "^1.3.1"
+    "@availity/breadcrumbs" "^3.1.3"
+    "@availity/feedback" "^5.1.9"
+    "@availity/payer-logo" "^4.0.2"
+    "@availity/training-link" "^1.2.1"
     classnames "^2.2.6"
     prop-types "^15.5.8"
 
-"@availity/payer-logo@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@availity/payer-logo/-/payer-logo-4.0.1.tgz#771b4d4851efd743a26e30019339322dccb5be64"
-  integrity sha512-J0fr/EZcSsQEaK+Be+uqJ5x0htd4BXrZJuUgs0pknHnuvPr+VGdXKXUN5g3Z9xKvukvfUMVK59UjPJf/6l3+kA==
+"@availity/payer-logo@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@availity/payer-logo/-/payer-logo-4.0.2.tgz#50abb4047bb13db99123a48c873924105d1bf147"
+  integrity sha512-xEdV2TbgY3xvJ4CPYW/Vb2bq9Xq0DgOLdnXjLuGy2OHxbo7VNwa66HkpzUfUz2EDrrAchk69uzrA2wPjxYt3Gw==
   dependencies:
-    "@availity/hooks" "^1.6.0"
+    "@availity/hooks" "^1.6.1"
     lodash.get "^4.4.2"
     prop-types "^15.5.8"
 
@@ -154,10 +161,22 @@
   resolved "https://registry.yarnpkg.com/@availity/resolve-url/-/resolve-url-1.1.0.tgz#4021f42a678371433b3f23f90a64b9fcb65aafc5"
   integrity sha512-CrA3qQbMPwhwiBFnCtF9MAzkRbrjUZnnLmRp0daLhyxNZXrOaKzE1t24qv7uONOaOIxTYy8xqI8YnJNeekMlRg==
 
-"@availity/select@^0.4.3", "@availity/select@^0.4.7":
+"@availity/select@^0.4.3":
   version "0.4.7"
   resolved "https://registry.yarnpkg.com/@availity/select/-/select-0.4.7.tgz#00c0b62061253084221a7786904ea8ad13a2ca73"
   integrity sha512-4FmacTYtfzZRSOPHBxZCV/dhmDtnyJal9zdSPVNZtJCJM4YhV02qDTX6p38X/lY8pPLPyB1yuojzqzGDcReTgg==
+  dependencies:
+    classnames "^2.2.5"
+    lodash.get "^4.4.2"
+    prop-types "^15.5.8"
+    qs "^6.5.2"
+    react-select "^3.0.4"
+    react-select-async-paginate "^0.3.7"
+
+"@availity/select@^0.4.9":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@availity/select/-/select-0.4.9.tgz#552051cec3e3d84fba1862b9d03605df27fec246"
+  integrity sha512-9wvHJb27A9JBOZx8mbtuXcSFo3ERboSJGBECdcJ5lF+Ofrd8E8esrcqYt8i8potXTB9tITby8LMvbeFJruMbBQ==
   dependencies:
     classnames "^2.2.5"
     lodash.get "^4.4.2"
@@ -179,10 +198,10 @@
     react-loading-skeleton "^1.1.2"
     react-markdown "^4.0.8"
 
-"@availity/training-link@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@availity/training-link/-/training-link-1.2.0.tgz#78144776e1bc8cdea2011469d7936d23c0444bb9"
-  integrity sha512-vtUDtStbXsSFLNDxQjHhmYdQDQzywMmlalx9il4ZfOPNqifvLSDnTD9Y/JaB9zSC0+z58FiTGoyP32g1SRWTGw==
+"@availity/training-link@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@availity/training-link/-/training-link-1.2.1.tgz#367f74d70512ed19421180aa60d5de9767f8ae6b"
+  integrity sha512-vwIbrAy9QHN7pbwiIGsMSXKnVeOxpJueo6/XAICw6raJfuKG/38tWocMkZ00+2N6ViWNHtZCVsLiBU02v9ceUw==
   dependencies:
     prop-types "^15.5.8"
 
