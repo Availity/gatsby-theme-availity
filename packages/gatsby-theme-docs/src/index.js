@@ -80,7 +80,7 @@ const Template = ({
   return (
     <Layout>
       <TopNavigation
-        brandAttrs={{ className: 'pl-4' }}
+        brandAttrs={{ className: 'pl-4', href: baseUrl }}
         className="pl-0"
         navItems={navItems}
         pathname={pathname}

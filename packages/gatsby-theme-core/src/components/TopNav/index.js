@@ -35,7 +35,6 @@ const Navigation = ({
     >
       <NavbarBrand
         {...restBrandAttrs}
-        onClick={() => navigate('/')}
         className={classnames('mr-auto', bClassName)}
         style={{ width: 300 }}
       >
