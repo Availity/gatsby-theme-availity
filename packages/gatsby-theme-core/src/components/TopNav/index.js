@@ -9,7 +9,6 @@ import {
   NavbarToggler,
   Collapse,
 } from 'reactstrap';
-import { navigate } from 'gatsby';
 import Search from './Search';
 import Logo from './Logo';
 
