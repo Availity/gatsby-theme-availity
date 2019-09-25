@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react';
-import loadable from '@loadable/component';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from 'reactstrap';
 import { FaGithub } from 'react-icons/fa';
-import { withPrefix } from 'gatsby';
-
-const PageHeader = loadable(() => import('@availity/page-header'));
+import PageHeader from '@availity/page-header';
+import { withPrefix, Link } from 'gatsby';
 
 // Top Page header that is rendered on the current page
 const CustomPageHeader = ({
@@ -39,6 +37,11 @@ const CustomPageHeader = ({
       homeUrl="/"
       appName={title}
       crumbs={crumbs}
+      linkTag={({ href, children, ...props }) => (
+        <Link {...props} to={href}>
+          {children}
+        </Link>
+      )}
       renderRightContent={({ className }) => (
         <div
           className={classNames(

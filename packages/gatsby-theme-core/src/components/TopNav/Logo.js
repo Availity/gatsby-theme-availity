@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
-import logo from './logo.jpg';
+import logo from './CodeOnBrandMark.png';
 
 const style = {
   borderRadius: '5px',
@@ -9,14 +9,16 @@ const style = {
 // Helper Component to render Logo
 export default function Logo({ className, ...props }) {
   return (
-    <img
-      {...props}
-      src={logo}
-      alt="Logo"
-      width="30"
-      height="30"
-      className={classnames('d-inline-block align-top', className)}
-      style={style}
-    />
+    <Fragment>
+      <img
+        {...props}
+        src={logo}
+        alt="Logo"
+        height="30"
+        className={classnames('d-inline-block align-top mr-2', className)}
+        style={style}
+      />{' '}
+      Availity Docs
+    </Fragment>
   );
 }

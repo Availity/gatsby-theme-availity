@@ -9,6 +9,8 @@ import {
   NavbarToggler,
   Collapse,
 } from 'reactstrap';
+import { navigate, Link } from 'gatsby';
+import { isAbsoluteUrl } from '@availity/resolve-url';
 import Search from './Search';
 import Logo from './Logo';
 
@@ -34,12 +36,11 @@ const Navigation = ({
     >
       <NavbarBrand
         {...restBrandAttrs}
-        href="//availity.github.io/"
+        onClick={() => navigate('/')}
         className={classnames('mr-auto', bClassName)}
         style={{ width: 300 }}
       >
-        <Logo className="mr-3" />
-        Availity Docs
+        <Logo />
       </NavbarBrand>
       <Search />
 
@@ -50,10 +51,21 @@ const Navigation = ({
             const isActive = matchRegex
               ? new RegExp(matchRegex).test(pathname)
               : isPathActive(value);
+
+            const isAbsolute = isAbsoluteUrl(value);
+            const NavProps = {};
+
+            if (isAbsolute) {
+              NavProps.href = value;
+            } else {
+              NavProps.to = value;
+              NavProps.tag = Link;
+            }
+
             return (
               <NavItem key={value} active={isActive}>
                 <NavLink
-                  href={value}
+                  {...NavProps}
                   active={isActive}
                   className={isActive ? 'text-primary' : 'text-dark'}
                 >

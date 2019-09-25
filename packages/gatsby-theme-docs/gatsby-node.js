@@ -9,7 +9,7 @@ const configPaths = [
 function generateNavItems(baseUrl, config) {
   return Object.entries(config).map(([value, { text, matchRegex }]) => ({
     text,
-    value: value.startsWith('/') ? baseUrl + value : value,
+    value,
     matchRegex,
   }));
 }
@@ -184,4 +184,21 @@ exports.createPages = async ({ graphql, actions }, options) => {
       },
     });
   });
+};
+
+// https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
+// PageHeader => Spaces => react-loading-skeleton => emotion => window
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /react-loading-skeleton/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
 };
