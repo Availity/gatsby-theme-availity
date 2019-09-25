@@ -27,6 +27,22 @@ module.exports = ({
     },
     plugins: [
       {
+        resolve: `gatsby-plugin-compile-es6-packages`,
+        options: {
+          modules: [
+            '@availity/breadcrumbs',
+            '@availity/feedback',
+            '@availity/typography',
+            '@availity/form',
+            '@availity/select',
+            '@availity/icon',
+            '@availity/app-icon',
+            '@availity/spaces',
+            '@availity/page-header',
+          ],
+        },
+      },
+      {
         resolve: '@availity/gatsby-theme-core',
         options: {
           root,
