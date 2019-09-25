@@ -17,7 +17,6 @@ const NavLink = ({
     vertical
     tag={isRootLink ? 'ul' : Collapse}
     {...collapseProps}
-    // className="pb-2"
     navbar
   >
     {pages.map(({ path, title, pages: subPages }) =>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, NavLink, NavItem } from 'reactstrap';
@@ -29,7 +30,7 @@ const SectionNavigationItem = ({
         className={classnames({
           // 'font-weight-bold': slug === activeHeading,
           'text-secondary': slug !== activeHeading,
-          'p-1 mb-1': isReactProp,
+          'p-1 mb-2': isReactProp,
           'ml-4': depth === 3,
         })}
         style={{
@@ -163,7 +164,7 @@ SectionNav.propTypes = {
   contentRef: PropTypes.object,
   mainRef: PropTypes.object,
   title: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default SectionNav;
