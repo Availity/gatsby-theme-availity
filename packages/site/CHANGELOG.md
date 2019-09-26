@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.11](https://github.com/Availity/gatsby-theme-availity/compare/site@2.3.10...site@2.3.11) (2019-09-26)
+
+**Note:** Version bump only for package site
+
+
+
+
+
 ## [2.3.10](https://github.com/Availity/gatsby-theme-availity/compare/site@2.3.9...site@2.3.10) (2019-09-25)
 
 **Note:** Version bump only for package site
