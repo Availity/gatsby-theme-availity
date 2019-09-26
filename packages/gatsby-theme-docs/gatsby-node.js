@@ -52,7 +52,10 @@ function mapLinkToItem(linkPathOrObject, edges, depth, parent) {
     linkPath = linkPathOrObject.resolve;
   }
 
-  const match = linkPath.match(/^\[([\w\s\d]+)\]\((https?:\/\/[\w.]+)\)$/);
+  const match = linkPath.match(
+    /^\[([\w\s\d]+)\]\(((?:\/|https?:\/\/)[\w\d./?=#]+)\)$/
+  );
+
   if (match) {
     return {
       anchor: true,

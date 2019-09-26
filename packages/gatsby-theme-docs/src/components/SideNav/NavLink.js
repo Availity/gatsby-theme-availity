@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'gatsby';
 import { Nav, Collapse, NavItem, NavLink as RsNavLink } from 'reactstrap';
+import { isAbsoluteUrl } from '@availity/resolve-url';
 // eslint-disable-next-line import/no-cycle
 import NavigationItem from './NavItem';
 
@@ -15,12 +16,13 @@ const NavLink = ({
 }) => (
   <Nav vertical tag={isRootLink ? 'ul' : Collapse} {...collapseProps} navbar>
     {pages.map(({ path, title, pages: subPages, anchor }) => {
-      console.log('Path', path, 'anchor', anchor);
+      const isAbsolutePath = anchor && isAbsoluteUrl(path);
+
       const linkProps = {
-        tag: anchor ? 'a' : Link,
+        tag: isAbsolutePath ? 'a' : Link,
       };
 
-      if (anchor) {
+      if (isAbsolutePath) {
         linkProps.href = path;
       } else {
         linkProps.to = path;
