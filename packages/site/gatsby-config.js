@@ -18,7 +18,7 @@ module.exports = {
         githubRepo: 'availity/gatsby-theme-availity',
         contentDir: 'packages/site/source',
         sidebarCategories: {
-          null: ['index', 'quick-start', '[Test Link](https://google.com)'],
+          null: ['index', 'quick-start'],
           Essentials: [
             'essentials/react',
             'essentials/mock',
