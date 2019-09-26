@@ -13,14 +13,20 @@ const NavLink = ({
   isPageSelected,
   pages,
 }) => (
-  <Nav
-    vertical
-    tag={isRootLink ? 'ul' : Collapse}
-    {...collapseProps}
-    navbar
-  >
-    {pages.map(({ path, title, pages: subPages }) =>
-      subPages && !isSecondaryCategory ? (
+  <Nav vertical tag={isRootLink ? 'ul' : Collapse} {...collapseProps} navbar>
+    {pages.map(({ path, title, pages: subPages, anchor }) => {
+      console.log('Path', path, 'anchor', anchor);
+      const linkProps = {
+        tag: anchor ? 'a' : Link,
+      };
+
+      if (anchor) {
+        linkProps.href = path;
+      } else {
+        linkProps.to = path;
+      }
+
+      return subPages && !isSecondaryCategory ? (
         <NavigationItem
           key={title}
           collapseTitle={title}
@@ -39,8 +45,7 @@ const NavLink = ({
           className="position-relative d-flex align-items-center"
         >
           <RsNavLink
-            tag={Link}
-            to={path}
+            {...linkProps}
             active={isPageSelected({ path })}
             className={classnames('py-2 w-100', {
               'pl-4': !isSecondaryCategory,
@@ -53,8 +58,8 @@ const NavLink = ({
             {title}
           </RsNavLink>
         </NavItem>
-      )
-    )}
+      );
+    })}
   </Nav>
 );
 
