@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@1.4.13...@availity/gatsby-theme-docs@2.0.0) (2019-09-27)
+
+
+### Bug Fixes
+
+* **gatsby-theme-docs:** cleanup console logs ([faf0a2e](https://github.com/availity/gatsby-theme-availity/commit/faf0a2e))
+
+
+### Code Refactoring
+
+* **gatsby-theme-docs:** merged master and updated header ([452df9b](https://github.com/availity/gatsby-theme-availity/commit/452df9b))
+
+
+### Features
+
+* **gatsby-theme-docs:** added Dynamic Repo Urls ([1d715c9](https://github.com/availity/gatsby-theme-availity/commit/1d715c9))
+
+
+### BREAKING CHANGES
+
+* **gatsby-theme-docs:** configuration now requires the git url rather than a project/repo name
+
+
+
+
+
 ## [1.4.13](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@1.4.12...@availity/gatsby-theme-docs@1.4.13) (2019-09-26)
 
 **Note:** Version bump only for package @availity/gatsby-theme-docs

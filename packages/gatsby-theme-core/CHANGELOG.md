@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.12...@availity/gatsby-theme-core@2.0.0) (2019-09-27)
+
+
+### Code Refactoring
+
+* **gatsby-theme-docs:** merged master and updated header ([452df9b](https://github.com/availity/gatsby-theme-availity/commit/452df9b))
+
+
+### BREAKING CHANGES
+
+* **gatsby-theme-docs:** configuration now requires the git url rather than a project/repo name
+
+
+
+
+
 ## [1.2.12](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.11...@availity/gatsby-theme-core@1.2.12) (2019-09-25)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
