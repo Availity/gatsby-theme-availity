@@ -58,11 +58,13 @@ const CustomPageHeader = ({
     return crumbArr;
   }, [currentPage, siteTitle]);
 
+  const isIndexPage = currentPage.path === '/';
+
   return (
     <PageHeader
       homeUrl="/"
-      appName={title}
-      crumbs={crumbs}
+      appName={isIndexPage ? siteTitle : title}
+      crumbs={isIndexPage ? [] : crumbs}
       linkTag={({ href, children, ...props }) => {
         if (children === 'Home') {
           return (
