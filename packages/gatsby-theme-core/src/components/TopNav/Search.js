@@ -98,7 +98,7 @@ const Search = () => {
 
   return (
     <Nav
-      className="ml-5 d-xs-none d-sm-none d-md-none d-lg-none d-xl-block"
+      className="ml-5 d-xs-none d-sm-none d-md-none d-lg-block d-xl-block"
       navbar
     >
       <Form inline className="position-relative">

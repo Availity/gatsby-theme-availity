@@ -7,25 +7,35 @@ import { CollapseProvider } from './CollapseContext';
 
 // Iterates over the array of side nav categories and renders the side nav
 const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
-  const isPageSelected = ({ path }) => {
+  const isPageSelected = ({ path, pages: subPages }) => {
     const [prefixedPath, pathname] = [withPrefix(path), currentPath].map(
       string => string.replace(/\/$/, '')
     );
-    return prefixedPath === pathname;
+
+    const isSelected = prefixedPath === pathname;
+
+    if (!isSelected && subPages) {
+      return subPages.some(isPageSelected);
+    }
+
+    return isSelected;
   };
 
-  const isCategorySelected = (path, pages) =>
-    path ? isPageSelected(path) : pages.some(isPageSelected);
+  const isCategorySelected = (path, pages) => {
+    return pages.some(isPageSelected) || (path && isPageSelected({ path }));
+  };
 
   return (
     <div {...rest}>
       <Nav vertical navbar className="h-100 text-dark">
         <CollapseProvider siteName={siteTitle}>
           {contents.map(
-            ({ title: collapseTitle, pages, path: categoryPath }) => (
+            ({ title: collapseTitle, pages, path: categoryPath, depth }) => (
               <NavigationItem
                 key={collapseTitle}
                 collapseTitle={collapseTitle}
+                path={categoryPath}
+                depth={depth}
                 isCategorySelected={isCategorySelected(categoryPath, pages)}
                 siteTitle={siteTitle}
                 pages={pages}

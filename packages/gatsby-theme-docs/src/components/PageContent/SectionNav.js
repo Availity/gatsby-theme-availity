@@ -1,12 +1,85 @@
-/* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Nav, NavLink, NavItem } from 'reactstrap';
 import classnames from 'classnames';
 import striptags from 'striptags';
 import { useScroll, useWindowSize } from 'react-use';
 import Slugger from 'github-slugger';
-import { FaGithub, FaBitbucket, FaGitlab } from 'react-icons/fa';
+
+const SectionNavigationItem = ({
+  value,
+  isReactProp,
+  activeHeading,
+  subHeadings,
+  slugger,
+  depth,
+}) => {
+  const text = striptags(value);
+  const slug = slugger.slug(text);
+
+  return (
+    <NavItem
+      active={slug === activeHeading}
+      tag={isReactProp ? 'code' : 'li'}
+      className="d-block"
+    >
+      <NavLink
+        href={`#${slug}`}
+        active={slug === activeHeading}
+        className={classnames({
+          // 'font-weight-bold': slug === activeHeading,
+          'text-secondary': slug !== activeHeading,
+          'p-1 mb-2': isReactProp,
+          'ml-4': depth === 3,
+        })}
+        style={{
+          fontSize: isReactProp && 11,
+          background: isReactProp && '#f8f8f8',
+          width: isReactProp && 'fit-content',
+        }}
+      >
+        {text}
+      </NavLink>
+      {subHeadings && subHeadings.length > 0 && (
+        <ul className="pl-0">
+          {subHeadings.map(subHeadingProps => (
+            <SectionNavigationItem
+              key={subHeadingProps.value}
+              activeHeading={activeHeading}
+              slugger={slugger}
+              {...subHeadingProps}
+            />
+          ))}
+        </ul>
+      )}
+    </NavItem>
+  );
+};
+
+// Sort the list into a depth tree rather than single layer
+// before [{ value: "Hello", depth: 2}, { value:"World", depth: 3}]
+// after  [{ value: "Hello", depth: 2, subHeadings: [{ value: "World", depth: 3 } ] }]
+const sortHeadings = headings => {
+  const newHeadings = [];
+
+  headings.forEach(heading => {
+    if (heading.depth === 2) {
+      newHeadings.push({
+        ...heading,
+        subHeadings: [],
+      });
+    } else if (heading.depth === 3) {
+      const currentHeading = newHeadings[newHeadings.length - 1];
+      currentHeading.subHeadings.push({
+        ...heading,
+        isReactProp: currentHeading.value === 'Props',
+      });
+    }
+  });
+
+  return newHeadings;
+};
 
 const SectionNav = ({
   headings,
@@ -14,13 +87,13 @@ const SectionNav = ({
   mainRef,
   contentRef,
   className,
-  gitUrl,
-  gitType,
   ...rest
 }) => {
   const { y } = useScroll(mainRef);
   const { width, height } = useWindowSize();
   const [offsets, setOffsets] = useState([]);
+
+  const sectionHeadings = useMemo(() => sortHeadings(headings), [headings]);
 
   // When the width or the height of screen, or content updates, we need to adjust the offsets for where to
   // place the anchor when we click a section link
@@ -65,60 +138,23 @@ const SectionNav = ({
     <Nav
       className={classnames(
         className,
-        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2'
+        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2 w-100'
       )}
       vertical
-      style={{ width: 320, position: 'sticky', top: -39 }}
+      style={{ maxWidth: 400, position: 'sticky', top: 0 }}
       {...rest}
     >
       <NavItem style={{ fontWeight: '500' }}>
         <NavLink>{title}</NavLink>
       </NavItem>
-      {headings
-        .filter(({ depth }) => depth === 2 || depth === 3)
-        .map(({ value, depth }) => {
-          const text = striptags(value);
-          const slug = slugger.slug(text);
-
-          return (
-            <NavItem key={slug} active={slug === activeHeading}>
-              <NavLink
-                href={`#${slug}`}
-                active={slug === activeHeading}
-                className={classnames({
-                  // 'font-weight-bold': slug === activeHeading,
-                  'text-secondary': slug !== activeHeading,
-                  'ml-4 pt-1 pb-1': depth === 3,
-                })}
-                style={{
-                  fontSize: depth === 3 && 15,
-                }}
-              >
-                {text}
-              </NavLink>
-            </NavItem>
-          );
-        })}
-
-      <NavItem className="mt-5">
-        <NavLink href={gitUrl} className="text-dark d-flex align-items-center">
-          {gitType === 'github' ? (
-            <>
-              <FaGithub size={18} className="mr-2" /> Edit on Github
-            </>
-          ) : gitType === 'bitbucket' ? (
-            <>
-              <FaBitbucket size={18} className="mr-2" /> Edit on Bitbucket
-            </>
-          ) : gitType === 'gitlab' ? (
-            <>
-              <FaGitlab size={18} className="mr-2" /> Edit on GitLab
-            </>
-          ) : (
-            ''
-          )}
-        </NavLink>
-      </NavItem>
+      {sectionHeadings.map(headingProps => (
+        <SectionNavigationItem
+          {...headingProps}
+          key={headingProps.value}
+          slugger={slugger}
+          activeHeading={activeHeading}
+        />
+      ))}
     </Nav>
   );
 };
@@ -129,8 +165,6 @@ SectionNav.propTypes = {
   mainRef: PropTypes.object,
   title: PropTypes.string,
   className: PropTypes.string,
-  gitUrl: PropTypes.string,
-  gitType: PropTypes.string,
 };
 
 export default SectionNav;

@@ -9,7 +9,7 @@
     "start": "yarn workspace site develop",
     "build": "yarn workspace site build",
     "build:deploy": "yarn workspace site build:deploy",
-    "deploy:docs": "npm run build:deploy && gh-pages -d packages/site/public",
+    "deploy:docs": "npm run build:deploy && gh-pages -d packages/site/public --message 'deployed docs [skip ci]'",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "release:ci": "lerna publish --yes"
   },

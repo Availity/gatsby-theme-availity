@@ -1,5 +1,5 @@
 ---
-title: 'Gatsby Theme Docs'
+title: Gatsby Theme Docs
 ---
 
 This API Reference documents all the available configurations for `gatsby-config.js`.
@@ -70,6 +70,19 @@ The `sidebarCategories` option is an object keyed by category titles. Each entry
     'features/errors',
     'features/data-sources'
   ]
+}
+```
+
+If you want to have secondary categories like [Gatsby Them Core](/reference/gatsby-core/) then you can make your category an object like the below.
+
+```js hideCopy=true
+{
+  'API Reference': [{
+    resolve: 'reference/gatsby-core/index', // The secondary page introd
+    pages: [ // the list of pages underneath
+      'reference/gatsby-core/components','reference/gatsby-core/reference'
+    ]
+  }, 'reference/gatsby-docs'],
 }
 ```
 

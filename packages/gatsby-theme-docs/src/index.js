@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/heading-has-content */
-import React, { useRef } from 'react';
+import React, { useRef, useMemo, useCallback } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { graphql, withPrefix } from 'gatsby';
@@ -17,30 +17,34 @@ import {
 } from './components';
 import './styles.scss';
 
-const components = {
-  code: CodeBlock,
-  pre: props => props.children,
-  table: Table,
-  h2: ({ className, ...props }) => (
-    <h2 className={classnames(className, 'mt-5')} {...props} />
-  ),
-  h3: ({ className, ...props }) => (
-    <h3 className={classnames(className, 'mt-4')} {...props} />
-  ),
-};
-
-// Will take in a snippet of code in AST Form and render it as text
-const renderAst = new RehypeReact({
-  createElement: React.createElement,
-  components,
-}).Compiler;
-
 // The Template to load on each page
 const Template = ({
   location,
-  pageContext: { sidebarContents, navItems, gitUrl, gitType },
+  pageContext: { sidebarContents, navItems, gitUrl, gitType, baseUrl },
   data,
 }) => {
+  const components = {
+    code: CodeBlock,
+    inlineCode: CodeBlock,
+    pre: props => props.children,
+    table: Table,
+    h2: ({ className, ...props }) => (
+      <h2 className={classnames(className, 'mt-5 h4')} {...props} />
+    ),
+    h3: ({ className, ...props }) => (
+      <h3 className={classnames(className, 'mt-4 h5')} {...props} />
+    ),
+    h4: ({ className, ...props }) => (
+      <h3 className={classnames(className, 'mt-4 h6')} {...props} />
+    ),
+  };
+
+  // Will take in a snippet of code in AST Form and render it as text
+  const renderAst = new RehypeReact({
+    createElement: React.createElement,
+    components,
+  }).Compiler;
+
   // Keep a ref of the current content window for jumping to certain anchors in section nav
   const mainRef = useRef(null);
 
@@ -49,9 +53,22 @@ const Template = ({
 
   const { hash, pathname } = location;
 
-  const pages = sidebarContents
-    .reduce((acc, { pages }) => acc.concat(pages), [])
-    .filter(page => !page.anchor);
+  const reduceFn = useCallback((_acc, { pages: _pages, ...__page }) => {
+    if (__page.title && __page.path) {
+      _acc = _acc.concat({ ...__page, pages: _pages });
+    }
+
+    if (_pages) {
+      _acc = _acc.concat(_pages.reduce(reduceFn, []));
+    }
+
+    return _acc;
+  }, []);
+
+  const pages = useMemo(
+    () => sidebarContents.reduce(reduceFn, []).filter(page => !page.anchor),
+    [sidebarContents, reduceFn]
+  );
 
   const pageIndex = pages.findIndex(page => {
     const prefixedPath = withPrefix(page.path);
@@ -63,7 +80,7 @@ const Template = ({
   return (
     <Layout>
       <TopNavigation
-        brandAttrs={{ className: 'pl-4' }}
+        brandAttrs={{ className: 'pl-4', href: baseUrl }}
         className="pl-0"
         navItems={navItems}
         pathname={pathname}
@@ -73,26 +90,32 @@ const Template = ({
           currentPath={pathname}
           contents={sidebarContents}
           siteTitle={site.siteMetadata.subtitle}
-          className="flex-shrink-0 pt-4 border-right"
+          className="flex-shrink-0 py-4 border-right"
           style={{
             overflowY: 'auto',
             width: 300,
           }}
         />
         <div
-          className="d-flex flex-column h-100 w-100 p-5 "
+          className="d-flex flex-column h-100 w-100 px-5 pb-5 pt-4"
           style={{
             overflowY: 'auto',
           }}
           ref={mainRef}
         >
-          <PageHeader {...frontmatter} />
+          <PageHeader
+            {...frontmatter}
+            siteTitle={site.siteMetadata.subtitle}
+            currentPage={pages[pageIndex]}
+            baseUrl={baseUrl}
+            gitUrl={gitUrl}
+            gitType={gitType}
+            pages={pages}
+          />
           <PageContent
             className="p-4 flex-fill"
             title={frontmatter.title}
             headings={headings}
-            gitUrl={gitUrl}
-            gitType={gitType}
             pages={pages}
             hash={hash}
             pageIndex={pageIndex}

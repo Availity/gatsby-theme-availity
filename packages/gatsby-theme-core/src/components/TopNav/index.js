@@ -34,12 +34,10 @@ const Navigation = ({
     >
       <NavbarBrand
         {...restBrandAttrs}
-        href="//availity.github.io/"
         className={classnames('mr-auto', bClassName)}
         style={{ width: 300 }}
       >
-        <Logo className="mr-3" />
-        Availity Docs
+        <Logo />
       </NavbarBrand>
       <Search />
 
@@ -50,6 +48,7 @@ const Navigation = ({
             const isActive = matchRegex
               ? new RegExp(matchRegex).test(pathname)
               : isPathActive(value);
+
             return (
               <NavItem key={value} active={isActive}>
                 <NavLink

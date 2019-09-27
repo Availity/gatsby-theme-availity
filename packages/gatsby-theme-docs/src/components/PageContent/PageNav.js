@@ -5,18 +5,18 @@ import { NavLink } from 'reactstrap';
 import { Link } from 'gatsby';
 
 const PageNav = ({ nextPage, prevPage }) => (
-  <div className="d-flex justify-content-between mt-5 mb-5 pl-0 pr-0">
+  <div className="d-flex justify-content-between my-5 pt-3 pl-0 pr-0 border-top">
     {prevPage && (
       <NavLink
         tag={Link}
         to={prevPage.path}
-        className="d-flex align-items-center text-secondary pl-0"
+        className="d-flex align-items-center pl-0"
       >
         <MdChevronLeft size={25} className="mr-1" />
         <span>
-          <small>PREVIOUS</small>
+          <small className="text-secondary">PREVIOUS</small>
           <br />
-          <b>{prevPage.title}</b>
+          <b className="text-primary">{prevPage.title}</b>
         </span>
       </NavLink>
     )}
@@ -24,12 +24,12 @@ const PageNav = ({ nextPage, prevPage }) => (
       <NavLink
         tag={Link}
         to={nextPage.path}
-        className="d-flex align-items-center text-secondary ml-auto pr-0"
+        className="d-flex align-items-center ml-auto pr-0"
       >
         <span className="text-right">
-          <small>NEXT</small>
+          <small className="text-secondary">NEXT</small>
           <br />
-          <b>{nextPage.title}</b>
+          <b className="text-primary">{nextPage.title}</b>
         </span>
         <MdChevronRight size={25} className="ml-1" />
       </NavLink>

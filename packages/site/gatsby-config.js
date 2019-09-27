@@ -20,13 +20,22 @@ module.exports = {
         contentDir: 'packages/site/source',
         sidebarCategories: {
           null: ['index', 'quick-start'],
-          'Doc Essentials': [
+          Essentials: [
             'essentials/react',
             'essentials/mock',
             'essentials/relative-links',
             'essentials/code-blocks',
           ],
-          'API Reference': ['reference/gatsby-core', 'reference/gatsby-docs'],
+          'reference/index': [
+            {
+              resolve: 'reference/gatsby-core/index',
+              pages: [
+                'reference/gatsby-core/components',
+                'reference/gatsby-core/reference',
+              ],
+            },
+            'reference/gatsby-docs',
+          ],
         },
       },
     },
@@ -37,19 +46,10 @@ module.exports = {
       resolve: `gatsby-plugin-compile-es6-packages`,
       options: {
         modules: [
-          '@availity/breadcrumbs',
-          '@availity/feedback',
-          '@availity/typography',
-          '@availity/form',
           '@availity/message-core',
           '@availity/favorites',
-          '@availity/select',
           '@availity/date',
           '@availity/yup',
-          '@availity/icon',
-          '@availity/app-icon',
-          '@availity/spaces',
-          '@availity/page-header',
           'xhr-mock',
         ],
       },
