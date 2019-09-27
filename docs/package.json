@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "site",
+  "name": "@availity/docs",
   "version": "3.0.0",
   "license": "MIT",
   "scripts": {

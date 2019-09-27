@@ -5,19 +5,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [3.0.0](https://github.com/Availity/gatsby-theme-availity/compare/site@2.3.14...site@3.0.0) (2019-09-27)
 
-
 ### Code Refactoring
 
-* **gatsby-theme-docs:** merged master and updated header ([452df9b](https://github.com/Availity/gatsby-theme-availity/commit/452df9b))
-
+- **gatsby-theme-docs:** merged master and updated header ([452df9b](https://github.com/Availity/gatsby-theme-availity/commit/452df9b))
 
 ### BREAKING CHANGES
 
-* **gatsby-theme-docs:** configuration now requires the git url rather than a project/repo name
-
-
-
-
+- **gatsby-theme-docs:** configuration now requires the git url rather than a project/repo name
 
 ## [2.3.14](https://github.com/Availity/gatsby-theme-availity/compare/site@2.3.13...site@2.3.14) (2019-09-26)
 

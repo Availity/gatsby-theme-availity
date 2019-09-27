@@ -2,14 +2,15 @@
   "name": "gatsby-theme-availity",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "docs"
   ],
   "scripts": {
     "lint": "eslint .",
-    "start": "yarn workspace site develop",
-    "build": "yarn workspace site build",
-    "build:deploy": "yarn workspace site build:deploy",
-    "deploy:docs": "npm run build:deploy && gh-pages -d packages/site/public --message 'deployed docs [skip ci]'",
+    "start": "yarn workspace @availity/docs develop",
+    "build": "yarn workspace @availity/docs build",
+    "build:deploy": "yarn workspace @availity/docs build:deploy",
+    "deploy:docs": "npm run build:deploy && gh-pages -d docs/public --message 'deployed docs [skip ci]'",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "release:ci": "lerna publish --yes"
   },
