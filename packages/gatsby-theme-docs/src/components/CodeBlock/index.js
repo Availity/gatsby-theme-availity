@@ -51,7 +51,7 @@ const CodeBlock = ({
   // MDX will be an array, md will already have the child
   const code = Array.isArray(children) ? children[0] : children;
 
-  // Get the Langague from the className
+  // Get the Language from the className
   const language = className
     ? className
         .replace(/language-/, '')

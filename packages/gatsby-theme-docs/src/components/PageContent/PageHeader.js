@@ -2,9 +2,33 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Button } from 'reactstrap';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaBitbucket, FaGitlab } from 'react-icons/fa';
 import PageHeader from '@availity/page-header';
 import { Link } from 'gatsby';
+
+// eslint-disable-next-line react/prop-types
+const EditText = ({ gitType }) => {
+  switch (gitType) {
+    case 'bitbucket':
+      return (
+        <>
+          <FaBitbucket size={18} className="mr-2" /> Edit on Bitbucket
+        </>
+      );
+    case 'gitlab':
+      return (
+        <>
+          <FaGitlab size={18} className="mr-2" /> Edit on GitLab
+        </>
+      );
+    default:
+      return (
+        <>
+          <FaGithub size={18} className="mr-2" /> Edit on Github
+        </>
+      );
+  }
+};
 
 // Top Page header that is rendered on the current page
 const CustomPageHeader = ({
@@ -13,7 +37,8 @@ const CustomPageHeader = ({
   summary,
   currentPage,
   baseUrl,
-  githubUrl,
+  gitType,
+  gitUrl,
 }) => {
   const crumbs = useMemo(() => {
     const crumbArr = [
@@ -61,12 +86,11 @@ const CustomPageHeader = ({
           )}
         >
           <Button
-            href={githubUrl}
+            href={gitUrl}
             color="light"
             className="d-flex align-items-center"
           >
-            <FaGithub size={18} className="mr-2" />
-            Edit On Github
+            <EditText gitType={gitType} />
           </Button>
         </div>
       )}
@@ -90,7 +114,8 @@ CustomPageHeader.propTypes = {
   siteTitle: PropTypes.string,
   summary: PropTypes.string,
   currentPage: PropTypes.object,
-  githubUrl: PropTypes.string,
+  gitUrl: PropTypes.string,
+  gitType: PropTypes.string,
   baseUrl: PropTypes.string,
 };
 

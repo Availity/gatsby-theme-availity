@@ -157,22 +157,33 @@ exports.createPages = async ({ graphql, actions }, options) => {
 
   const {
     contentDir = 'docs/source',
-    githubRepo,
+    gitRepo,
     sidebarCategories,
     navConfig,
     baseUrl,
+    gitType,
   } = options;
 
   const { edges } = data.allFile;
 
   const sidebarContents = getSidebarContents(sidebarCategories, edges);
 
-  const [owner, repo] = githubRepo.split('/');
+  const [baseSite, owner, repo] = gitRepo.split('/');
   const template = require.resolve('./src/index.js');
 
   edges.forEach(edge => {
     const { id, title, relativePath } = edge.node;
     const { fields } = getPageFromEdge(edge);
+
+    let url;
+
+    if (gitType === 'github') {
+      url = `https://${baseSite}/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`;
+    } else if (gitType === 'gitlab') {
+      url = `https://${baseSite}/${owner}/${repo}/blob/master/${relativePath}`;
+    } else if (gitType === 'bitbucket') {
+      url = `https://${baseSite}/${owner}/${repo}/repos/browse/${relativePath}`;
+    }
 
     createPage({
       path: fields.slug,
@@ -181,7 +192,8 @@ exports.createPages = async ({ graphql, actions }, options) => {
         id,
         title,
         sidebarContents,
-        githubUrl: `https://github.com/${owner}/${repo}/tree/master/${contentDir}/${relativePath}`,
+        gitType,
+        gitUrl: url,
         baseUrl,
         navItems: generateNavItems(baseUrl, navConfig),
       },

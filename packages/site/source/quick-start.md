@@ -5,7 +5,7 @@ summary: Getting started
 
 ## Steps
 
-Follow the below steps for kickstarting your add.
+Follow the below steps for kickstarting your app.
 
 ### Create Folder Structure
 
@@ -67,7 +67,8 @@ module.exports = {
         root: __dirname,
         subtitle: 'My Docs Site',
         description: 'Documentation for This Repo',
-        githubRepo: '<user>/<repo-name>',
+        gitRepo: '<site>/<user>/<repo-name>',
+        gitType: 'github, bitbucket, or gitlab'
         sidebarCategories: {
           null: ['index', 'quick-start'],
         },

@@ -164,7 +164,7 @@ SectionNav.propTypes = {
   contentRef: PropTypes.object,
   mainRef: PropTypes.object,
   title: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default SectionNav;

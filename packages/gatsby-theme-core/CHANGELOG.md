@@ -7,97 +7,49 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
 
-
-
-
-
 ## [1.2.11](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.10...@availity/gatsby-theme-core@1.2.11) (2019-09-25)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
-
-
-
-
 
 ## [1.2.10](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.9...@availity/gatsby-theme-core@1.2.10) (2019-09-25)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
 
-
-
-
-
 ## [1.2.9](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.8...@availity/gatsby-theme-core@1.2.9) (2019-09-25)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
-
-
-
-
 
 ## [1.2.8](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.7...@availity/gatsby-theme-core@1.2.8) (2019-09-23)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
 
-
-
-
-
 ## [1.2.7](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.6...@availity/gatsby-theme-core@1.2.7) (2019-09-12)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
-
-
-
-
 
 ## [1.2.6](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.5...@availity/gatsby-theme-core@1.2.6) (2019-09-11)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
 
-
-
-
-
 ## [1.2.5](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.4...@availity/gatsby-theme-core@1.2.5) (2019-09-10)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
-
-
-
-
 
 ## [1.2.4](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.3...@availity/gatsby-theme-core@1.2.4) (2019-09-10)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
 
-
-
-
-
 ## [1.2.3](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-core@1.2.2...@availity/gatsby-theme-core@1.2.3) (2019-09-06)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
-
-
-
-
 
 ## 1.2.2 (2019-09-06)
 
 **Note:** Version bump only for package @availity/gatsby-theme-core
 
-
-
-
-
 ## [1.2.1](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@1.2.0...@availity/gatsby-theme@1.2.1) (2019-09-06)
 
 **Note:** Version bump only for package @availity/gatsby-theme
-
-
-
-
 
 # [1.2.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme@1.1.2...@availity/gatsby-theme@1.2.0) (2019-09-05)
 

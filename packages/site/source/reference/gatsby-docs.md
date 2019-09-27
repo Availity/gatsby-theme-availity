@@ -49,7 +49,8 @@ module.exports = {
 | subtitle          | string | The title that gets rendered above the sidebar navigation                              |
 | description       | string | The site description for SEO and social (FB, Twitter) tags                             |
 | contentDir        | string | The directory where docs content exists (`docs/source` by default)                     |
-| githubRepo        | string | The owner and name of the content repository on GitHub                                 |
+| gitType           | string | The repository manager: Github, Bitbucket, or Gitlab                                   |
+| gitRepo           | string | The owner and name of the content repository on Github, Bitbucket, or Gitlab           |
 | sidebarCategories | object | An object mapping categories to page paths ([described below][])                       |
 | navConfig         | object | An object containing all the navigation items rendered at the top right of the top nav |
 
