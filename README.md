@@ -21,3 +21,5 @@ npm install gatsby @availity/gatsby-theme-docs
 ```
 
 ## [Usage](./packages/gatsby-theme-docs)
+
+## [Contributing Guide](./CONTRIBUTING.md)
