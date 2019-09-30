@@ -11,5 +11,5 @@ yarn install
 ## Running Docs
 
 ```bash
-npm start
+yarn start
 ```
