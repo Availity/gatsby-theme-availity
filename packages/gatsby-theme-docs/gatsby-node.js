@@ -1,9 +1,19 @@
+/* eslint-disable prefer-destructuring */
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 const configPaths = [
   'docs/gatsby-config.js', // new gatsby config
   'docs/_config.yml', // old hexo config
 ];
+
+// Borrowed from https://github.com/sindresorhus/is-absolute-url
+const isAbsoluteUrl = url => {
+  if (typeof url !== 'string') {
+    throw new TypeError(`Expected a \`string\`, got \`${typeof url}\``);
+  }
+
+  return /^[a-z][a-z\d+.-]*:/.test(url);
+};
 
 // generates the top nav links
 function generateNavItems(baseUrl, config) {
@@ -47,9 +57,14 @@ function getPageFromEdge({ node }) {
 
 function mapLinkToItem(linkPathOrObject, edges, depth, parent) {
   let linkPath = linkPathOrObject;
-
+  let isRelative;
+  let withPrefix = false;
   if (typeof linkPathOrObject === 'object') {
     linkPath = linkPathOrObject.resolve;
+    // Allow for overwriting the default behavior if the link is in a sub folder but not a gatsby source file
+    // e.g. /storybook
+    isRelative = linkPathOrObject.isRelative;
+    withPrefix = linkPathOrObject.withPrefix;
   }
 
   const match = linkPath.match(
@@ -59,6 +74,9 @@ function mapLinkToItem(linkPathOrObject, edges, depth, parent) {
   if (match) {
     return {
       anchor: true,
+      isRelative:
+        isRelative !== undefined ? isRelative : !isAbsoluteUrl(match[2]),
+      withPrefix,
       title: match[1],
       path: match[2],
       parent,
