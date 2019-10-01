@@ -71,7 +71,7 @@ const NavigationItem = ({
             'pt-2 pb-2 d-flex align-items-center justify-content-between pl-4 position-relative',
             {
               'text-uppercase': !isRootLink && isPrimaryCategory,
-              lead: isRootLink,
+              'lead site-title-link': isRootLink,
               'text-primary': isRootLink || isCategorySelected,
               'text-secondary': isSecondaryCategory && !isCategorySelected,
               'sidenav-link-active hover':
