@@ -4,6 +4,10 @@ title: Gatsby Theme Docs
 
 This API Reference documents all the available configurations for `gatsby-config.js`.
 
+```bash
+npX install-peerdeps @availity/gatsby-theme-docs
+```
+
 ## Default Theme Options
 
 We include an export for the default theme options in the case you don't want to explicity put them there yourself.
