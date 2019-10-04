@@ -1,6 +1,6 @@
 {
   "name": "@availity/gatsby-theme-docs",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "license": "MIT",
   "main": "index.js",
   "repository": {
@@ -26,28 +26,28 @@
     "clean": "gatsby clean"
   },
   "peerDependencies": {
-    "gatsby": "^2.13.83",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "reactstrap": "^8.0.1",
-    "formik": "2.0.1-rc.12",
-    "@availity/spaces": "^3.1.0",
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.19.0"
+    "@availity/spaces": "^3.1.0",
+    "axios": "^0.19.0",
+    "formik": "2.0.1-rc.12",
+    "gatsby": "^2.13.83",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "reactstrap": "^8.0.1"
   },
   "devDependencies": {
-    "gatsby": "^2.13.83",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "reactstrap": "^8.0.1",
-    "formik": "2.0.1-rc.12",
-    "@availity/spaces": "^3.1.0",
     "@availity/api-axios": "^5.4.0",
     "@availity/api-core": "^5.4.0",
     "@availity/localstorage-core": "^2.6.1",
-    "axios": "^0.19.0"
+    "@availity/spaces": "^3.1.0",
+    "axios": "^0.19.0",
+    "formik": "2.0.1-rc.12",
+    "gatsby": "^2.13.83",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "reactstrap": "^8.0.1"
   },
   "dependencies": {
     "@availity/gatsby-theme-core": "^2.0.0",
