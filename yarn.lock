@@ -32,10 +32,10 @@
   resolved "https://registry.yarnpkg.com/@availity/app-icon/-/app-icon-1.3.1.tgz#3593d4bf3d10ed798ea8e038c5d333b26b389dc0"
   integrity sha512-C7AdRfNrVzXyqYcwiyjEH1wwrNPUkr6rIxV12H9MGrbd4XtlGQUhYbpjdhVWcpObB9IxyYYLtbHcDKMxY2d4XQ==
 
-"@availity/breadcrumbs@^3.1.3":
-  version "3.1.3"
-  resolved "https://registry.yarnpkg.com/@availity/breadcrumbs/-/breadcrumbs-3.1.3.tgz#a57814fd20351fb3d10b621545802240f8a7129d"
-  integrity sha512-jMmsBb6Dt2ve9HakfW8z4tYJGceOJ/sGJoCPFGTLF42Ww3f1bkaK2WtERcpqz57bLzw+tOrZJlzwV3Zp0e6YNQ==
+"@availity/breadcrumbs@^3.1.4":
+  version "3.1.4"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/breadcrumbs/-/breadcrumbs-3.1.4.tgz#6b21e4fa7d4f09d223cee2e5a4c715fb63900001"
+  integrity sha1-ayHk+n1PCdIjzuLlpMcV+2OQAAE=
   dependencies:
     prop-types "^15.5.8"
 
@@ -69,15 +69,15 @@
     lodash.sortby "^4.7.0"
     prop-types "^15.5.8"
 
-"@availity/feedback@^5.1.9":
-  version "5.1.9"
-  resolved "https://registry.yarnpkg.com/@availity/feedback/-/feedback-5.1.9.tgz#3234b401003e2e13e616f0a02fa649816bd9b987"
-  integrity sha512-vhARhPbIvGqzo3I/8NJBJsp5P7r7eejss72S8cVhPp8mzeGlxe6RfRR0Ks4jpFU6JQF6WacR4zkSKtwF6AmU2A==
+"@availity/feedback@^5.1.20":
+  version "5.1.20"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/feedback/-/feedback-5.1.20.tgz#2d08302d00550271bcefc9f628bb8c06fda026cb"
+  integrity sha1-LQgwLQBVAnG878n2KLuMBv2gJss=
   dependencies:
-    "@availity/form" "^0.4.3"
-    "@availity/hooks" "^1.6.1"
-    "@availity/icon" "^0.6.1"
-    "@availity/select" "^0.4.9"
+    "@availity/form" "^0.4.8"
+    "@availity/hooks" "^1.6.3"
+    "@availity/icon" "^0.6.2"
+    "@availity/select" "^0.6.0"
     prop-types "^15.5.8"
 
 "@availity/form@^0.3.3":
@@ -88,13 +88,14 @@
     classnames "^2.2.6"
     prop-types "^15.5.8"
 
-"@availity/form@^0.4.3":
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/@availity/form/-/form-0.4.3.tgz#24ec379ee1189560f25672d1f5f788e2ca33608d"
-  integrity sha512-23tzlWWmh1rJTB8HeIy/kU6ba85B/PZzqO/BFbOhKOSaDUJuuMtErXQbJfmuEtCNhpd00gj6DKHRZQhs9T2fgg==
+"@availity/form@^0.4.8":
+  version "0.4.8"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/form/-/form-0.4.8.tgz#d6edb6855219def0d1d95fd8bdf655d5cb67408f"
+  integrity sha1-1u22hVIZ3vDR2V/YvfZV1ctnQI8=
   dependencies:
     classnames "^2.2.6"
     prop-types "^15.5.8"
+    uuid "^3.3.3"
 
 "@availity/hooks@^1.6.0":
   version "1.6.0"
@@ -103,10 +104,10 @@
   dependencies:
     prop-types "^15.5.8"
 
-"@availity/hooks@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@availity/hooks/-/hooks-1.6.1.tgz#e0c9016b3bb88238435843b3bb72066099544549"
-  integrity sha512-PefubBQJpsAT0KDEmILMVQtTxUi3Nw6YMgRiMPT+LwcqC/ZUA32QjMCCZOeSatAhwdUTpKVsn0ozzSX9xyy1Fw==
+"@availity/hooks@^1.6.3":
+  version "1.6.3"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/hooks/-/hooks-1.6.3.tgz#b9c0de299c8760e1505c718c9aed45573806d50b"
+  integrity sha1-ucDeKZyHYOFQXHGMmu1FVzgG1Qs=
   dependencies:
     prop-types "^15.5.8"
 
@@ -117,10 +118,10 @@
   dependencies:
     classnames "^2.2.6"
 
-"@availity/icon@^0.6.1":
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/@availity/icon/-/icon-0.6.1.tgz#24f0ec14e40b850f5b751b4fd3ccac8636b99d86"
-  integrity sha512-XX+BEKQcToY6venZDYuFWLTnb1/4AwMGcgyu5AU28HZNBnb2p22LKxStNErZ9vSlxa6/aqTqr3lmZFyLg/lnBw==
+"@availity/icon@^0.6.2":
+  version "0.6.2"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/icon/-/icon-0.6.2.tgz#e5cc9f5878ad2c0f4b8df90b94df137646fabed8"
+  integrity sha1-5cyfWHitLA9LjfkLlN8Tdkb6vtg=
   dependencies:
     classnames "^2.2.6"
 
@@ -134,25 +135,25 @@
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.2.tgz#b61e084da32199eacbb50081c072872d4120ea03"
   integrity sha512-AKYg/MWSRPks9fP2JfBLiLe24tdseCYeyhlpDyBPjhJfCxSI+UiAlS4BRPXlQ4yi+InXhtg8SHikbDoAuIaVtg==
 
-"@availity/page-header@^8.0.2":
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/@availity/page-header/-/page-header-8.0.2.tgz#fcd0ae6c814813bc1f40b40b9995b734bb97521b"
-  integrity sha512-OmA928+0jcTjWUR/MEHetKSloeTM9HoeNVUuFo3RfBbvWdwvlG9F9d3SmaYB9dO41LIRk8JajDQbl5efTvYzVA==
+"@availity/page-header@^9.0.2":
+  version "9.0.2"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/page-header/-/page-header-9.0.2.tgz#9052bb50ddc428e8699e6a995df1866b54374e59"
+  integrity sha1-kFK7UN3EKOhpnmqZXfGGa1Q3Tlk=
   dependencies:
     "@availity/app-icon" "^1.3.1"
-    "@availity/breadcrumbs" "^3.1.3"
-    "@availity/feedback" "^5.1.9"
-    "@availity/payer-logo" "^4.0.2"
+    "@availity/breadcrumbs" "^3.1.4"
+    "@availity/feedback" "^5.1.20"
+    "@availity/payer-logo" "^4.0.4"
     "@availity/training-link" "^1.2.1"
     classnames "^2.2.6"
     prop-types "^15.5.8"
 
-"@availity/payer-logo@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@availity/payer-logo/-/payer-logo-4.0.2.tgz#50abb4047bb13db99123a48c873924105d1bf147"
-  integrity sha512-xEdV2TbgY3xvJ4CPYW/Vb2bq9Xq0DgOLdnXjLuGy2OHxbo7VNwa66HkpzUfUz2EDrrAchk69uzrA2wPjxYt3Gw==
+"@availity/payer-logo@^4.0.4":
+  version "4.0.4"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/payer-logo/-/payer-logo-4.0.4.tgz#23e549a9c828f30c8825410b2cc40d3d08edc659"
+  integrity sha1-I+VJqcgo8wyIJUELLMQNPQjtxlk=
   dependencies:
-    "@availity/hooks" "^1.6.1"
+    "@availity/hooks" "^1.6.3"
     lodash.get "^4.4.2"
     prop-types "^15.5.8"
 
@@ -173,25 +174,26 @@
     react-select "^3.0.4"
     react-select-async-paginate "^0.3.7"
 
-"@availity/select@^0.4.9":
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/@availity/select/-/select-0.4.9.tgz#552051cec3e3d84fba1862b9d03605df27fec246"
-  integrity sha512-9wvHJb27A9JBOZx8mbtuXcSFo3ERboSJGBECdcJ5lF+Ofrd8E8esrcqYt8i8potXTB9tITby8LMvbeFJruMbBQ==
+"@availity/select@^0.6.0":
+  version "0.6.0"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/select/-/select-0.6.0.tgz#3aee6c79ec0601f1a698b7021c753303ce273fe2"
+  integrity sha1-Ou5seewGAfGmmLcCHHUzA84nP+I=
   dependencies:
     classnames "^2.2.5"
     lodash.get "^4.4.2"
+    lodash.isfunction "^3.0.9"
     prop-types "^15.5.8"
     qs "^6.5.2"
     react-select "^3.0.4"
     react-select-async-paginate "^0.3.7"
 
-"@availity/spaces@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@availity/spaces/-/spaces-3.1.0.tgz#ad7cab5f10217267a90412397157d1a5319b55fb"
-  integrity sha512-cHHr4Lr6606NBcvQhisKy4V6HrZ1JFs1PqYCQMmpyfElS/XKDTzM9vJNFwNLrovUNdFUxOtD42V+4RXT/6PjmA==
+"@availity/spaces@^4.0.0":
+  version "4.0.0"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/spaces/-/spaces-4.0.0.tgz#1b6d2cf366ef8a2027880a1691ec2428c40ea5ad"
+  integrity sha1-G20s82bviiAniAoWkewkKMQOpa0=
   dependencies:
-    "@availity/hooks" "^1.6.0"
-    "@availity/typography" "^1.2.0"
+    "@availity/hooks" "^1.6.3"
+    "@availity/typography" "^1.2.1"
     lodash.get "^4.4.2"
     prop-types "^15.5.8"
     react-image "^2.1.3"
@@ -205,10 +207,10 @@
   dependencies:
     prop-types "^15.5.8"
 
-"@availity/typography@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@availity/typography/-/typography-1.2.0.tgz#7d688fef85a9eff3c5769bfae36ec9acddc29d21"
-  integrity sha512-gojsT7qrkmwsgPrK0rAeiWTsGgRLgzI6VMqqkh/ob1428cXXyoZPdlomnItr/iWQfcauqKxg15J/PjgKse/8NA==
+"@availity/typography@^1.2.1":
+  version "1.2.1"
+  resolved "https://artifactory.availity.com/artifactory/api/npm/npm/@availity/typography/-/typography-1.2.1.tgz#d1d6f2a88aaeb5b00a4f4086375326cb9875d15e"
+  integrity sha1-0dbyqIqutbAKT0CGN1Mmy5h10V4=
   dependencies:
     classnames "^2.2.6"
 
