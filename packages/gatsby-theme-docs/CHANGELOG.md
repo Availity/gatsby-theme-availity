@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@3.0.0...@availity/gatsby-theme-docs@3.0.1) (2019-10-22)
+
+
+### Bug Fixes
+
+* **gatsby-theme-docs:** fix flex items getting squished in safari ([d98c759](https://github.com/availity/gatsby-theme-availity/commit/d98c759))
+
+
+
+
+
 # [3.0.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@2.0.3...@availity/gatsby-theme-docs@3.0.0) (2019-10-04)
 
 
