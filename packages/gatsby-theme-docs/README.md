@@ -102,7 +102,3 @@ This is some sample markdown that we have below the metadata fields of the markd
 ```
 
 Page URLs will be derived from the file paths of your Markdown. You can nest Markdown files within directories to create pages with additional path segments.
-
-## Deployment
-
-All docs sites will eventually be deployed into a subdirectory, as configured by the `pathPrefix` option&mdash;/availity-react, for example. [Read this guide](../../#deploying-to-a-subdirectory) to learn more about publishing to a subdirectory.
