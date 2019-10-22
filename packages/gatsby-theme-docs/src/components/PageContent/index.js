@@ -35,7 +35,7 @@ const PageContent = ({
   }, []);
 
   return (
-    <div className="d-flex align-items-start">
+    <div className="d-flex align-items-start flex-shrink-0">
       <div
         className="flex-grow-1 content-wrapper"
         style={{ width: 0, maxWidth: '110ch' }}

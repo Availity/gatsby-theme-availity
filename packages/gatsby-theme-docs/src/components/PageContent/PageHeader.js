@@ -62,6 +62,7 @@ const CustomPageHeader = ({
 
   return (
     <PageHeader
+      className="flex-shrink-0"
       homeUrl="/"
       appName={isIndexPage ? siteTitle : title}
       crumbs={isIndexPage ? [] : crumbs}

@@ -27,7 +27,7 @@ const SideNav = ({ currentPath, contents, siteTitle, ...rest }) => {
 
   return (
     <div {...rest}>
-      <Nav vertical navbar className="h-100 text-dark">
+      <Nav vertical navbar className="text-dark">
         <CollapseProvider siteName={siteTitle}>
           {contents.map(
             ({ title: collapseTitle, pages, path: categoryPath, depth }) => (
