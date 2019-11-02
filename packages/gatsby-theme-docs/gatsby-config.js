@@ -21,7 +21,7 @@ module.exports = ({
 
   const config = {
     siteMetadata: {
-      title: 'Avality Docs',
+      title: 'Availity Docs',
       subtitle,
       description,
     },
