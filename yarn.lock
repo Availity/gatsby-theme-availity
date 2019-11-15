@@ -109,10 +109,10 @@
   resolved "https://registry.yarnpkg.com/@availity/message-core/-/message-core-4.0.3.tgz#6a63031e6709816c553caa60aaf16f09816429bb"
   integrity sha512-13tEZDKhP74vNeB8HuyIpI0UmSstLLsfwiL4l9CnjrrCg0DKn52dt0S1N3OaskNc/cQCU1QT/6GoutsBm882Sg==
 
-"@availity/page-header@^9.0.5":
-  version "9.0.5"
-  resolved "https://registry.yarnpkg.com/@availity/page-header/-/page-header-9.0.5.tgz#983a804f612ceb06fa1d8acb1a8b2c4698084dd7"
-  integrity sha512-NF+Qdht2MiYItjxm3fO/EsWeoGbtXVhhqG9Ld8fRVqJkvjcMirKVbDPDb7WtNanbcEL6P/PPDV0huL1jNP1VlA==
+"@availity/page-header@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@availity/page-header/-/page-header-10.0.0.tgz#4a8252421da2d2c3576d6c50671bb33e4e88e980"
+  integrity sha512-3HvmoW0K+uqpPeoAqOXT3WZ0nVvArkhQmsjCBIDJE3vs4JY5oZBMGZVS4t/GqOnyqxd+2faUCpdQbBg+llBguw==
   dependencies:
     "@availity/app-icon" "^1.3.1"
     "@availity/breadcrumbs" "^3.1.5"
@@ -120,7 +120,7 @@
     "@availity/payer-logo" "^4.0.5"
     "@availity/training-link" "^1.2.1"
     classnames "^2.2.6"
-    prop-types "^15.5.8"
+    prop-types "^15.7.2"
 
 "@availity/payer-logo@^4.0.5":
   version "4.0.5"
