@@ -26,22 +26,22 @@
     "clean": "gatsby clean"
   },
   "peerDependencies": {
-    "gatsby": "^2.13.83",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "reactstrap": "^8.0.1"
+    "gatsby": "^2.17.14",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "reactstrap": "^8.1.1"
   },
   "devDependencies": {
-    "gatsby": "^2.13.83",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "reactstrap": "^8.0.1"
+    "gatsby": "^2.17.14",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "reactstrap": "^8.1.1"
   },
   "dependencies": {
     "availity-uikit": "^3.2.0",
     "classnames": "^2.2.6",
-    "gatsby-plugin-react-helmet": "^3.1.2",
-    "gatsby-plugin-sass": "^2.1.8",
+    "gatsby-plugin-react-helmet": "^3.1.15",
+    "gatsby-plugin-sass": "^2.1.23",
     "node-sass": "^4.12.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0"
