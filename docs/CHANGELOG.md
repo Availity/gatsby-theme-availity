@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/Availity/gatsby-theme-availity/compare/@availity/docs@4.0.2...@availity/docs@5.0.0) (2019-11-16)
+
+
+### Build System
+
+* update @availity/page-header ([c315eab](https://github.com/Availity/gatsby-theme-availity/commit/c315eabc6d717272fe57294a9248e9aa20188786))
+
+
+### BREAKING CHANGES
+
+* page-header updated to 10.0.0
+
+
+
+
+
 ## [4.0.2](https://github.com/Availity/gatsby-theme-availity/compare/@availity/docs@4.0.1...@availity/docs@4.0.2) (2019-11-02)
 
 **Note:** Version bump only for package @availity/docs

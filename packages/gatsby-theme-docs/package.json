@@ -1,6 +1,6 @@
 {
   "name": "@availity/gatsby-theme-docs",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "license": "MIT",
   "main": "index.js",
   "repository": {
@@ -52,7 +52,7 @@
     "reactstrap": "^8.1.1"
   },
   "dependencies": {
-    "@availity/gatsby-theme-core": "^2.0.1",
+    "@availity/gatsby-theme-core": "^2.0.2",
     "@availity/resolve-url": "^1.1.1",
     "@loadable/component": "^5.10.3",
     "@mdx-js/mdx": "^1.5.1",

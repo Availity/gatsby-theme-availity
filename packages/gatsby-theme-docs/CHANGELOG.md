@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@3.0.2...@availity/gatsby-theme-docs@4.0.0) (2019-11-16)
+
+
+### Build System
+
+* update @availity/page-header ([c315eab](https://github.com/availity/gatsby-theme-availity/commit/c315eabc6d717272fe57294a9248e9aa20188786))
+
+
+### Code Refactoring
+
+* move @availity/page-header to peer dependencies ([3f9cee7](https://github.com/availity/gatsby-theme-availity/commit/3f9cee73bae921516734617d70d8352b0db8e3f0))
+
+
+### BREAKING CHANGES
+
+* page-header updated to 10.0.0
+* @availity/page-header is no longer a dependency and is now a peer dependency
+
+
+
+
+
 ## [3.0.2](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@3.0.1...@availity/gatsby-theme-docs@3.0.2) (2019-11-02)
 
 

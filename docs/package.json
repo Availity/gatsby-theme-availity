@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@availity/docs",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
@@ -17,7 +17,7 @@
     "@availity/date": "^0.3.12",
     "@availity/favorites": "^2.1.8",
     "@availity/form": "^0.4.9",
-    "@availity/gatsby-theme-docs": "^3.0.2",
+    "@availity/gatsby-theme-docs": "^4.0.0",
     "@availity/localstorage-core": "^3.0.0",
     "@availity/page-header": "^10.0.0",
     "@availity/select": "^0.6.1",
