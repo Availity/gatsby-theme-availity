@@ -85,7 +85,7 @@ const Template = ({
         navItems={navItems}
         pathname={pathname}
       />
-      <div className="d-flex overflow-hidden">
+      <div className="d-flex overflow-hidden container pr-0">
         <SideNavigation
           currentPath={pathname}
           contents={sidebarContents}
@@ -97,7 +97,7 @@ const Template = ({
           }}
         />
         <div
-          className="d-flex flex-column w-100 px-5 pb-5 pt-4"
+          className="d-flex flex-column w-100 pl-5 pb-5 pt-4 content-container"
           style={{
             overflowY: 'auto',
           }}

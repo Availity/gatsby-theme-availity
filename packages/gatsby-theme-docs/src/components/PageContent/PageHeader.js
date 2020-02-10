@@ -91,7 +91,7 @@ const CustomPageHeader = ({
           <Button
             href={gitUrl}
             color="light"
-            className="d-flex align-items-center"
+            className="d-flex align-items-center mr-4"
           >
             <EditText gitType={gitType} />
           </Button>
@@ -100,7 +100,7 @@ const CustomPageHeader = ({
     >
       <div className="d-flex flex-column">
         <h1
-          className={classNames({
+          className={classNames('h2', {
             'mb-0': !summary,
           })}
         >

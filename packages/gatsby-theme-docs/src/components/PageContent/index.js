@@ -38,8 +38,8 @@ const PageContent = ({
     <div className="d-flex align-items-start flex-shrink-0">
       <div
         className="flex-grow-1 content-wrapper"
-        style={{ width: 0, maxWidth: '110ch' }}
         ref={contentRef}
+        style={{ width: 0 }}
       >
         {children}
         {hasSubPages && <SectionOverview sections={pages[pageIndex].pages} />}
@@ -54,7 +54,6 @@ const PageContent = ({
           mainRef={mainRef}
           title={title}
           contentRef={contentRef}
-          className="ml-5 pl-5"
         />
       )}
     </div>

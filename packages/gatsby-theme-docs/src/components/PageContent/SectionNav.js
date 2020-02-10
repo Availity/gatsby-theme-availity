@@ -103,8 +103,7 @@ const SectionNav = ({
     const contentHeadings = contentRef.current.querySelectorAll('h2,h3');
 
     setOffsets(
-      // eslint-disable-next-line unicorn/prefer-spread
-      Array.from(contentHeadings)
+      [...contentHeadings]
         .map(heading => {
           const anchor = heading.querySelector('a');
           if (!anchor) {
@@ -138,10 +137,10 @@ const SectionNav = ({
     <Nav
       className={classnames(
         className,
-        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2 w-100'
+        'd-xs-none d-sm-none d-md-none d-lg-none d-xl-flex pt-2 ml-5 flex-shrink-0'
       )}
       vertical
-      style={{ maxWidth: 400, position: 'sticky', top: 0 }}
+      style={{ width: 300, position: 'sticky', top: 0 }}
       {...rest}
     >
       <NavItem style={{ fontWeight: '500' }}>

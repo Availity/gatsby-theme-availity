@@ -29,7 +29,10 @@ const Navigation = ({
     <Navbar
       light
       expand="md"
-      className={classnames('bg-light flex-md-nowrap flex-shrink-0', className)}
+      className={classnames(
+        'flex-md-nowrap flex-shrink-0 container border-bottom',
+        className
+      )}
       {...props}
     >
       <NavbarBrand

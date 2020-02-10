@@ -1,4 +1,11 @@
 /*  Side Nav for Docs */
+.container {
+  max-width: 1440px;
+}
+
+.content-container::-webkit-scrollbar {
+  display: none;
+}
 
 /* Side Nav Active :before */
 .sidenav-link-active:before {
