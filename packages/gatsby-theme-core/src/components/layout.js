@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import Helmet from 'react-helmet';
+import React from 'react';
+import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql, withPrefix } from 'gatsby';
 import 'availity-uikit';
@@ -21,7 +21,7 @@ export default function Layout({ pathname, children }) {
       render={data => {
         const { title, description, siteUrl } = data.site.siteMetadata;
         return (
-          <Fragment>
+          <>
             <Helmet defaultTitle={title} titleTemplate={`%s - ${title}`}>
               <meta name="description" content={description} />
               <link rel="icon" href={withPrefix('/favicon.ico')} />
@@ -51,7 +51,7 @@ export default function Layout({ pathname, children }) {
               />
             </Helmet>
             <div className="h-100 d-flex flex-column">{children}</div>
-          </Fragment>
+          </>
         );
       }}
     />

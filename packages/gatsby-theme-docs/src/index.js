@@ -3,6 +3,7 @@
 import React, { useRef, useMemo, useCallback } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { graphql, withPrefix } from 'gatsby';
 import RehypeReact from 'rehype-react';
 import { Table } from 'reactstrap';
@@ -79,6 +80,7 @@ const Template = ({
 
   return (
     <Layout>
+      <Helmet title={`${frontmatter.title} - ${site.siteMetadata.subtitle}`} />
       <TopNavigation
         brandAttrs={{ className: 'pl-4', href: baseUrl }}
         className="pl-0"
