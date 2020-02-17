@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@4.0.1...@availity/gatsby-theme-docs@4.0.2) (2020-02-17)
+
+**Note:** Version bump only for package @availity/gatsby-theme-docs
+
+
+
+
+
 ## [4.0.1](https://github.com/availity/gatsby-theme-availity/compare/@availity/gatsby-theme-docs@4.0.0...@availity/gatsby-theme-docs@4.0.1) (2020-02-10)
 
 **Note:** Version bump only for package @availity/gatsby-theme-docs
